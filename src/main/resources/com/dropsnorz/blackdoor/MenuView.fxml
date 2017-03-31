@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox>
+         <children>
+            <TilePane alignment="CENTER" hgap="20.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="25.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="play-button" fx:id="BT_Play" mnemonicParsing="false" styleClass="ui-button" text="Play" textAlignment="CENTER" />
+                  <Button fx:id="BT_Exit" mnemonicParsing="false" styleClass="ui-button" text="Exit" textAlignment="CENTER" />
+               </children>
+            </TilePane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,107 @@
+
+
+.back-pane {
+	    -fx-background-color: black;
+	
+}
+
+.label {
+	    -fx-text-fill: white;
+	    -fx-font-family: "Courier New";
+	    
+}
+
+#play-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-padding: 15 40 15 40;
+    -fx-border-insets: 5, 5, 5, 5;
+    -fx-border-color: rgba(42,187,155,255);
+    -fx-font-family: "Courier New";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+#play-button Text {
+    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
+}
+
+#play-button:hover {
+	 -fx-border-color: rgba(255,229,71,0.9); 
+	 -fx-text-fill: rgba(255,229,71,0.9); 
+	
+}
+
+.ui-button{
+	 -fx-background-color: transparent;
+	 -fx-padding: 10 15 10 15;
+	 -fx-text-fill: white;
+	 -fx-border-insets: 5, 5, 5, 5;
+     -fx-border-color: rgba(42,187,155,255);
+     -fx-font-family: "Helvetica";
+	
+}
+
+.ui-button:hover{
+	 -fx-border-color: rgba(255,229,71,0.9); 
+	 -fx-text-fill: rgba(255,255,255,0.9); 
+	
+}
+
+.code-editor:readonly{
+		 -fx-background-color: rgb(22,22,22);
+		 
+}
+.code-editor{
+		 -fx-background-color: rgb(33,33,33);
+		 
+}
+
+.code-editor .text{
+
+	-fx-fill: white;
+}
+.code-editor .caret {
+    -fx-stroke: white;
+}
+
+.combo-box
+ {
+  -fx-background-color: transparent;
+  -fx-text-fill: white;
+  -fx-border-color: white; 
+
+ }
+ 
+ #drop-code-area{
+ 	-fx-background-color: rgb(22,22,22);
+ }
+ 
+ .combo-box .cell:selected
+ {
+ 	  -fx-text-fill: white;
+ 	
+ }
+.combo-box-popup .list-view
+ {
+   -fx-background-color: transparent;
+   -fx-background-insets: 0, 1;
+   -fx-border-color: white;
+   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+ }
+ 
+ 
+.combo-box-popup .list-view .list-cell
+ {
+-fx-background-color: rgba(0,0,0,0.5);
+-fx-text-fill: white;
+-fx-font-family: Oxygen Light;
+ }
+ 
+ .combo-box-popup .list-view .list-cell:hover
+ {
+	 -fx-background-color: rgba(255,229,71,0.5);
+ 	
+ }

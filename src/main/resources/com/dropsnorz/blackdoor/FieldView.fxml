@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="100" prefWidth="100" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="LB_Header" text="Label" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+   </top>
+   <center>
+      <VBox fx:id="PANE_CodeArea" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="BT_Submit" mnemonicParsing="false" text="Submit" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
