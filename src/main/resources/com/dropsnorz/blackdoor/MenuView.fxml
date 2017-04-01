@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox>
+      <VBox BorderPane.alignment="CENTER" alignment="CENTER">
          <children>
-            <TilePane alignment="CENTER" hgap="20.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="25.0" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="200.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/blackdoor.gif" />
+               </image></ImageView>
+            <TilePane alignment="CENTER" hgap="20.0" orientation="VERTICAL" prefColumns="1" vgap="25.0" maxHeight="200">
                <children>
                   <Button id="play-button" fx:id="BT_Play" mnemonicParsing="false" styleClass="ui-button" text="Play" textAlignment="CENTER" />
                   <Button fx:id="BT_Exit" mnemonicParsing="false" styleClass="ui-button" text="Exit" textAlignment="CENTER" />
