@@ -22,7 +22,8 @@ import javafx.scene.text.Text;
 public class GameFieldController {
 
 	
-	private DropCodeFragmentController dropCodeFragmentController;
+	protected DropCodeFragmentController dropCodeFragmentController;
+	protected FragmentContainerController fragmentContainerController; 
 	
 	private Parent root;
 	
@@ -45,6 +46,7 @@ public class GameFieldController {
 		generateUI();
 		
 		dropCodeFragmentController = new DropCodeFragmentController();
+		fragmentContainerController = new FragmentContainerController();
 		
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n\t public process() {");
@@ -58,7 +60,9 @@ public class GameFieldController {
 		//PANE_CodeArea.getChildren().add(inputCodeArea);
 		PANE_CodeArea.getChildren().add(dropCodeFragmentController.getView());
 		//PANE_CodeArea.getChildren().add(bottomCodeArea);
-		PANE_CodeArea.getChildren().add(new CodeFragmentController().getView());
+		PANE_CodeArea.getChildren().add(fragmentContainerController.getView());
+		
+		fragmentContainerController.getView().getChildren().add(new CodeFragmentController().getView());
 		
         textHolder.textProperty().bind(inputCodeArea.textProperty());
         textHolder.layoutBoundsProperty().addListener(new ChangeListener<Bounds>() {
@@ -71,7 +75,6 @@ public class GameFieldController {
                 }
             }
         });
-        
 
 
 		BT_Submit.setOnAction(new EventHandler<ActionEvent>() {
@@ -81,7 +84,7 @@ public class GameFieldController {
 			};
 		});
 		
-		Animations.labelTypingAnimation(LB_Header, "Hello, welcome to this awesome game !");
+		Animations.labelTypingAnimation(LB_Header, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] Voila tes instructions...");
 	}
 	
 	public void processInputCode(){

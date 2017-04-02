@@ -15,13 +15,13 @@ public class CodeFragmentView extends Pane{
 	public CodeFragmentView(){
 		
 		super();
+		this.getStyleClass().add("code-fragment");
 		LB_Text = new Label ("some code here");
 		this.getChildren().add(LB_Text);
 		
-		CodeFragmentView source = this;
-		
-		
-		
+		LB_Text.layoutXProperty().bind(this.widthProperty().subtract(LB_Text.widthProperty()).divide(2));
+		LB_Text.layoutYProperty().bind(this.heightProperty().subtract(LB_Text.heightProperty()).divide(2));
+
 	}
 	
 	

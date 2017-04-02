@@ -19,9 +19,8 @@ public class GameView extends AnchorPane {
 	public void stackView(Node node){
 		setTopAnchor(node, 0.0);
 		setBottomAnchor(node, 0.0);
-		setLeftAnchor(node, 0.0);
-		setRightAnchor(node, 0.0);
-		
+		setLeftAnchor(node, 0.2);
+		setRightAnchor(node, 0.2);	
 		this.getChildren().add(node);
 		
 	}
