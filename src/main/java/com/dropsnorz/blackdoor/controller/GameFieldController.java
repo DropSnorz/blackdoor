@@ -28,7 +28,7 @@ public class GameFieldController {
 	private Parent root;
 	
 	@FXML
-	Label LB_Header;
+	Label LB_Com;
 	@FXML
 	Button BT_Submit;
 	@FXML
@@ -84,7 +84,8 @@ public class GameFieldController {
 			};
 		});
 		
-		Animations.labelTypingAnimation(LB_Header, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] Voila tes instructions...");
+		
+		Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
 	}
 	
 	public void processInputCode(){

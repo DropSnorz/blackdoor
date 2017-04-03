@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -23,12 +24,24 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="200.0" styleClass="back-pane">
                      <children>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="9.600000381469727" layoutY="9.600000381469727" prefViewportHeight="104.80000305175781" prefViewportWidth="180.8000030517578" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <HBox>
+                                 <children>
+                                    <Label fx:id="LB_Com" text="Label" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets left="80.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
                         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/anonyme-profile.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="LB_Header" layoutX="86.0" layoutY="12.0" text="Label" wrapText="true" />
                         <Label fx:id="LB_Header1" layoutX="18.0" layoutY="78.0" text="Gunter01" />
                         <Label fx:id="LB_Header11" layoutX="24.0" layoutY="95.0" text="Online" textFill="#46e463" />
                      </children>
