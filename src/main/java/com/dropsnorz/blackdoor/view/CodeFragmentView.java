@@ -24,8 +24,4 @@ public class CodeFragmentView extends Pane{
 
 	}
 	
-	
-
-	
-
 }

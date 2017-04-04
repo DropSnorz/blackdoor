@@ -11,7 +11,10 @@
 	    
 }
 
-
+.invisible-button{
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+}
 #play-button {
     -fx-background-color: transparent;
     -fx-background-insets: 0,1,4,5,6;

@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 public class DropCodeFragmentController {
 
 	DropCodeFragmentView view;
+	DropCodeFragmentController _this = this;
 
 	public DropCodeFragmentController(){
 
@@ -67,6 +68,13 @@ public class DropCodeFragmentController {
 
 		
 	}
+	
+	public void removeCodeFragment(Node node){
+		
+		for(Pane row : view.getRowList()){
+			row.getChildren().remove(node);
+		}
+	}
 
 	public DropCodeFragmentView getView(){
 		return view;
@@ -89,9 +97,10 @@ public class DropCodeFragmentController {
 			Dragboard db = event.getDragboard();
 			boolean success = false;
 			if (db.hasString()) {
-				System.out.println("Dropped fragment !");
-				InlineCodeView codeView = new InlineCodeView(db.getString());
-				codeView.setOnDragDropped(new InlineCodeDragDroppedEventHandler(codeView));
+				InlineCodeController inlineCodeController = new InlineCodeController(db.getString(), _this);
+				InlineCodeView codeView = inlineCodeController.getView();
+				codeView.setOnDragDropped(new InlineCodeDragDroppedEventHandler(codeView));				
+
 				target.getChildren().add(codeView);
 
 
@@ -126,7 +135,8 @@ public class DropCodeFragmentController {
 			boolean success = false;
 			if (db.hasString()) {
 				
-				InlineCodeView codeView = new InlineCodeView(db.getString());
+				InlineCodeController inlineCodeController = new InlineCodeController(db.getString(), _this);
+				InlineCodeView codeView = inlineCodeController.getView();
 				codeView.setOnDragDropped(new InlineCodeDragDroppedEventHandler(codeView));				
 				
 				Pane parent = (Pane) target.getParent();
