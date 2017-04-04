@@ -73,6 +73,9 @@
 	-fx-padding:10px;
 }
 
+.code-row:hover{
+	-fx-background-color:rgb(39,39,39);
+}
 .level-hud{
 	-fx-background-color: rgb(22,22,22);
 }
@@ -86,7 +89,7 @@
  }
  
  #drop-code-area{
- 	-fx-background-color: rgb(22,22,22);
+ 	-fx-background-color: rgb(33,33, 33);
  }
  
  .combo-box .cell:selected

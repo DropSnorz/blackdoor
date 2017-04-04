@@ -1,8 +1,10 @@
 package com.dropsnorz.blackdoor.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.dropsnorz.blackdoor.components.JavaCodeArea;
+import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.utils.Animations;
 
 import javafx.beans.value.ChangeListener;
@@ -62,7 +64,13 @@ public class GameFieldController {
 		//PANE_CodeArea.getChildren().add(bottomCodeArea);
 		PANE_CodeArea.getChildren().add(fragmentContainerController.getView());
 		
-		fragmentContainerController.getView().getChildren().add(new CodeFragmentController().getView());
+		
+		ArrayList<CodeFragment> codeFragmentList = new ArrayList<CodeFragment>();
+		codeFragmentList.add(new CodeFragment("this_getContext","this.getContext()"));
+		codeFragmentList.add(new CodeFragment("dot_getCapacitor","getCapacitor()"));
+		codeFragmentList.add(new CodeFragment("update",".update()"));
+		
+		fragmentContainerController.setCodeFragmentList(codeFragmentList);
 		
         textHolder.textProperty().bind(inputCodeArea.textProperty());
         textHolder.layoutBoundsProperty().addListener(new ChangeListener<Bounds>() {

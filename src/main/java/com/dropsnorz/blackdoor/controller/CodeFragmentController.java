@@ -1,5 +1,6 @@
 package com.dropsnorz.blackdoor.controller;
 
+import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.view.CodeFragmentView;
 
 import javafx.event.EventHandler;
@@ -12,11 +13,12 @@ import javafx.scene.text.Text;
 public class CodeFragmentController {
 	
 	CodeFragmentView view;
+	CodeFragment codeFragment;
 	
-	public CodeFragmentController(){
+	public CodeFragmentController(CodeFragment codeFragment){
 		
 		view = new CodeFragmentView();
-		// view set Fragment Text;
+		view.LB_Text.setText(codeFragment.getText());
 		
 		CodeFragmentView source = view;
 		view.setOnDragDetected(new EventHandler<MouseEvent>() {
