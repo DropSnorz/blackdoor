@@ -21,7 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class GameFieldController {
+public class GameLevelController {
 
 	
 	protected DropCodeFragmentController dropCodeFragmentController;
@@ -45,7 +45,7 @@ public class GameFieldController {
 	JavaCodeArea bottomCodeArea;
 	
 
-	public GameFieldController(){
+	public GameLevelController(){
 
 		generateUI();
 		
@@ -114,7 +114,7 @@ public class GameFieldController {
 
 	private void generateUI(){
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/FieldView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/LevelView.fxml"));
 			loader.setController(this);
 			root = loader.load();
 		} catch (IOException e) {

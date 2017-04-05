@@ -48,8 +48,8 @@ public class GameController{
 	
 	public void playGame(){
 		
-		GameFieldController gameFieldController = new GameFieldController();
-		view.stackView(gameFieldController.getView());
+		GameLevelController gameLevelController = new GameLevelController();
+		view.stackView(gameLevelController.getView());
 		
 	}
 
