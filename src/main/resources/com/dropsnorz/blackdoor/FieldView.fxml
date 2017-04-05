@@ -63,8 +63,8 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Level 1" />
-                  <Button mnemonicParsing="false" text="Indice" />
-                  <Button mnemonicParsing="false" text="Cours" />
+                  <Button mnemonicParsing="false" styleClass="hud-button" text="Indice" />
+                  <Button fx:id="BT_Course" mnemonicParsing="false" styleClass="hud-button" text="Cours" />
                </children>
             </VBox>
          </children>

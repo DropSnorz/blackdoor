@@ -32,6 +32,8 @@ public class GameFieldController {
 	@FXML
 	Label LB_Com;
 	@FXML
+	Button BT_Course;
+	@FXML
 	Button BT_Submit;
 	@FXML
 	Pane PANE_CodeArea;
@@ -84,6 +86,12 @@ public class GameFieldController {
             }
         });
 
+        BT_Course.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				CourseController courseController = new CourseController("undefined");
+			};
+		});
+        
 
 		BT_Submit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {

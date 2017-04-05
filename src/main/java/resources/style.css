@@ -54,6 +54,27 @@
 	
 }
 
+.hud-button {
+    -fx-background-color: rgba(33, 153, 127,255);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-padding: 15 40 15 40;
+    -fx-border-insets: 0, 0, 0, 0;
+    -fx-font-family: "Courier New";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+.hud-button Text {
+    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
+}
+
+.hud-button:hover {
+	-fx-background-color: rgba(38, 175, 146,255);
+
+}
+
 .code-editor:readonly{
 		 -fx-background-color: rgb(22,22,22);
 		 
