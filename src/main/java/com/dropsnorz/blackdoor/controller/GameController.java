@@ -13,8 +13,10 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -48,9 +50,14 @@ public class GameController{
 	
 	public void playGame(){
 		
-		GameLevelController gameLevelController = new GameLevelController();
+		GameLevelController gameLevelController = new GameLevelController(this);
 		view.stackView(gameLevelController.getView());
 		
+	}
+	
+	public void popModal(Pane node){
+		
+		view.stackView(node);
 	}
 
 	public GameView getView(){

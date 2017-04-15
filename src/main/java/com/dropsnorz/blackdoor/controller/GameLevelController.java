@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.dropsnorz.blackdoor.components.JavaCodeArea;
+import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.utils.Animations;
 
@@ -24,10 +25,13 @@ import javafx.scene.text.Text;
 public class GameLevelController {
 
 	
+	protected GameController gameController;
+	
 	protected DropCodeFragmentController dropCodeFragmentController;
 	protected FragmentContainerController fragmentContainerController; 
+	protected ResultController resultController;
 	
-	private Parent root;
+	private Pane root;
 	
 	@FXML
 	Label LB_Com;
@@ -45,12 +49,14 @@ public class GameLevelController {
 	JavaCodeArea bottomCodeArea;
 	
 
-	public GameLevelController(){
+	public GameLevelController(GameController gameController){
 
 		generateUI();
+		this.gameController = gameController;
 		
 		dropCodeFragmentController = new DropCodeFragmentController();
 		fragmentContainerController = new FragmentContainerController();
+		resultController = new ResultController();
 		
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n\t public process() {");
@@ -97,6 +103,10 @@ public class GameLevelController {
 			public void handle(ActionEvent e) {
 				System.out.println("On click");
 				processInputCode();
+				ModalFrame modal = new ModalFrame();
+				modal.setContent(resultController.getView());
+				gameController.popModal(modal);
+				
 			};
 		});
 		

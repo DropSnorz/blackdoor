@@ -75,6 +75,21 @@
 
 }
 
+.choice-button{
+	-fx-background-color: transparent;
+	-fx-border-insets: 0, 0, 0, 0;
+	-fx-font-family: "Courier New";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+	
+}
+
+.choice-button:hover{
+		-fx-background-color: rgba(38, 175, 146,255);
+	
+}
+
 .code-editor:readonly{
 		 -fx-background-color: rgb(22,22,22);
 		 
@@ -94,7 +109,7 @@
 
 .code-fragment{
 	-fx-background-color: rgba(33, 153, 127,255);
-	-fx-padding:10px;
+	-fx-padding:5px;
 }
 
 .code-row:hover{
@@ -103,6 +118,11 @@
 .level-hud{
 	-fx-background-color: rgb(22,22,22);
 }
+
+.result-view{
+	-fx-background-color: rgb(22,22,22);
+}
+
 
 .combo-box
  {
