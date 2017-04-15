@@ -18,17 +18,17 @@
       </Pane>
    </top>
    <center>
-      <VBox fx:id="PANE_CodeArea" spacing="5.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="PANE_CenterStack" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <TitledPane animated="false" collapsible="false" prefHeight="150.0" prefWidth="202.0" text="COM" textFill="#514141">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="200.0" styleClass="back-pane">
                      <children>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="9.600000381469727" layoutY="9.600000381469727" prefViewportHeight="104.80000305175781" prefViewportWidth="180.8000030517578" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane cacheShape="false" fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" prefViewportHeight="105.0" prefViewportWidth="181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <HBox>
+                              <HBox cacheShape="false">
                                  <children>
-                                    <Label fx:id="LB_Com" text="Label" wrapText="true">
+                                    <Label fx:id="LB_Com" cacheShape="false" text="Label" wrapText="true">
                                        <HBox.margin>
                                           <Insets left="80.0" top="10.0" />
                                        </HBox.margin>
@@ -42,12 +42,13 @@
                               <Image url="@images/anonyme-profile.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="LB_Header1" layoutX="18.0" layoutY="78.0" text="Gunter01" />
+                        <Label fx:id="LB_Header1" cacheShape="false" layoutX="18.0" layoutY="78.0" text="Gunter01" />
                         <Label fx:id="LB_Header11" layoutX="24.0" layoutY="95.0" text="Online" textFill="#46e463" />
                      </children>
                   </AnchorPane>
               </content>
             </TitledPane>
+            <VBox fx:id="PANE_CodeArea" prefHeight="200.0" prefWidth="100.0" />
          </children></VBox>
    </center>
    <bottom>
