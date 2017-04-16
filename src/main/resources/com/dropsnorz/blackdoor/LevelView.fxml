@@ -49,6 +49,28 @@
               </content>
             </TitledPane>
             <VBox fx:id="PANE_CodeArea" prefHeight="200.0" prefWidth="100.0" />
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Fragments">
+                  <content>
+                        <VBox fx:id="fragmentTabContent" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Pane prefHeight="13.0" styleClass="tab-content-header" />
+                           </children>
+                        </VBox>
+                  </content>
+                </Tab>
+                <Tab text="Console">
+                  <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Pane prefHeight="13.0" styleClass="tab-content-header" />
+                           </children>
+                        </VBox>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
          </children></VBox>
    </center>
    <bottom>
@@ -67,12 +89,18 @@
    <right>
       <Pane>
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Level 1" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  
+                  </HBox>
                   <Button mnemonicParsing="false" styleClass="hud-button" text="Indice" />
                   <Button fx:id="BT_Course" mnemonicParsing="false" styleClass="hud-button" text="Cours" />
                </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
             </VBox>
          </children>
          <padding>

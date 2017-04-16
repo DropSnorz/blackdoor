@@ -7,6 +7,7 @@ import com.dropsnorz.blackdoor.components.JavaCodeArea;
 import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.utils.Animations;
+import com.jfoenix.controls.JFXRippler;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -43,6 +44,8 @@ public class GameLevelController {
 	Pane PANE_CenterStack;
 	@FXML
 	Pane PANE_CodeArea;
+	@FXML 
+	Pane fragmentTabContent;
 	
 
 	private double oldHeight = 0;
@@ -70,7 +73,7 @@ public class GameLevelController {
 		PANE_CodeArea.getChildren().add(topCodeArea);
 		PANE_CodeArea.getChildren().add(dropCodeFragmentController.getView());
 		PANE_CodeArea.getChildren().add(bottomCodeArea);
-		PANE_CenterStack.getChildren().add(fragmentContainerController.getView());
+		fragmentTabContent.getChildren().add(fragmentContainerController.getView());
 
 
 		ArrayList<CodeFragment> codeFragmentList = new ArrayList<CodeFragment>();
@@ -98,7 +101,7 @@ public class GameLevelController {
 
 			};
 		});
-
+		
 
 		Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
 	}
