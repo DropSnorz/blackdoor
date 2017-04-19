@@ -25,5 +25,10 @@ public class GameView extends AnchorPane {
 		
 	}
 	
+	public void unstackView(Node node){
+		
+		this.getChildren().remove(node);
+	}
+	
 
 }

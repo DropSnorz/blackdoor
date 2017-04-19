@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.utils.Animations;
 import com.dropsnorz.blackdoor.view.GameView;
 
@@ -31,6 +32,8 @@ public class GameController{
 	protected GameView view;
 	protected GameIntroController introController;
 	protected GameMenuController menuController;
+	
+	protected ModalFrame modalFrame;
 
 	public GameController(){
 
@@ -43,6 +46,8 @@ public class GameController{
 		view.stackView(introController.getView());
 
 		introController.animateUI();
+		modalFrame = new ModalFrame();
+		
 		
 		Animations.fadeOut(introController.getView(), Duration.seconds(5));
 		
@@ -55,9 +60,16 @@ public class GameController{
 		
 	}
 	
-	public void popModal(Pane node){
+	public void popModal(Node node){
 		
-		view.stackView(node);
+		modalFrame.setContent(node);
+		view.stackView(modalFrame);
+	}
+	
+	public void hideModal(){
+		
+		view.unstackView(modalFrame);
+	
 	}
 
 	public GameView getView(){

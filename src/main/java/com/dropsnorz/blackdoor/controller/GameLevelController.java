@@ -61,7 +61,7 @@ public class GameLevelController {
 
 		dropCodeFragmentController = new DropCodeFragmentController();
 		fragmentContainerController = new FragmentContainerController();
-		resultController = new ResultController();
+		resultController = new ResultController(this);
 
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n     public process() {");
@@ -95,9 +95,9 @@ public class GameLevelController {
 			public void handle(ActionEvent e) {
 				System.out.println("On click");
 				processInputCode();
-				ModalFrame modal = new ModalFrame();
-				modal.setContent(resultController.getView());
-				gameController.popModal(modal);
+				
+				
+				gameController.popModal(resultController.getView());
 
 			};
 		});
@@ -109,6 +109,12 @@ public class GameLevelController {
 	public void processInputCode(){
 
 
+	}
+	
+	public void hideModal(){
+		
+		gameController.hideModal();
+		
 	}
 	public Parent getView(){
 		return root;

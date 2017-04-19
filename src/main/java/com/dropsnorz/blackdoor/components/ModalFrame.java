@@ -27,6 +27,7 @@ public class ModalFrame extends BorderPane {
 	}
 	
 	public void setContent(Node node){
+		mainNode.getChildren().clear();
 		mainNode.getChildren().add(node);
 	}
 

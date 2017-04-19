@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
@@ -12,8 +13,24 @@
       <WebView prefHeight="200.0" prefWidth="200.0" />
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="389.0" styleClass="choice-button" text="Continuer" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="435.0" styleClass="choice-button" text="Ne rien faire" />
+            <Button fx:id="BT_Continue" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="389.0" styleClass="choice-button" text="Continuer">
+                  <graphic>
+				        <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+				          <image>
+				            <Image url="@icons/arrow-right-24.png" />
+				          </image>
+				        </ImageView>
+				  </graphic>
+            </Button>
+            <Button fx:id="BT_Skip" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="435.0" styleClass="choice-button" text="Ne rien faire">
+	            <graphic>
+			        <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+			          <image>
+			            <Image url="@icons/arrow-right-24.png" />
+			          </image>
+			        </ImageView>
+				  </graphic>
+            </Button>
          </children>
       </VBox>
    </children>
