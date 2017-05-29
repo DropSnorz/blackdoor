@@ -28,6 +28,18 @@ public class CodeFragment {
 		this.text = text;
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		
+		if(o instanceof CodeFragment){
+			CodeFragment frag = (CodeFragment)o;
+			return id.equals(frag.getId());
+		}
+		else{
+			return super.equals(o);
+		}
+	}
+	
 	
 
 }

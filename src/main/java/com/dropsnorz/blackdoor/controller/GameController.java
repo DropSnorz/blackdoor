@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.dropsnorz.blackdoor.components.ModalFrame;
+import com.dropsnorz.blackdoor.model.Game;
 import com.dropsnorz.blackdoor.utils.Animations;
 import com.dropsnorz.blackdoor.view.GameView;
 
@@ -55,7 +56,8 @@ public class GameController{
 	
 	public void playGame(){
 		
-		GameLevelController gameLevelController = new GameLevelController(this);
+		Game game = new Game();
+		GameLevelController gameLevelController = new GameLevelController(game,this);
 		view.stackView(gameLevelController.getView());
 		
 	}

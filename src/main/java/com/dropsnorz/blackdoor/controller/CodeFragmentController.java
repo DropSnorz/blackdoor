@@ -20,6 +20,8 @@ public class CodeFragmentController {
 		view = new CodeFragmentView();
 		view.LB_Text.setText(codeFragment.getText());
 		
+		this.codeFragment = codeFragment;
+		
 		CodeFragmentView source = view;
 		view.setOnDragDetected(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent event) {
@@ -29,7 +31,7 @@ public class CodeFragmentController {
 		        db.setDragView(new Text(view.LB_Text.getText()).snapshot(null, null));
 		        /* Put a string on a dragboard */
 		        ClipboardContent content = new ClipboardContent();
-		        content.putString(source.LB_Text.getText());
+		        content.putString(codeFragment.getId());
 		        
 		        db.setContent(content);
 		        
