@@ -33,7 +33,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand"><a href="index.html"> Blackdoor - Cours </a></li>
             <li><a href="index.html"> Accueil </a></li>
-            <li><a id="liActive" href="cours1.html"> Cours 1 </a></li>
+            <li><a id="liActive" href="cours1.html"> Gestion du Vibreur </a></li>
             <li><a href="cours2.html"> Shortcuts </a></li>
             <li><a href="cours3.html"> Overview </a></li>
             <li><a href="cours4.html"> Events </a></li>
@@ -58,44 +58,116 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Titre du chapitre</h1>
-                    <h2>Titre d'une sous-partie</h2>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    <h1 id="titreCours">Gestion du Vibreur</h1>
+                    <h2> Qu’est-ce qu’un Vibreur ? </h2>
+                    <p>
+                        Dans ce chapitre, nous allons voir comment travailler avec le vibreur d’un téléphone. Mais de quoi s’agit-il ? Sur la majorité des téléphones portables, il existe un petit mécanisme appelé vibreur, qui permet de notifier discrètement à son propriétaire un événement. Par exemple, le vibreur peut-être utilisé lors de la réception d’un appel, d’un message, d’une notification émise par une application ou encore lorsqu’on éteint le téléphone. Techniquement, Il s'agit le plus souvent d'une masse excentrée entraînée en rotation par un micro-moteur électrique.
+                    </p>
+
                     <div class="alert alert-info">
-                        <strong> Info ! </strong> C'est chaud
+                        <strong> Info - </strong> Dans d'autres cas, afin d'obtenir une forme de vibration plus fine du contrôleur de jeu, des actionneurs piézoélectriques sont sollicités. C'est le cas des manettes du visiocasque HTC vive.
                     </div>
-                    <div class="alert alert-success">
-                        <strong> Success ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong> Danger ! </strong> C'est chaud
-                    </div>
+
+                    <p>
+                        Le système de vibration n’est pas exclusivement réservé aux téléphones mobiles, puisqu’il est également utilisé sur les consoles de jeu portables, ainsi que sur les manettes de jeu des consoles de table, pour fournir des sensations aux joueurs. Par exemple, il est fréquent d’utiliser le vibreur pour faire vibrer les manettes dans les jeux vidéos, lorsque le personnage prends un coup, ou encore lorsqu’une interaction avec un autre personnage à lieu.
+                    </p>
+
+                    <h2> Utiliser le vibreur sur un téléphone Android </h2>
+
+                    <p>
+
+                    </p>
+
+                    <p>
+                        Pour utiliser la vibration, Android nous met à disposition une classe portant le nom de <code>Vibrator</code>. C’est en manipulant des objets provenant de cette classe que l’on va pouvoir faire vibrer le téléphone de l’utilisateur. Pour obtenir une instance de cette classe, nous allons utiliser la fonction <code>getSystemService(Class)</code>, avec un VIBRATOR_SERVICE comme argument.
+                    </p>
+
                     <div class="alert alert-warning">
-                        <strong> Warning ! </strong> C'est chaud
+                        <strong> Attention - </strong> Il est nécessaire d'inclure <code>android.permission.VIBRATE</code> en tant que dépendance pour utiliser la classe <code>Vibrator</code></cod>
                     </div>
+
+                    <p>
+                        Il existe de nombreuses fonctionnalités offertes par cette classe. Il est important de noter que si l'utilisateur quitte l'application, la vibration s'arrète <instantanément></instantanément>. Voyons ensemble une liste non-exhaustive des fonctions disponibles</p>
+                    </p>
+
+                    <!-- TABLEAU -->
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>abstract void</td>
+                            <td> <code>cancel()</code> <br>
+
+                                Desactive la vibration
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>hasAmplitudeControl()</code> <br>
+
+                                Verifie si la vibration est controlée par amplitude
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>hasVibrator()</code> <br>
+
+                                Verifie si l'appareil est équipé d'un vibreur
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>vibrate(long milliseconds)</code> <br>
+
+                                Déclenche une vibration d'une durée égale au paramètre millisecondes
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Beaucoup de fonctions sont disponibles, dont certaines dépréciées. Pour plus d'informations, consultez <a href="https://developer.android.com/reference/android/os/Vibrator.html"> l'API Android</a>
+                    </div>
+
+                    <p>
+                        Si il ne fallait retenir qu'une seule fonction, c'est sans aucun doute <code>vibrate(long milliseconds)</code>. Cette fonction va nous permettre de lancer la vibration.
+                    </p>
+
+                    <h2> A vous de jouez !</h2>
+
+                    <p>
+                        Plaçons nous dans un contexte précis. Supposons que nous souhaitons lancer une vibration sur le mobile de l'utilisateur. Il faut, dans l'ordre :
+                    </p>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">1- Instancier un objet Vibrator</li>
+                        <li class="list-group-item">2- Tester la présence ou l'absence du vibreur sur le mobile</li>
+                        <li class="list-group-item">3- Si le vibreur est présent, alors on lance la vibration (pour l'exemple, supposons une vibration d'une seconde)</li>
+                        <li class="list-group-item">4- Sinon, on ne fait rien</li>
+                    </ul>
+
+                    <p> Essayez d'écrire le code décris ci-dessus avant de continuer à lire. C'est bon, vous avez réussi ? Voici une des solutions possibles</p>
+
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
-import javafx.scene.text.Text;
+import android.permission.VIBRATE;
 
-public class CodeFragmentController {
+Vibrator v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+if(v.hasVibrator()){
+    v.vibrate(1000); //On lance la vibration
+}</textarea>
+                        <div class="zoneCodeLegende">Vibration d'une seconde du mobile de l'utilisateur</div>
 
-	CodeFragmentView view;
-    CodeFragment codeFragment;
-}
-                            </textarea>
-                        <div class="zoneCodeLegende">BLABLABLA je suis la légende</div>
+                        <p>
+                            Prenez le temps de bien étudier ce code, et de le comprendre. Facile, n'est-ce pas ? Une fois ces notions acquises, vous pouvez passer à la suite du cours !
+                        </p>
                     </div>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
                 </div>
             </div>
         </div>

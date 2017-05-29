@@ -4,9 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- body {
+body {
     overflow-x: hidden;
- }
+}
 
 /* Toggle Styles */
 
@@ -164,10 +164,15 @@
     text-align: center;
     color: #666;
     margin-top: 5px;
+    margin-bottom: 10px;
     font-style: italic;
 }
 
 .CodeMirror{
     height:auto;
+}
+
+body{
+    font-size: large;
 }
 
