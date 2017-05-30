@@ -58,44 +58,180 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Titre du chapitre</h1>
-                    <h2>Titre d'une sous-partie</h2>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    <h1 id="titreCours">Concepts en Android</h1>
+                    <h2>Préambule</h2>
+                    <p>
+                        Vous pouvez désormais manipuler de nombreuses données en provenance des téléphones mobiles de vos utilisateurs, félicitation ! Ce chapitre est un petit peu particulier, puisqu'il ne contiendra pas d'exercice. Nous allons vous présenter divers concepts, que les programmeurs tels que vous se doivent de connaitre. Nous parlerons ainsi de contexte, de curseur et de base de données. On y va ?
+                    </p>
+
+                    <h2> La classe Context</h2>
+
+                    <p>
+                        <code>Context</code> est une <strong>classe abstraite</strong> dont l'implémentation est assurée par le système Android. A travers cette classe, les programmeurs peuvent accéder à des ressources et des classes spécifiques à l'application, dont des méthodes permettant la gestion du broadcasting.
+                    </p>
+
                     <div class="alert alert-info">
-                        <strong> Info ! </strong> C'est chaud
+                        <strong> Info - </strong> En programmation orientée objet (POO), une classe abstraite est une classe dont l'implémentation n'est pas complète et qui n'est pas instanciable. Elle sert de base à d'autres classes, dites dérivées
                     </div>
-                    <div class="alert alert-success">
-                        <strong> Success ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong> Danger ! </strong> C'est chaud
-                    </div>
+
                     <div class="alert alert-warning">
-                        <strong> Warning ! </strong> C'est chaud
+                        <strong> Attention - </strong> A l'image des cours précédents, il est nécessaire d'inclure la dépendance <code>android.content.Context</code>, présent dans le package <code>java.lang.Object</code>
                     </div>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> De nombreuses méthodes existes pour appeler le Context, mais nous utiliserons la méthode <code>getContext()</code>
+                    </div>
+
+                    <p> De nombreuses méthodes sont disponibles, mais voici celles que nous utiliserons le plus fréquemment</p>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>abstract Resources.Theme</td>
+                            <td> <code>getTheme()</code> <br>
+
+                                Retourne l'objet Theme associé au contexte
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td> <code>isRestricted() </code> <br>
+
+                                Retourne true ou false selon si le contexte est restreint ou non
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract ContentResolver</td>
+                            <td> <code>getContentResolver()</code> <br>
+
+                                Retourne une instance de ContentResolver pour notre package applicatif
+                            </td>
+                        <tr>
+                            <td>abstract File</td>
+                            <td> <code>getDatabasePath(String name)</code> <br>
+
+                                Retourne le chemin absolu du système ou se situe la base de données préalablement créée
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                    <p>
+                        Ainsi, Nous pourrons créer un objet afin d'obtenir le contexte de l'application sous cette forme
+                    </p>
+
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
-import javafx.scene.text.Text;
+import java.lang.Object; //Contient android.content.Context
 
-public class CodeFragmentController {
-
-	CodeFragmentView view;
-    CodeFragment codeFragment;
-}
-                            </textarea>
-                        <div class="zoneCodeLegende">BLABLABLA je suis la légende</div>
+Context monContexte = getContext();</textarea>
+                        <div class="zoneCodeLegende">Utilisation du Context</div>
                     </div>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+
+                    <p>
+                        Bien sur, en l'état des choses, cette variable ne va pas nous servir. Généralement, on ne va pas mettre le contexte dans une variable de type Context, on s'en servira juste pour obtenir le contexte à un instant T comme pour les Curseurs. Néanmoins, vous pouvez consulter <a href="https://developer.android.com/reference/android/content/Context.html">l'API Android</a> pour connaitre toutes les méthodes et les constantes disponibles
+                    </p>
+
+                    <h2> La classe Cursor </h2>
+
+                    <p>
+                        L'interface <code>Cursor</code> nous donne des méthodes pour lancer des lectures et des écritures, notamment sur la base de données. C'est en manipulant des curseurs que nous allons accéder aux données. Nous ne détaillerons pas les méthodes de l'interface ici, mais vous pouvez les retrouver sur <a href="https://developer.android.com/reference/android/database/Cursor.html"> l'API Android</a>
+                    </p>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Il est encore une fois nécessaire d'inclure la dépendance <code>java.lang.Object</code>
+                    </div>
+
+                    <p>
+                        Regardons comment nous pouvons déclarer un curseur
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object;
+
+Cursor monCurseur;</textarea>
+                        <div class="zoneCodeLegende">Déclaration simple d'un curseur</div>
+                    </div>
+
+                    <p>
+                        C'est tout ! Rien de plus difficile, notre curseur est créé. Pour aller plus loin, il faut comprendre les notions sur les bases de données Android
+                    </p>
+
+                    <h2>La classe SQLiteDatabase</h2>
+
+                    <p>
+                        C'est une des classes les plus importantes de la programmation Android, mais aussi celle qui va vous donner du fil à retordre : la classe <code>SQLiteDatabase</code>. C'est à travers les méthodes de cette classe que vous allez pouvoir modifier votre base de données. Généralement, on se sert d'un curseur que l'on initialise avec le contexte, pour lancer une requête sur notre base de données. Vous retrouverez à nouveau de précieuses informations sur <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">l'API Android</a>. Pour faciliter les choses, dans ce cours, nous utiliserons simplement la fonction <code>query(String url)</code>, où le paramètre <code>url</code> correspond au lieu ou sont situées les données. Voici une liste des URLs disponibles pour ce cours
+                    </p>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Utilité</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> <code>content://Apps/lastView</code></td>
+                            <td>Retourne la dernière application visitée</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://Apps/lastViews</code></td>
+                            <td>Retourne les dernières applications visitées</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://calls/favoriteCall</code></td>
+                            <td>Retourne le contact avec lequel l'utilisateur est le plus souvent en conversation téléphonique</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://calls/lastCalls</code></td>
+                            <td>Retourne l'historique des appels téléphoniques</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/getContact/numero</code></td>
+                            <td>Retourne le contact ayant pour numero "numero"</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/lastContact</code></td>
+                            <td>Retourne le dernier contact enregistré par l'utilisateur</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/listContact</code></td>
+                            <td>Retourne la liste de tous les contacts de l'utilisateur</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://sms/lastConversation</code></td>
+                            <td>Retourne la dernière conversation sms en intégralité</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://sms/lastSms</code></td>
+                            <td>Retourne l'historique de tous les sms</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <p> Supposons que nous souhaitions connaitre les dernières applications consultées d'un téléphone, et que nous avons les autorisations nécéssaires. Voici à quoi pourrait ressembler notre code !</p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object;
+
+Cursor monCursor = getContext().getContentResolver().query("content://Apps/lastViews");</textarea>
+                        <div class="zoneCodeLegende">Chercher en base de données la liste des dernieres applications consultées</div>
+                    </div>
+
+                    <p>
+                        Vous l'aurez compris, c'est l'URL en paramètre de la fonction <code>query()</code> qui va déterminé ce que l'on souhaite recevoir de la base de données. C'est tout pour ce chapitre. Nous savons que peu d'informations sont disponibles, n'oubliez pas l'API Android !
+                    </p>
+
                 </div>
             </div>
         </div>
