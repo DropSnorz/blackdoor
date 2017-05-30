@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <title>BlackDoor - Cours 3</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Code Mirror -->
+    <script src="lib/codeMirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="lib/codeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="lib/codeMirror/theme/night.css">
+    <script src="lib/codeMirror/mode/clike/clike.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <!-- Menu du cours -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="index.html"> Blackdoor - Cours </a></li>
+            <li><a href="index.html"> Accueil </a></li>
+            <li><a href="cours1.html"> Cours 1 </a></li>
+            <li><a href="cours2.html"> Shortcuts </a></li>
+            <li><a id="liActive" href="cours3.html"> Overview </a></li>
+            <li><a href="cours4.html"> Events </a></li>
+            <li><a href="cours5.html"> About </a></li>
+            <li><a href="cours6.html"> Services </a></li>
+            <li><a href="cours7.html"> Contact </a></li>
+            <li><a href="cours8.html"> Contact </a></li>
+            <li><a href="cours9.html"> Contact </a></li>
+        </ul>
+    </div>
+    <!-- Fin menu du cours -->
+
+    <!-- Icone du menu -->
+    <div id="menuWrapper">
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span class="glyphicon glyphicon-menu-hamburger" id="spanMenu"></span>
+        </a>
+    </div>
+
+    <!-- Page content -->
+    <div id="page-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 id="titreCours">La classe PackageManager</h1>
+                    <h2>Préambule</h2>
+                    <p>
+                        Toujours présent ? Parfait, profitons-en pour continuer notre étude sur l'API Android, en nous penchant sur la classe <code>PackageManager()</code>. Littéralement "Gestionnaire de paquets" en français, un Package Manager sert essentiellement à automatiser le processus d'installation, de désinstallation et de mise à jour de logiciels installés sur un système informatique. Vous l'aurez compris, cette classe va nous permettre d'accéder à des informations sur les applications installées sur le mobile de l'utilisateur.
+                    </p>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> A l'image de la classe TelephonyManager, il est nécessaire d'obtenir les autorisations nécessaires provenant de l'utilisateur pour manipuler ses applications
+                    </div>
+
+                    <h2> Fonctionnement de la classe </h2>
+
+                    <p>
+                        La classe <code>PackageManager</code> nous offre la possibilité de manipuler la liste des packages (dont les applications) installés sur le mobile de l'utilisateur, ainsi que les permissions associées. Par exemple, avec le nom d'un package, nous allons pouvoir en obtenir toutes les permissions, autorisations et informations.
+                    </p>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Il est nécessaire d'inclure <code> 	android.content.pm.PackageManager</code> en tant que dépendance pour utiliser la classe <code>PackageManager</code>
+                    </div>
+
+                    <p>
+                        Pour utiliser cette classe, il suffit d'instancier un objet de type PackageManager grace à la fonction getPackageManager()
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient android.content.pm.PackageManager
+
+PackageManager mobile = getPackageManager();
+/* On peut manipuler l'objet mobile avec les méthodes de classe */</textarea>
+                        <div class="zoneCodeLegende">Instancier un objet de type PackageManager</div>
+                    </div>
+
+                    <p>
+                        Vous l'aurez compris, il est très facile d'utiliser cette classe, pourvu que l'on n'oublie pas les dépendances. Penchons-nous désormais sur les fonctionnalités importantes dont nous disposons, que l'on va utiliser à travers l'objet <code>mobile</code>.
+                    </p>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>addPermission(PermissionInfo info)</code> <br>
+
+                                Ajoute une nouvelle permission au système
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>canRequestPackageInstalls()</code> <br>
+
+                                Vérifie s'il est possible ou non d'utiliser l'installateur de package de l'utilisateur selon les permissions qu'il nous a accordé
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract int</td>
+                            <td> <code>checkPermission(String permName, String pkgName)</code> <br>
+
+                                Vérifie si la permission <code>permName</code> est disponible sur le package <code>pkgName</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract void</td>
+                            <td> <code>clearInstantAppCookie()</code> <br>
+
+                                Supprime tous les cookies de l'application courante
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract List&#60;PermissionGroupInfo&#62;</td>
+                            <td> <code>getAllPermissionGroups(int flags)</code> <br>
+
+                                Retourne tous les groupes de permissions connus dans le système
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract int</td>
+                            <td> <code>getComponentEnabledSetting(String componentName)</code> <br>
+
+                                Retourne une constante donnant l'état du composant <code>componentName</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract int</td>
+                            <td> <code>getApplicationEnabledSetting(String packageName)</code> <br>
+
+                                Retourne une constante donnant l'état da l'application <code>packageName</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract ChangedPackages</td>
+                            <td> <code>getChangedPackages(int sequenceNumber)</code> <br>
+
+                                Retourne le nom de tous les packages qui ont été modifié
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract List&#60;ApplicationInfo&#62;</td>
+                            <td> <code>getInstalledApplications(int flags)</code> <br>
+
+                                Retourne la liste de toutes les applications installées sur le mobile
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract List&#60;PackageInfo&#62;</td>
+                            <td> <code>getInstalledPackages(int flags)</code> <br>
+
+                                Retourne la liste de tous les packages installés sur le mobile
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract byte[]</td>
+                            <td> <code>getInstantAppCookie()</code> <br>
+
+                                Retourne les cookies de l'application courante
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract void</td>
+                            <td> <code>removePermission(String name)</code> <br>
+
+                                Supprime une permission que l'on a ajouté avec <code>addPermission(PermissionInfo)</code>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Beaucoup de fonctions sont disponibles, dont certaines dépréciées. Pour plus d'informations, consultez <a href="https://developer.android.com/reference/android/content/pm/PackageManager.html"> l'API Android</a>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> De nombreuses constantes existent pour cette classe. Vous les retrouverez en détail sur <a href="https://developer.android.com/reference/android/content/pm/PackageManager.html">l'API Android</a> !
+                    </div>
+
+                    <p>
+                        Il est difficile, comme au chapitre précédent, de dégager des fonctions de cette longue liste. Le plus souvent, vous voudrez gérer les permissions via <code>addPermission(PermissionInfo)</code> et <code>removePermission(String name)</code>. Obtenir la liste des packages ou des applications est aussi intéressant, même s'il faut avoir des autorisations spécifiques. A noter que les "flag" correspondent aux constantes.
+                    </p>
+
+                    <h2> A vous de jouer !</h2>
+
+                    <p>
+                        Au boulot ! On va mettre en place toutes ces notions à travers un exercice. Nous allons abordé beaucoup de notions à la fois, n'hésitez pas à consulter le cours et la documentation en réalisant ce travail. Pas de panique, nous allons vous aider !
+                    </p>
+
+                    <p>
+                        Le but de l'exercice sera d'afficher tous les <strong>Packages</strong> (oui, en gras, c'est important), avec son état courant. Concrètement, on veut obtenir un affichage de ce type (sans se soucier du design)
+                    </p>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">Package 1 - [NomDuPackage1] - [etatPackage1] </li>
+                        <li class="list-group-item">Package 2    - [NomDuPackage2] - [etatPackage2] </li>
+                        <li class="list-group-item">Package X - [NomDuPackageX] - [etatPackageX] </li>
+                    </ul>
+
+                    <p>
+                        On va donc commencer par obtenir la liste de tous les <strong>Packages</strong>, puis, pour chacun d'entre eux, lancer une requête pour connaitre son état, puis afficher toutes ces informations en concaténant les variables et les String. Ready ? GO !
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Nous utiliserons la constante <code>GET_META_DATA</code> pour obtenir la liste des packages. On l'utilise comme suit <code>PackageManager.GET_META_DATA</code>
+                    </div>
+
+                    <h2> Solution de l'exercice </h2>
+
+                    <p>
+                        Voici un exemple de correction que l'on va commenter ensemble. Je vous laisse le temps de prendre connaissance du code que l'on vous propose !
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object;
+
+PackageManager mobile = getPackageManager(); //Comme on a vu dans le cours
+int etatPackage; //On prepare notre variable d'état
+List<PackageInfo> listePackages = mobile.getInstalledPackages(PackageManager.GET_META_DATA); //Liste de tous les packages installés
+for(int i=0; i<listePackages.length; i++){ //Pour chaque package i
+    etatPackage = getComponentEnabledSetting(listePackages[i]);// On stock l'état du package
+    System.out.println("Package "+ i +" - "+ listePackages[i] +" - "+ etatPackage); // On affiche le tout
+}
+                            </textarea>
+                        <div class="zoneCodeLegende">Afficher chaque package et son état courant</div>
+                    </div>
+                <p>
+                    Quelques explications s'imposent. Comme nous avons essayé de vous faire remarquer, on souhaite traiter tous les packages et non les applications. C'est pour cette raison que l'on utilise les fonctions <code>getInstalledPackages</code> et <code>getComponentEnabledSetting</code> plutot que <code>getInstalledApplication</code> et <code>getApplicationEnabledSetting</code>. On itère sur chaque élément à l'aide d'une boucle <code>for</code>, on récupère l'état courant en passant et on réalise la concaténation. Rien de sorcier pour un développeur aussi talentueux que vous !
+                </p>
+
+                <p>
+                    Une fois cette correction assimilée, vous pouvez vous diriger vers le cours suivant.
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/perso.js"></script>
+</body>
+</html>

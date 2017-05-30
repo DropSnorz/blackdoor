@@ -3,6 +3,9 @@ package com.dropsnorz.blackdoor.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dropsnorz.blackdoor.model.CodeFragment;
+import com.dropsnorz.blackdoor.model.FragmentsManager;
+import com.dropsnorz.blackdoor.model.Game;
 import com.dropsnorz.blackdoor.view.DropCodeFragmentView;
 import com.dropsnorz.blackdoor.view.InlineCodeView;
 
@@ -24,10 +27,17 @@ public class DropCodeFragmentController {
 
 	DropCodeFragmentView view;
 	DropCodeFragmentController _this = this;
+	
+	FragmentsManager fragmentsManager;
+	ArrayList<CodeFragment> droppedFragmentList;
+	
+	
 
-	public DropCodeFragmentController(){
+	public DropCodeFragmentController(FragmentsManager fragmentsManager){
 
 		view = new DropCodeFragmentView();
+		this.fragmentsManager = fragmentsManager;
+		droppedFragmentList = new ArrayList<CodeFragment>();
 		
 		for(Pane row : view.getRowList()){
 			row.setOnDragDropped(new RowDragDroppedEventHandler(row));
@@ -97,7 +107,9 @@ public class DropCodeFragmentController {
 			Dragboard db = event.getDragboard();
 			boolean success = false;
 			if (db.hasString()) {
-				InlineCodeController inlineCodeController = new InlineCodeController(db.getString(), _this);
+				CodeFragment fragment = fragmentsManager.getFragmentById(db.getString());
+				
+				InlineCodeController inlineCodeController = new InlineCodeController(fragment, _this);
 				InlineCodeView codeView = inlineCodeController.getView();
 				codeView.setOnDragDropped(new InlineCodeDragDroppedEventHandler(codeView));				
 
@@ -134,8 +146,8 @@ public class DropCodeFragmentController {
 			Dragboard db = event.getDragboard();
 			boolean success = false;
 			if (db.hasString()) {
-				
-				InlineCodeController inlineCodeController = new InlineCodeController(db.getString(), _this);
+				CodeFragment fragment = fragmentsManager.getFragmentById(db.getString());
+				InlineCodeController inlineCodeController = new InlineCodeController(fragment, _this);
 				InlineCodeView codeView = inlineCodeController.getView();
 				codeView.setOnDragDropped(new InlineCodeDragDroppedEventHandler(codeView));				
 				

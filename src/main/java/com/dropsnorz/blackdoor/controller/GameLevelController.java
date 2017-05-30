@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import com.dropsnorz.blackdoor.components.JavaCodeArea;
 import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.model.CodeFragment;
+import com.dropsnorz.blackdoor.model.FragmentsManager;
+import com.dropsnorz.blackdoor.model.Game;
 import com.dropsnorz.blackdoor.utils.Animations;
 import com.jfoenix.controls.JFXRippler;
 
@@ -31,6 +33,7 @@ public class GameLevelController {
 	protected DropCodeFragmentController dropCodeFragmentController;
 	protected FragmentContainerController fragmentContainerController; 
 	protected ResultController resultController;
+	protected FragmentsManager fragmentsManager;
 
 	private Pane root;
 
@@ -54,14 +57,18 @@ public class GameLevelController {
 	JavaCodeArea bottomCodeArea;
 
 
-	public GameLevelController(GameController gameController){
+	public GameLevelController(Game game, GameController gameController){
 
 		generateUI();
 		this.gameController = gameController;
+		
+		fragmentsManager = game.getFragmentsManager();
 
-		dropCodeFragmentController = new DropCodeFragmentController();
+		dropCodeFragmentController = new DropCodeFragmentController(fragmentsManager);
 		fragmentContainerController = new FragmentContainerController();
-		resultController = new ResultController();
+		resultController = new ResultController(this);
+		
+
 
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n     public process() {");
@@ -81,7 +88,7 @@ public class GameLevelController {
 		codeFragmentList.add(new CodeFragment("dot_getCapacitor","getCapacitor()"));
 		codeFragmentList.add(new CodeFragment("update",".update()"));
 
-		fragmentContainerController.setCodeFragmentList(codeFragmentList);
+		fragmentContainerController.setCodeFragmentList(game.getFragmentsManager().getFragmentList());
 
 
 		BT_Course.setOnAction(new EventHandler<ActionEvent>() {
@@ -95,9 +102,9 @@ public class GameLevelController {
 			public void handle(ActionEvent e) {
 				System.out.println("On click");
 				processInputCode();
-				ModalFrame modal = new ModalFrame();
-				modal.setContent(resultController.getView());
-				gameController.popModal(modal);
+				
+				
+				gameController.popModal(resultController.getView());
 
 			};
 		});
@@ -109,6 +116,12 @@ public class GameLevelController {
 	public void processInputCode(){
 
 
+	}
+	
+	public void hideModal(){
+		
+		gameController.hideModal();
+		
 	}
 	public Parent getView(){
 		return root;

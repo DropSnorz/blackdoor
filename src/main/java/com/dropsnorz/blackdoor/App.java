@@ -29,10 +29,12 @@ public class App extends Application
 		// Nom de la fenetre
 		stage.setTitle("BlackDoor");
 		stage.setResizable(true);
+		stage.setMinWidth(1000);
+		stage.setMinHeight(680);
 		
 		GameController gameController = new GameController();
 	    
-		Scene scene = new Scene( gameController.getView(), 1000, 600 );
+		Scene scene = new Scene( gameController.getView(), 1000, 680 );
 		String css = App.class.getResource("/resources/style.css").toExternalForm();
 		String javaCss = App.class.getResource("/resources/java-keyword.css").toExternalForm();
 

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <title>BlackDoor - Cours 1</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Code Mirror -->
+    <script src="lib/codeMirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="lib/codeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="lib/codeMirror/theme/night.css">
+    <script src="lib/codeMirror/mode/clike/clike.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <!-- Menu du cours -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="index.html"> Blackdoor - Cours </a></li>
+            <li><a href="index.html"> Accueil </a></li>
+            <li><a id="liActive" href="cours1.html"> Gestion du Vibreur </a></li>
+            <li><a href="cours2.html"> Shortcuts </a></li>
+            <li><a href="cours3.html"> Overview </a></li>
+            <li><a href="cours4.html"> Events </a></li>
+            <li><a href="cours5.html"> About </a></li>
+            <li><a href="cours6.html"> Services </a></li>
+            <li><a href="cours7.html"> Contact </a></li>
+            <li><a href="cours8.html"> Contact </a></li>
+            <li><a href="cours9.html"> Contact </a></li>
+        </ul>
+    </div>
+    <!-- Fin menu du cours -->
+
+    <!-- Icone du menu -->
+    <div id="menuWrapper">
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span class="glyphicon glyphicon-menu-hamburger" id="spanMenu"></span>
+        </a>
+    </div>
+
+    <!-- Page content -->
+    <div id="page-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 id="titreCours">Gestion du Vibreur</h1>
+                    <h2> Préambule </h2>
+                    <p>
+                        Dans ce chapitre, nous allons voir comment travailler avec le vibreur d’un téléphone. Mais de quoi s’agit-il ? Sur la majorité des téléphones portables, il existe un petit mécanisme appelé vibreur, qui permet de notifier discrètement à son propriétaire un événement. Par exemple, le vibreur peut-être utilisé lors de la réception d’un appel, d’un message, d’une notification émise par une application ou encore lorsqu’on éteint le téléphone. Techniquement, Il s'agit le plus souvent d'une masse excentrée entraînée en rotation par un micro-moteur électrique.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Dans d'autres cas, afin d'obtenir une forme de vibration plus fine du contrôleur de jeu, des actionneurs piézoélectriques sont sollicités. C'est le cas des manettes du visiocasque HTC vive.
+                    </div>
+
+                    <p>
+                        Le système de vibration n’est pas exclusivement réservé aux téléphones mobiles, puisqu’il est également utilisé sur les consoles de jeu portables, ainsi que sur les manettes de jeu des consoles de table, pour fournir des sensations aux joueurs. Par exemple, il est fréquent d’utiliser le vibreur pour faire vibrer les manettes dans les jeux vidéos, lorsque le personnage prend un coup, ou encore lorsqu’une interaction avec un autre personnage à lieu.
+                    </p>
+
+                    <h2> Utiliser le vibreur sur un téléphone Android </h2>
+
+                    <p>
+                        Pour utiliser la vibration, Android nous met à disposition une classe portant le nom de <code>Vibrator</code>. C’est en manipulant des objets provenant de cette classe que l’on va pouvoir faire vibrer le téléphone de l’utilisateur. Pour obtenir une instance de cette classe, nous allons utiliser la fonction <code>getSystemService(Class)</code>, avec un VIBRATOR_SERVICE comme argument.
+                    </p>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Il est nécessaire d'inclure <code>android.permission.VIBRATE</code> en tant que dépendance pour utiliser la classe <code>Vibrator</code></cod>
+                    </div>
+
+                    <p>
+                        Cette classe nous offre de nombreuses fonctionnalités. De plus, il est à noter que si l'utilisateur quitte l'application et qu'une vibration est en cours, la vibration s'arrète instantanément. Voyons ensemble une liste non-exhaustive des fonctions disponibles
+                    </p>
+
+                    <!-- TABLEAU -->
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>abstract void</td>
+                            <td> <code>cancel()</code> <br>
+
+                                Désactive la vibration
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>hasAmplitudeControl()</code> <br>
+
+                                Vérifie si la vibration est controlée par amplitude
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>abstract boolean</td>
+                            <td> <code>hasVibrator()</code> <br>
+
+                                Vérifie si l'appareil est équipé d'un vibreur
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>vibrate(long milliseconds)</code> <br>
+
+                                Déclenche une vibration d'une durée égale au paramètre millisecondes
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Beaucoup de fonctions sont disponibles, dont certaines dépréciées. Pour plus d'informations, consultez <a href="https://developer.android.com/reference/android/os/Vibrator.html"> l'API Android</a>
+                    </div>
+
+                    <p>
+                        S'il ne fallait retenir qu'une seule fonction, c'est sans aucun doute <code>vibrate(long milliseconds)</code>. Cette fonction va nous permettre de lancer la vibration sur le temps souhaité.
+                    </p>
+
+                    <h2> A vous de jouer !</h2>
+
+                    <p>
+                        Plaçons nous dans un contexte précis. Supposons que nous souhaitions lancer une vibration sur le mobile de l'utilisateur. La logique à suivre est la suivante
+                    </p>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">1- Instancier un objet Vibrator</li>
+                        <li class="list-group-item">2- Tester la présence ou l'absence du vibreur sur le mobile</li>
+                        <li class="list-group-item">3- Si le vibreur est présent, alors on lance la vibration (pour l'exemple, supposons une vibration d'une seconde)</li>
+                        <li class="list-group-item">4- Sinon, on ne fait rien</li>
+                    </ul>
+
+                    <h2> Solution de l'exercice </h2>
+
+                    <p> Essayez d'écrire le code décris ci-dessus avant de continuer à lire. C'est bon, vous avez réussi ? Comparez donc votre résultat avec ce que nous vous proposons</p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient android.permission.VIBRATE
+
+Vibrator v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+if(v.hasVibrator()){
+    v.vibrate(1000); //On lance la vibration
+}</textarea>
+                        <div class="zoneCodeLegende">Vibration d'une seconde du mobile de l'utilisateur</div>
+
+                        <p>
+                            Je pense que ce code est assez clair pour que nous ne nous y attardons pas. Nous testons simplement si le mobile est équipé de la vibration via la condition <code>if</code>, puis nous faisons vibrer le téléphone si c'est le cas. Prenez le temps de bien étudier ce code, et de le comprendre. Facile, n'est-ce pas ? Une fois ces notions acquises, vous pouvez passer à la suite du cours !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/perso.js"></script>
+</body>
+</html>

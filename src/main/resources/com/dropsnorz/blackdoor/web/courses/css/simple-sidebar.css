@@ -4,9 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- body {
+body {
     overflow-x: hidden;
- }
+}
 
 /* Toggle Styles */
 
@@ -127,3 +127,53 @@
         margin-right: 0;
     }
 }
+
+/* Ajout personnel */
+
+#menu-toggle{
+    background-color: #000;
+    color: #999;
+    border: none;
+    z-index:10;
+}
+
+#menuWrapper{
+    margin-left: -5px;
+    position: fixed;
+    z-index: 10;
+}
+
+.glyphicon{
+    font-size: 40px;
+}
+
+#liActive{
+    background-color: #111;
+}
+
+#titreCours{
+    text-align: center;
+}
+
+.zoneCodeWrapper{
+    margin-bottom: 10px;
+    z-index:2;
+}
+
+.zoneCodeLegende{
+    text-align: center;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.CodeMirror{
+    height:auto;
+}
+
+body{
+    font-size: large;
+    text-align: justify;
+}
+
