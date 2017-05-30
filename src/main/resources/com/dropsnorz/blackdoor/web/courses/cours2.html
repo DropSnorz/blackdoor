@@ -58,16 +58,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Accéder à de informations sur le mobile</h1>
+                    <h1 id="titreCours">La classe TelephonyManager</h1>
                     <h2>Préambule</h2>
                     <p>
-                        Lors du premier cours, nous avons vu comment utiliser le vibreur présent sur les téléphones mobiles, pour pouvoir augmenter les possibilitées d'interaction entre notre application et l'utilisateur. C'est déjà bien, me direz vous. Mais imaginez tout ce que nous pourrions faire si nous avions accès à des informations provenant du mobile de l'utilisateur. Imaginez si nous pouvions accéder aux photos, aux contacts ou encore à la position GPS de l'utilisateur. Plus besoin de l'imaginer : C'est possible ! C'est ce que nous allons voir dans ce chapitre, par l'intermédiaire de la classe <code>TelephonyManager</code>
+                        Lors du premier cours, nous avons vu comment utiliser le vibreur présent sur les téléphones mobiles, pour pouvoir augmenter les possibilitées d'interaction entre notre application et l'utilisateur. C'est déjà bien, me direz-vous. Mais imaginez tout ce que nous pourrions faire si nous avions accès à des informations provenant du mobile de l'utilisateur. Imaginez si nous pouvions accéder à ses photos, ses contacts ou encore à sa position GPS. Plus besoin de l'imaginer : C'est possible ! C'est ce que nous allons voir dans ce chapitre, par l'intermédiaire de la classe <code>TelephonyManager</code>
                     </p>
 
-                    <h2> La classe TelephonyManager</h2>
+                    <h2> Fonctionnement de la classe </h2>
 
                     <p>
-                        La classe TelephonyManager permet d'accéder à des informations concernant de téléphone de l'utilisateur, ou sur le téléphone lui même. Grâce à cette classe, l'application peut utiliser des méthodes permettant d'accéder aux informations que l'on a cité ci-dessus. Enfin, l'application va pouvoir "écouter" et recevoir des notification provenant du mobile, ce qui va nous permettre de réagir à des évènements extérieurs
+                        La classe TelephonyManager permet d'accéder à des informations concernant de téléphone de l'utilisateur, ou sur le téléphone lui même. Elle nous met à disposition un ensemble de constantes et de méthodes nous permettant de manipuler ces données. Enfin, l'application va pouvoir "écouter" et recevoir des notifications en provenance du mobile, ce qui va nous permettre de réagir à des évènements extérieurs.
                     </p>
 
                     <div class="alert alert-warning">
@@ -124,7 +124,7 @@
                             <td>String</td>
                             <td> <code>getLine1Number()</code> <br>
 
-                                Retourne le numéro de téléphone sous forme de chaine de caractère
+                                Retourne le numéro de téléphone sous forme de chaine de caractères
                             </td>
                         </tr>
                         <tr>
@@ -163,11 +163,13 @@
                         Il n'est pas possible de dégager des fonctions plus utiles que d'autres. La classe <code>TelephonyManager</code> offre de très nombreuses fonctions, toutes plus spécifiques les unes que les autres. Vous aurez très souvent recours à cette classe, mais pas forcément pour les même raisons. Un jour vous aurez besoin d'informations sur l'opérateur de l'utilisateur, un autre jour vous aurez besoin de connaitre la version du software du mobile. Tout est situationnel, mais extrêmement pratique !
                     </p>
 
-                    <h2> A vous de jouez !</h2>
+                    <h2> A vous de jouer !</h2>
 
                     <p>
-                        C'est à vous de travailler. On va mettre en pratique tous les éléments vus dans ce chapitre. Votre mission, si vous l'acceptez, consiste à récupérer le nom de l'opérateur (que l'on note [opérateur] ci-dessous), le numéro de téléphone (que l'on note [numero] ci-dessous) ainsi que le numéro de la boite vocal (que l'on note [boiteVocale] ci-dessous) de l'utilisateur. Vous devez ainsi obtenir la phrase suivante<code>Le numéro de téléphone [numéro] est chez l'opérateur [opérateur] et à pour numéro de boîte vocale : [boiteVocale]</code>. N'oubliez pas les fonctions que vous avez vu dans ce chapitre, et n'hésitez pas à consulter l'<a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html"> API Android</a>. Bonne chance les amis, vous avez deux heures !
+                        C'est à vous de travailler. On va mettre en pratique tous les éléments vus dans ce chapitre. Votre mission, si vous l'acceptez, consiste à récupérer le nom de l'opérateur (que l'on note [opérateur] ci-dessous), le numéro de téléphone (que l'on note [numero] ci-dessous) ainsi que le numéro de la boite vocale (que l'on note [boiteVocale] ci-dessous) de l'utilisateur. Vous devez ainsi obtenir la phrase suivante <code>Le numéro de téléphone [numéro] est chez l'opérateur [opérateur] et à pour numéro de boîte vocale : [boiteVocale]</code>. N'oubliez pas les fonctions que vous avez vu dans ce chapitre, et n'hésitez pas à consulter l'<a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html"> API Android</a>. Bonne chance les amis, vous avez deux heures !
                     </p>
+
+                    <h2> Solution de l'exercice </h2>
 
                     <p> Stoooop, on lève les stylos, c'est l'heure de la correction !</p>
 
@@ -175,7 +177,7 @@
                            <textarea class="zoneCode">
 import java.lang.Object; //Contient android.telephony.TelephonyManager
 
-TelephonyManager mobile = (TelephonyManager) Context.getSystemService(Context.TELEPHONY_SERVICE) // mobile correspond à l'appareil de l'utilisateur, sur lequel on va appeler les méthodes
+TelephonyManager mobile = (TelephonyManager) Context.getSystemService(Context.TELEPHONY_SERVICE); // mobile correspond à l'appareil de l'utilisateur, sur lequel on va appeler les méthodes
 String operateur = mobile.getNetworkOperatorName() ; // On stock le nom de l'opérateur
 String numero = mobile.getLine1Number(); // On stock le numéro de téléphone
 String boiteVocale = mobile.getVoiceMailNumber(); // On stock le numéro de la boîte vocale
@@ -185,7 +187,7 @@ System.out.println("Le numéro de téléphone " + numero + " est chez l'opérate
                     </div>
 
                     <p>
-                        Voici la solution que nous vous proposons. Rien de bien difficile, mais détaillons quand meme brievement le code ci-dessus. On commence par instancier indirectement un objet de type TelephonyManager, que l'on nomme "mobile". Ensuite, on va créer trois variables (une pour chaque élément), et nous appliquons des méthodes sur "mobile" pour en extirper les informations que nous souhaitons. Pas besoin de caster nos valeurs, puisque ces méthodes renvoient des chaînes de caractères. Enfin, il ne nous reste plus qu'à concaténer nos variables dans une phrase, et de l'afficher avec la fonction <code>System.out.println()</code>
+                        Voici la solution que nous vous proposons. Rien de bien difficile, mais détaillons quand même brievement le code ci-dessus. On commence par instancier indirectement un objet de type TelephonyManager, que l'on nomme "mobile". Ensuite, on va créer trois variables (une pour chaque élément), et nous appliquons des méthodes sur "mobile" pour en extirper les informations que nous souhaitons. Pas besoin de caster nos valeurs, puisque ces méthodes renvoient des chaînes de caractères. Enfin, il ne nous reste plus qu'à concaténer nos variables dans une phrase, et à l'afficher avec la fonction <code>System.out.println()</code>
                     </p>
 
                     <p>
