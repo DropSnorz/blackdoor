@@ -168,25 +168,68 @@ Cursor monCurseur;</textarea>
                     <h2>La classe SQLiteDatabase</h2>
 
                     <p>
-                        C'est une des classes les plus importantes de la programmation Android, mais aussi celle qui va vous donner du fil à retordre : la classe <code>SQLiteDatabase</code>. C'est à travers les méthodes de cette classe que vous allez pouvoir modifier votre base de données. Généralement, on se sert d'un curseur que l'on initialise avec le contexte, pour lancer une requête sur notre base de données. Vous retrouverez à nouveau de précieuses informations sur <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">l'API Android</a> !
+                        C'est une des classes les plus importantes de la programmation Android, mais aussi celle qui va vous donner du fil à retordre : la classe <code>SQLiteDatabase</code>. C'est à travers les méthodes de cette classe que vous allez pouvoir modifier votre base de données. Généralement, on se sert d'un curseur que l'on initialise avec le contexte, pour lancer une requête sur notre base de données. Vous retrouverez à nouveau de précieuses informations sur <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html">l'API Android</a>. Pour faciliter les choses, dans ce cours, nous utiliserons simplement la fonction <code>query(String url)</code>, où le paramètre <code>url</code> correspond au lieu ou sont situées les données. Voici une liste des URLs disponibles pour ce cours
                     </p>
 
-                    <p> Supposons que nous souhaitions connaitre les derniers appels d'un téléphone, et que nous avons les autorisations nécéssaires. Voici à quoi pourrait ressembler notre code !</p>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Utilité</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> <code>content://Apps/lastView</code></td>
+                            <td>Retourne la dernière application visitée</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://Apps/lastViews</code></td>
+                            <td>Retourne les dernières applications visitées</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://calls/favoriteCall</code></td>
+                            <td>Retourne le contact avec lequel l'utilisateur est le plus souvent en conversation téléphonique</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://calls/lastCalls</code></td>
+                            <td>Retourne l'historique des appels téléphoniques</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/getContact/numero</code></td>
+                            <td>Retourne le contact ayant pour numero "numero"</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/lastContact</code></td>
+                            <td>Retourne le dernier contact enregistré par l'utilisateur</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://contact/listContact</code></td>
+                            <td>Retourne la liste de tous les contacts de l'utilisateur</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://sms/lastConversation</code></td>
+                            <td>Retourne la dernière conversation sms en intégralité</td>
+                        </tr>
+                        <tr>
+                            <td> <code>content://sms/lastSms</code></td>
+                            <td>Retourne l'historique de tous les sms</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-                    <div class="alert alert-info">
-                        <strong> Info - </strong> Les derniers appels se trouvent dans la classe <code>CallLog.Calls</code>
-                    </div>
+                    <p> Supposons que nous souhaitions connaitre les dernières applications consultées d'un téléphone, et que nous avons les autorisations nécéssaires. Voici à quoi pourrait ressembler notre code !</p>
 
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
 import java.lang.Object;
 
-Cursor monCursor = getContext().getContentResolver().query(android.provider.CallLog.Calls.CONTENT_URI,null, null, null,null);</textarea>
-                        <div class="zoneCodeLegende">Chercher en base de données la liste des derniers appels</div>
+Cursor monCursor = getContext().getContentResolver().query("content://Apps/lastViews");</textarea>
+                        <div class="zoneCodeLegende">Chercher en base de données la liste des dernieres applications consultées</div>
                     </div>
 
                     <p>
-                        C'est tout pour ce chapitre. Nous savons que peu d'informations sont disponibles, n'oubliez pas l'API Android !
+                        Vous l'aurez compris, c'est l'URL en paramètre de la fonction <code>query()</code> qui va déterminé ce que l'on souhaite recevoir de la base de données. C'est tout pour ce chapitre. Nous savons que peu d'informations sont disponibles, n'oubliez pas l'API Android !
                     </p>
 
                 </div>
