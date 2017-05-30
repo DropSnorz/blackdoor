@@ -14,7 +14,7 @@ public class InlineCodeController {
 	public InlineCodeController(CodeFragment fragment, DropCodeFragmentController dropCodeFragmentController){
 		
 		this.dropCodeFragmentController = dropCodeFragmentController;
-		view = new InlineCodeView(fragment.getText());
+		view = new InlineCodeView(fragment.getId(), fragment.getText());
 		
 		view.BT_Delete.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {

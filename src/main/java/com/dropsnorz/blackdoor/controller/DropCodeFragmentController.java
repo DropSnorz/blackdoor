@@ -28,16 +28,12 @@ public class DropCodeFragmentController {
 	DropCodeFragmentView view;
 	DropCodeFragmentController _this = this;
 	
-	FragmentsManager fragmentsManager;
-	ArrayList<CodeFragment> droppedFragmentList;
-	
-	
+	FragmentsManager fragmentsManager;	
 
 	public DropCodeFragmentController(FragmentsManager fragmentsManager){
 
 		view = new DropCodeFragmentView();
 		this.fragmentsManager = fragmentsManager;
-		droppedFragmentList = new ArrayList<CodeFragment>();
 		
 		for(Pane row : view.getRowList()){
 			row.setOnDragDropped(new RowDragDroppedEventHandler(row));
@@ -86,6 +82,21 @@ public class DropCodeFragmentController {
 		}
 	}
 
+	public ArrayList<CodeFragment> getDroppedCodeFragmentList(){
+		
+		ArrayList<CodeFragment> list = new ArrayList<CodeFragment>();
+		
+		for(Pane row : view.getRowList()){
+			for(Node node : row.getChildren()){
+				if (node instanceof InlineCodeView){
+					InlineCodeView inlineCodeView = (InlineCodeView) node;
+					CodeFragment fragment = fragmentsManager.getFragmentById(inlineCodeView.getFragmentId());
+					list.add(fragment);
+				}
+			}
+		}
+		return list;
+	}
 	public DropCodeFragmentView getView(){
 		return view;
 	}

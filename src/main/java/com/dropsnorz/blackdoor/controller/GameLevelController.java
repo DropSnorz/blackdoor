@@ -103,7 +103,6 @@ public class GameLevelController {
 				System.out.println("On click");
 				processInputCode();
 				
-				
 				gameController.popModal(resultController.getView());
 
 			};
@@ -114,8 +113,11 @@ public class GameLevelController {
 	}
 
 	public void processInputCode(){
-
-
+		ArrayList<CodeFragment> response = dropCodeFragmentController.getDroppedCodeFragmentList();
+		
+		for(CodeFragment fragment : response){
+			System.out.println(fragment);
+		}
 	}
 	
 	public void hideModal(){
