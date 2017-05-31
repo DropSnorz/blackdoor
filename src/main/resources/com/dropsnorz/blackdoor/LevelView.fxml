@@ -49,7 +49,7 @@
               </content>
             </TitledPane>
             <VBox fx:id="PANE_CodeArea" prefHeight="200.0" prefWidth="100.0" />
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="bottomTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Fragments">
                   <content>
@@ -62,7 +62,7 @@
                 </Tab>
                 <Tab text="Console">
                   <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                        <VBox fx:id="consoleTabContent" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
                               <Pane prefHeight="13.0" styleClass="tab-content-header" />
                            </children>

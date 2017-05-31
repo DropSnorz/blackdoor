@@ -16,6 +16,7 @@ import com.jfoenix.controls.JFXRippler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -36,6 +38,7 @@ public class GameLevelController {
 	protected FragmentContainerController fragmentContainerController; 
 	protected ResultController resultController;
 	protected FragmentsManager fragmentsManager;
+	protected ConsoleController consoleController;
 
 	private Pane root;
 
@@ -49,13 +52,17 @@ public class GameLevelController {
 	Pane PANE_CenterStack;
 	@FXML
 	Pane PANE_CodeArea;
+	@FXML
+	TabPane bottomTabPane;
 	@FXML 
 	Pane fragmentTabContent;
-	
+	@FXML 
+	Pane consoleTabContent;
+
 
 	JavaCodeArea topCodeArea;
 	JavaCodeArea bottomCodeArea;
-	
+
 	private Game game;
 
 
@@ -64,15 +71,14 @@ public class GameLevelController {
 		generateUI();
 		this.game = game;
 		this.gameController = gameController;
-		
+
 		fragmentsManager = game.getFragmentsManager();
 
 		dropCodeFragmentController = new DropCodeFragmentController(fragmentsManager);
 		fragmentContainerController = new FragmentContainerController();
+		consoleController = new ConsoleController();
 		resultController = new ResultController(this);
 		
-
-
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n     public process() {");
 		topCodeArea.setEditable(false);
@@ -84,6 +90,7 @@ public class GameLevelController {
 		PANE_CodeArea.getChildren().add(dropCodeFragmentController.getView());
 		PANE_CodeArea.getChildren().add(bottomCodeArea);
 		fragmentTabContent.getChildren().add(fragmentContainerController.getView());
+		consoleTabContent.getChildren().add(consoleController.getView());
 
 		fragmentContainerController.setCodeFragmentList(game.getFragmentsManager().getFragmentList());
 
@@ -99,22 +106,22 @@ public class GameLevelController {
 			public void handle(ActionEvent e) {
 				System.out.println("On click");
 				processInputCode();
-				
-				gameController.popModal(resultController.getView());
+
+				//gameController.popModal(resultController.getView());
 
 			};
 		});
-		
-		
+
+
 		updateUI();
 
 		//Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
 	}
-	
+
 	public void updateUI(){
-		
+
 		GameLevel currentLevel = game.getCurrentGameLevel();
-		
+
 		Animations.labelTypingAnimation(LB_Com, currentLevel.getIntroText());
 		fragmentContainerController.setCodeFragmentList(currentLevel.getFragmentList());
 
@@ -123,38 +130,62 @@ public class GameLevelController {
 
 	public void processInputCode(){
 		ArrayList<CodeFragment> response = dropCodeFragmentController.getDroppedCodeFragmentList();
-		
+
 		for(CodeFragment fragment : response){
 			System.out.println(fragment);
 		}
-		
+
 		LevelResolver resolver = new LevelResolver(game.getCurrentGameLevel());
+
+		bottomTabPane.getSelectionModel().select(1);
+		consoleController.clear();
+
 		if(resolver.resolve(response)){
-			System.out.println("SUCCESS");
+			consoleController.onEndConsoleDisplay(new EventHandler<Event>(){
+
+				@Override
+				public void handle(Event event) {
+
+					gameController.popModal(resultController.getView());
+				}
+
+			});
+
+			consoleController.write("SUCCESS");
+
 		}
 		else{
-			System.out.println("ERROR");
-		}
+			consoleController.onEndConsoleDisplay(new EventHandler<Event>(){
+
+				@Override
+				public void handle(Event event) {
+
+				}
+
+			});
+			
+		consoleController.write("ERROR");
 	}
-	
-	public void hideModal(){
-		
-		gameController.hideModal();
-		
-	}
-	public Parent getView(){
-		return root;
+}
+
+public void hideModal(){
+
+	gameController.hideModal();
+
+}
+public Parent getView(){
+	return root;
+}
+
+private void generateUI(){
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/LevelView.fxml"));
+		loader.setController(this);
+		root = loader.load();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
 
-	private void generateUI(){
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/LevelView.fxml"));
-			loader.setController(this);
-			root = loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+}
 }
