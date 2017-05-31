@@ -75,6 +75,12 @@ public class DropCodeFragmentController {
 		
 	}
 	
+	public void removeAllCodeFragments(){
+		for(Pane row : view.getRowList()){
+			row.getChildren().clear();
+		}
+	}
+	
 	public void removeCodeFragment(Node node){
 		
 		for(Pane row : view.getRowList()){

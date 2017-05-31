@@ -32,6 +32,7 @@ import javafx.scene.text.Text;
 public class GameLevelController {
 
 
+	private GameLevelController _this = this;
 	protected GameController gameController;
 
 	protected DropCodeFragmentController dropCodeFragmentController;
@@ -77,8 +78,7 @@ public class GameLevelController {
 		dropCodeFragmentController = new DropCodeFragmentController(fragmentsManager);
 		fragmentContainerController = new FragmentContainerController();
 		consoleController = new ConsoleController();
-		resultController = new ResultController(this);
-		
+
 		topCodeArea = new JavaCodeArea();
 		topCodeArea.replaceText(0,0,"public class App { \n     public process() {");
 		topCodeArea.setEditable(false);
@@ -123,9 +123,15 @@ public class GameLevelController {
 		GameLevel currentLevel = game.getCurrentGameLevel();
 
 		Animations.labelTypingAnimation(LB_Com, currentLevel.getIntroText());
+		dropCodeFragmentController.removeAllCodeFragments();
+		bottomTabPane.getSelectionModel().select(0);
 		fragmentContainerController.setCodeFragmentList(currentLevel.getFragmentList());
-
-
+	}
+	
+	public void nextLevel(){
+		
+		game.nextLevel();
+		updateUI();
 	}
 
 	public void processInputCode(){
@@ -146,6 +152,7 @@ public class GameLevelController {
 				@Override
 				public void handle(Event event) {
 
+					resultController = new ResultController(_this, game.getCurrentGameLevel());
 					gameController.popModal(resultController.getView());
 				}
 
@@ -163,29 +170,29 @@ public class GameLevelController {
 				}
 
 			});
-			
-		consoleController.write("ERROR");
-	}
-}
 
-public void hideModal(){
-
-	gameController.hideModal();
-
-}
-public Parent getView(){
-	return root;
-}
-
-private void generateUI(){
-	try {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/LevelView.fxml"));
-		loader.setController(this);
-		root = loader.load();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			consoleController.write("ERROR");
+		}
 	}
 
-}
+	public void hideModal(){
+
+		gameController.hideModal();
+
+	}
+	public Parent getView(){
+		return root;
+	}
+
+	private void generateUI(){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/LevelView.fxml"));
+			loader.setController(this);
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }

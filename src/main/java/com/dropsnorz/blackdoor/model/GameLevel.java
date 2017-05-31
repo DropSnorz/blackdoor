@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GameLevel {
 
-
+	protected String id;
 	protected String introText;
 	protected String helperText;
 	
@@ -12,13 +12,22 @@ public class GameLevel {
 	protected ArrayList<CodeFragment> responseFragmentList;
 
 	
-	public GameLevel(){
+	public GameLevel(String id){
 		
+		this.id = id;
 		fragmentList = new ArrayList<CodeFragment>();
 		responseFragmentList = new ArrayList<CodeFragment>();
 		
 	}
+	
+	public String getId() {
+		return id;
+	}
 
+	
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getIntroText() {
 		return introText;
