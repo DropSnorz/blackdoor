@@ -58,44 +58,142 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Titre du chapitre</h1>
-                    <h2>Titre d'une sous-partie</h2>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <div class="alert alert-info">
-                        <strong> Info ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-success">
-                        <strong> Success ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong> Danger ! </strong> C'est chaud
-                    </div>
+                    <h1 id="titreCours">La classe DownloadManager</h1>
+                    <h2>Préambule</h2>
+                    <p>
+                        Dans les chapitres précédents, vous avez appris à manipuler les divers types de ressources existantes. Vous avez vu comment utiliser la base de données Android pour récupérer des informations, vous savez également vous servir de quelques outils comme le vibreur. Désormais, nous allons voir comment gérer les downloads et les uploads depuis l'application, en se servant de la classe <code>DownloadManager</code>.
+                    </p>
+
                     <div class="alert alert-warning">
-                        <strong> Warning ! </strong> C'est chaud
+                        <strong> Attention - </strong> Il est nécessaire d'importer le package <code>java.lang.Object</code> pour manipuler la classe <code>android.app.DownloadManager</code>
                     </div>
+
+                    <p>
+                        Comme son nom l'indique, la classe <code>DownloadManager</code> nous offre la possibilité de lancer des téléchargements en arrière plan, via le protocole HTTP. Cette classe va gérer les erreurs qui peuvent survenir pendant la durée d'un téléchargement, comme la perte du réseau ou le multitéléchargement.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Pour lancer un téléchargement, il est essentiel de stipuler un dossier de destination
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <strong> Note - </strong> Il faut que l'utilisateur vous cède la permission <code>INTERNET</code> pour utiliser ce service
+                    </div>
+
+                    <h2> Fonctionnement de la classe </h2>
+
+                    <p>
+                        Pour utiliser la classe <code>DownloadManager</code>, il faut l'instancier en utilisant la méthode <code> getSystemService(String)</code>, en utilisant la constante <code>DOWNLOAD_SERVICE</code> comme paramètre. Cette fonction ne vous dit rien ? Etrange, nous l'avons étudié dans les chapitres précédents ! C'est la classe <code>Context</code> qui met en place cette méthode.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Mais alors on instancie la classe Context ? Et DownloadManager dans tout ça ?
+                    </div>
+
+                    <p>
+                        C'est exactement ça. D'ailleurs, c'était déjà le cas pour utiliser le vibreur, souvenez-vous. Selon la constante que l'on passe en paramètre de la fonction <code>getSystemService</code>, nous allons obtenir un certain service. Il faut voir la classe <code>Context</code> comme le point d'entrée de tous les services.
+                    </p>
+
+                    <p>
+                        Nous n'allons pas nous étendre d'avantage sur la classe DownloadManager, celle-ci étant trop vague. Vous retrouverez toutes les fonctionnalités de cette classe sur <a href="https://developer.android.com/reference/android/app/DownloadManager.html">l'API Android</a>. Par contre, <code>DownloadManager</code> mets à disposition deux classes : la classe <code>DownloadManager.Request</code> et la classe <code>DownloadManager.Query</code>
+                    </p>
+
+                    <h2>La classe DownloadManager.Request</h2>
+
+                    <p>
+                        Nous voilà dans le coeur du téléchargement. Alors que la classe générale <code>DownloadManager</code> nous permettait de gérer la liste des téléchargements faits, <code>DownloadManager.Request</code> va nous permettre de lancer de nouveaux téléchargements. C'est ce que nous voulions, non ?
+                    </p>
+
+                    <h2>Fonctionnement de la classe</h2>
+
+                    <p>
+                        Pour manipuler cette classe, il suffit d'instancer un objet de type <code>DownloadManager.Request</code>, en se servant du constructeur de la classe. Le constructeur requiert un seul paramètre : l'URI de la ressource à télécharger.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Un URI, de l'anglais Uniform Resource Identifier, soit littéralement identifiant uniforme de ressource, est une courte chaîne de caractères identifiant une ressource sur un réseau. Ici, on peut assimiler l'URI au chemin vers la ressource concernée
+                    </div>
+
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
-import javafx.scene.text.Text;
+import java.lang.Object; //Contient DownloadManager
 
-public class CodeFragmentController {
-
-	CodeFragmentView view;
-    CodeFragment codeFragment;
-}
-                            </textarea>
-                        <div class="zoneCodeLegende">BLABLABLA je suis la légende</div>
+DownloadManager.Request requete = new DownloadManager.Request("http://www.exemple.com/fichier.pdf");</textarea>
+                        <div class="zoneCodeLegende">Instancier un objet de type DownloadManager.Request</div>
                     </div>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+
+                    <p>
+                        Une fois notre ressource identifiée et la classe instanciée avec l'URI correspondante, nous pouvons utiliser toutes les méthodes et les constantes offertes par la classe <code>DownloadManager.Request</code>. Une fois n'est pas coutume, penchons-nous sur les principales méthodes de la classe
+                    </p>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>DownloadManager.Request</td>
+                            <td> <code>setAllowedNetworkTypes(int flags)</code> <br>
+
+                                Défini le type de réseau à utiliser à travers une constante donnée en paramètre
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DownloadManager.Request</td>
+                            <td> <code>setDescription(CharSequence description) </code> <br>
+
+                                Permet d'utiliser la chaine de caractères <code>description</code> en tant que notification pour l'utilisateur
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DownloadManager.Request</td>
+                            <td> <code>setTitle(CharSequence title)</code> <br>
+
+                                Défini un titre pour le téléchargement, à afficher dans les notifications
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DownloadManager.Request</td>
+                            <td> <code>setDestinationInExternalPublicDir(String dirType, String subPath)</code> <br>
+
+                                Défini la destination locale du fichier à télécharger
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-warning">
+                        <strong> Attention - </strong> Beaucoup de fonctions sont disponibles, dont certaines dépréciées. Pour plus d'informations, consultez <a href="https://developer.android.com/reference/android/app/DownloadManager.Request.html"> l'API Android</a>
+                    </div>
+
+                    <h2> Un exemple, s'il vous plait ?</h2>
+
+                    <p>
+                        Vos désirs sont des ordres. Vous souvenez-vous comment on instancie la classe ? Il suffit ensuite de chainer les fonctions sur notre objet instancié !
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object;
+
+DownloadManager.Request requete = new DownloadManager.Request("http://www.exemple.com/fichier.pdf");
+
+requete.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE)
+        .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "fichier.pdf")
+        .setDescription("Notre premier téléchargement !");</textarea>
+                        <div class="zoneCodeLegende">Chainage de méthodes pour notre premier téléchargement</div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Nous vous conseillons d'utiliser les constantes <code>NETWORK_MOBILE</code> et <code>Environment.DIRECTORY_DOWNLOADS</code> sans trop vous poser des questions
+                    </div>
+
+                    <p>
+                        Ce sera tout pour aujourd'hui. Nous arrivons au bout du chemin ... Mais pas tout à fait ! On se retrouve au chapitre suivant.
+                    </p>
                 </div>
             </div>
         </div>
