@@ -40,6 +40,10 @@ public class CodeFragment {
 		}
 	}
 	
+	public String toString(){
+		return text;
+	}
+	
 	
 
 }

@@ -8,6 +8,8 @@ import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.model.FragmentsManager;
 import com.dropsnorz.blackdoor.model.Game;
+import com.dropsnorz.blackdoor.model.GameLevel;
+import com.dropsnorz.blackdoor.model.LevelResolver;
 import com.dropsnorz.blackdoor.utils.Animations;
 import com.jfoenix.controls.JFXRippler;
 
@@ -51,15 +53,16 @@ public class GameLevelController {
 	Pane fragmentTabContent;
 	
 
-	private double oldHeight = 0;
-	private Text textHolder = new Text();
 	JavaCodeArea topCodeArea;
 	JavaCodeArea bottomCodeArea;
+	
+	private Game game;
 
 
 	public GameLevelController(Game game, GameController gameController){
 
 		generateUI();
+		this.game = game;
 		this.gameController = gameController;
 		
 		fragmentsManager = game.getFragmentsManager();
@@ -82,12 +85,6 @@ public class GameLevelController {
 		PANE_CodeArea.getChildren().add(bottomCodeArea);
 		fragmentTabContent.getChildren().add(fragmentContainerController.getView());
 
-
-		ArrayList<CodeFragment> codeFragmentList = new ArrayList<CodeFragment>();
-		codeFragmentList.add(new CodeFragment("this_getContext","this.getContext()"));
-		codeFragmentList.add(new CodeFragment("dot_getCapacitor","getCapacitor()"));
-		codeFragmentList.add(new CodeFragment("update",".update()"));
-
 		fragmentContainerController.setCodeFragmentList(game.getFragmentsManager().getFragmentList());
 
 
@@ -103,19 +100,41 @@ public class GameLevelController {
 				System.out.println("On click");
 				processInputCode();
 				
-				
 				gameController.popModal(resultController.getView());
 
 			};
 		});
 		
+		
+		updateUI();
 
-		Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
+		//Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
+	}
+	
+	public void updateUI(){
+		
+		GameLevel currentLevel = game.getCurrentGameLevel();
+		
+		Animations.labelTypingAnimation(LB_Com, currentLevel.getIntroText());
+		fragmentContainerController.setCodeFragmentList(currentLevel.getFragmentList());
+
+
 	}
 
 	public void processInputCode(){
-
-
+		ArrayList<CodeFragment> response = dropCodeFragmentController.getDroppedCodeFragmentList();
+		
+		for(CodeFragment fragment : response){
+			System.out.println(fragment);
+		}
+		
+		LevelResolver resolver = new LevelResolver(game.getCurrentGameLevel());
+		if(resolver.resolve(response)){
+			System.out.println("SUCCESS");
+		}
+		else{
+			System.out.println("ERROR");
+		}
 	}
 	
 	public void hideModal(){

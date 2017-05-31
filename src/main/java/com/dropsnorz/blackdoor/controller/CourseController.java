@@ -22,7 +22,7 @@ public class CourseController {
 		
 		 Stage stage = new Stage();
          stage.setTitle("Documentation");
-         stage.setScene(new Scene(root, 320, 500));
+         stage.setScene(new Scene(root, 800, 500));
          stage.show();
          
          WebEngine webEngine = webView.getEngine();

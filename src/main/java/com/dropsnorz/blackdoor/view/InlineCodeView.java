@@ -21,9 +21,12 @@ public class InlineCodeView extends StackPane {
 	public HBox editPane;
 	public Button BT_Delete;
 	
-	public InlineCodeView(String content){
+	public String fragmentId;
+	
+	public InlineCodeView(String fragmentId, String content){
 		super();
 		
+		this.fragmentId = fragmentId;
 		StackPane _this = this;
 		LB_Code = new Label(content);
 		this.getChildren().add(LB_Code);
@@ -53,5 +56,9 @@ public class InlineCodeView extends StackPane {
 				Bindings.when(_this.hoverProperty())
 				.then(true).otherwise(false));
 		this.getChildren().add(editPane);
+	}
+	
+	public String getFragmentId(){
+		return fragmentId;
 	}
 }

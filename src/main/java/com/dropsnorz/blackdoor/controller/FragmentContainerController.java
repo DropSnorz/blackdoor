@@ -16,6 +16,7 @@ public class FragmentContainerController {
 	
 	public void setCodeFragmentList(ArrayList<CodeFragment> codeFragmentList){
 		
+		view.getChildren().clear();
 		for(CodeFragment codeFragment: codeFragmentList){
 			view.getChildren().add(new CodeFragmentController(codeFragment).getView());
 
