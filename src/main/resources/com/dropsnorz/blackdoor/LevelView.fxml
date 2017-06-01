@@ -8,6 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import com.dropsnorz.blackdoor.components.LevelPointsDisplay ?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -92,6 +93,11 @@
             <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Level 1" />
+                  <LevelPointsDisplay>
+                    <LevelPointsDisplay.margin>
+            			<Insets left="40.0" right="20.0" />
+         			</LevelPointsDisplay.margin>
+                  </LevelPointsDisplay>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                   
                   </HBox>
