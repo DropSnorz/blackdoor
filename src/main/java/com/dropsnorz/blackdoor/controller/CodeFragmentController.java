@@ -28,7 +28,7 @@ public class CodeFragmentController {
 		        /* drag was detected, start a drag-and-drop gesture*/
 		        /* allow any transfer mode */
 		        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
-		        db.setDragView(new Text(view.LB_Text.getText()).snapshot(null, null));
+		        db.setDragView(view.snapshot(null, null));
 		        /* Put a string on a dragboard */
 		        ClipboardContent content = new ClipboardContent();
 		        content.putString(codeFragment.getId());
