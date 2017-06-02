@@ -7,6 +7,7 @@ import java.util.Random;
 import com.dropsnorz.blackdoor.components.ModalFrame;
 import com.dropsnorz.blackdoor.model.Game;
 import com.dropsnorz.blackdoor.utils.Animations;
+import com.dropsnorz.blackdoor.utils.TimerUtils;
 import com.dropsnorz.blackdoor.view.GameView;
 
 import javafx.animation.AnimationTimer;
@@ -60,6 +61,16 @@ public class GameController{
 		GameLevelController gameLevelController = new GameLevelController(game,this);
 		view.stackView(gameLevelController.getView());
 		
+		
+		TimerUtils.scheduleUIAction(2, new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				gameLevelController.startTutorial();
+				
+			}
+			
+		});
 	}
 	
 	public void popModal(Node node){

@@ -11,6 +11,17 @@
 	    
 }
 
+.tutorial-label{
+		-fx-text-fill: white;
+	    -fx-font-family: "Lucida console";
+	    -fx-background-color: rgba(42,187,155,255);
+	   	-fx-font-size: 12px;
+	    -fx-padding: 15 15 15 15;
+	    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+	    
+	    
+}
+
 .invisible-button{
 	-fx-background-color: transparent;
 	-fx-border-color: transparent;
@@ -79,7 +90,7 @@
 	-fx-background-color: transparent;
 	-fx-border-insets: 0, 0, 0, 0;
 	-fx-font-family: "Courier New";
-    -fx-font-size: 18px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 	

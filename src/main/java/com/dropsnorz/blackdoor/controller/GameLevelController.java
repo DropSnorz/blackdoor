@@ -5,11 +5,15 @@ import java.util.ArrayList;
 
 import com.dropsnorz.blackdoor.components.JavaCodeArea;
 import com.dropsnorz.blackdoor.components.ModalFrame;
+import com.dropsnorz.blackdoor.components.Tutorial;
 import com.dropsnorz.blackdoor.model.CodeFragment;
 import com.dropsnorz.blackdoor.model.FragmentsManager;
 import com.dropsnorz.blackdoor.model.Game;
 import com.dropsnorz.blackdoor.model.GameLevel;
 import com.dropsnorz.blackdoor.model.LevelResolver;
+import com.dropsnorz.blackdoor.tutorial.controller.TutorialControler;
+import com.dropsnorz.blackdoor.tutorial.model.TutorialListener;
+import com.dropsnorz.blackdoor.tutorial.model.TutorialStep;
 import com.dropsnorz.blackdoor.utils.Animations;
 import com.jfoenix.controls.JFXRippler;
 
@@ -114,8 +118,7 @@ public class GameLevelController {
 
 
 		updateUI();
-
-		//Animations.labelTypingAnimation(LB_Com, "« Il y’a pas mal d’agitation ici. Nous sommes sur la piste d’un terroriste […] et avec toutes mes félicitations c’est toi qui es en charge de sa surveillance. L’équipe sur le terrain a installé un logiciel espion sur téléphone portable de la cible. Tu as aura donc un accès total à son terminal Android. »");
+		
 	}
 
 	public void updateUI(){
@@ -126,6 +129,38 @@ public class GameLevelController {
 		dropCodeFragmentController.removeAllCodeFragments();
 		bottomTabPane.getSelectionModel().select(0);
 		fragmentContainerController.setCodeFragmentList(currentLevel.getFragmentList());
+	}
+	
+	public void startTutorial(){
+
+		//Tutorial tuto = new Tutorial();
+		//tuto.displayToolTip(LB_Com, gameController.getView());
+		
+		TutorialControler tutorialControler = new TutorialControler(gameController);
+		
+		tutorialControler.addStep(new TutorialStep(LB_Com, "Le COM est votre canal de communication, lisez le attentivement afin \nde recevoir les directives de votre mission", 20, 40));
+		tutorialControler.addStep(new TutorialStep(dropCodeFragmentController.getView(), "Votre mission va nécéssiter l'écriture d'un virus en Java. \nVous devrez assembler le code dans cette zone", 0, 60));		
+		tutorialControler.addStep(new TutorialStep(bottomTabPane, "Pour construire votre virus, vous avez accès à des fragments.\nAssemblez ces fragments en les glissant puis déposant dans la zone de code", -40, 30));
+		tutorialControler.addStep(new TutorialStep(BT_Submit, "Lorsque vous avez terminé, soumettez votre code.\nIl sera automatiquement analysé et envoyé à votre cible", -600, -100));
+		tutorialControler.addStep(new TutorialStep(BT_Course, "Si vous avez besoin d'aide, vous pouvez consultez à tout moment la documentation Android", -600, 50));
+
+
+		
+		tutorialControler.setTutorialEndListener(new TutorialListener(){
+
+			@Override
+			public void handle() {
+				gameController.getView().unstackView(tutorialControler.getView());
+				
+			}
+			
+		});
+
+		gameController.getView().stackView(tutorialControler.getView());
+		
+		tutorialControler.startTutorial();
+
+		
 	}
 	
 	public void nextLevel(){
