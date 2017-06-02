@@ -58,44 +58,137 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Titre du chapitre</h1>
-                    <h2>Titre d'une sous-partie</h2>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <div class="alert alert-info">
-                        <strong> Info ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-success">
-                        <strong> Success ! </strong> C'est chaud
-                    </div>
+                    <h1 id="titreCours">Les classes StringBuilder et File</h1>
+                    <h2>Préambule</h2>
+
+                    <p>
+                        Nous y voila enfin .. Le dernier chapitre de ce cours sur l'API Android ! Si vous avez suivi ce cours depuis le début, vous savez utiliser les fonctionnalités principales mises en place par Android. Il ne reste plus qu'une facette importante dans ce cours : La récupération de fichiers texte de l'utilisateur.
+                    </p>
+
                     <div class="alert alert-danger">
-                        <strong> Danger ! </strong> C'est chaud
+                        <strong> Note - </strong> Il est primordial d'obtenir les autorisations de l'utilisateur, sous peine de réaliser un piratage, ce qui serait passible d'emprisonnement
                     </div>
-                    <div class="alert alert-warning">
-                        <strong> Warning ! </strong> C'est chaud
+
+                    <p>
+                        Nous allons vous présenter deux concepts présent nativement dans Java, ce qui signifie que ces classes peuvent s'utiliser en dehors du contexte Android. Allez, c'est parti !
+                    </p>
+
+                    <h2> La classe StringBuilder </h2>
+
+                    <p>
+                        Commençons par parler brièvement de la classe <code>StringBuilder</code>. Dans le cadre de ce cours et du jeu Blackdoor, nous n'exploiterons pas toutes les possibilités offertes par cette classe, nous allons nous contenter de l'instancier
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Vous - </strong> Pourquoi parler de cette classe si on ne fait que l'instancier ?
                     </div>
+
+                    <p>
+                        En théorie, nous avons besoin de méthodes provenant de cette classe. Mais comme nous allons utiliser des fonctions provenant de notre propre librairie, vous vous contenterez d'instancier cette classe et d'utiliser les méthodes que nous verrons plus tard. Je pense que vous savez instancier une classe en utilisant son constructeur, right ?
+                    </p>
+
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
-import javafx.scene.text.Text;
+import java.lang.Object; //Contient StringBuilder
 
-public class CodeFragmentController {
-
-	CodeFragmentView view;
-    CodeFragment codeFragment;
-}
-                            </textarea>
-                        <div class="zoneCodeLegende">BLABLABLA je suis la légende</div>
+StringBuilder str = new StringBuilder();</textarea>
+                        <div class="zoneCodeLegende">Instancier un objet de type StringBuilder</div>
                     </div>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+
+                    <p>
+                        Ce sera tout pour la classe <code>StringBuilder</code> ... Pour le moment !
+                    </p>
+
+                    <h2>La classe File</h2>
+
+                    <p>
+                        Interessons-nous désormais à la classe <code>File</code>. C'est à travers cette classe que l'on va pouvoir accéder aux fichiers, les manipulers, en créer de nouveaux, ...
+                    </p>
+
+                    <p>
+                        Lorsque l'on travaille sur un mobile Android et que l'on souhaite manipuler les fichiers, la première chose à connaitre est l'emplacement de stockage des fichiers (que l'on nomme <code>sdcard</code>). Ca tombe bien, Android met à disposition une méthode pour ça : <code>Environment.getExternalStorageDirectory()</code>.
+                    </p>
+
+                    <p>
+                        Une fois que nous avons localisé les fichiers, libre à nous de faire ce que bon nous semble ! Différentes possibilités existent. Nous pouvons créer des fichiers dans cet emplacement, lire les contenus, modifier les contenus, éventuellement les télécharger avec la classe <code>DownloadManager</code> que l'on a vu anterieurement dans ce cours ... Bref, tout ce que vous voulez ! Supposons par exemple qu'il existe un fichier <code>exemple.txt</code> dans l'emplacement de stockage. Voici comment créer une référence vers ce fichier
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient StringBuilder
+
+File sdcard = Environment.getExternalStorageDirectory(); // localise l'emplacement de stockage
+File file = new File(sdcard,"exemple.txt"); // référence vers le fichier</textarea>
+                        <div class="zoneCodeLegende">Utilisation possible de la classe File</div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> Vous retrouverez toutes les possibilités sur la <a href="https://docs.oracle.com/javase/7/docs/api/java/io/File.html">documentation Oracle</a> !
+                    </div>
+
+                    <p>
+                        Nous n'allons pas élaborer d'avantage les fonctionnalités, mais nous devons vous parler d'une méthode mise au point par nos soins : la méthode <code>copyFile</code>
+                    </p>
+
+                    <h2> La méthode copyFile</h2>
+
+                    <p>
+                        Comme son nom l'indique, la méthode <code>copyFile</code> va nous permettre de copier le contenu d'un fichier dans un objet de type <code>StringBuilder</code>, afin de pouvoir le lire ou le modifier localement.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Vous - </strong> Pourquoi avoir créer une fonction ? Je ne comprends pas
+                    </div>
+
+                    <p>
+                        Pour vous faciliter la vie, pardi ! Voici le code qu'il faudrait pour faire une copie
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient StringBuilder
+
+// Déclaration des variables de type File et StringBuffer
+
+/* Corps de la fonction */
+try {
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    String line;
+
+    while ((line = br.readLine()) != null) {
+        text.append(line);
+        text.append('\n');
+    }
+    br.close();
+}
+catch (IOException e) {
+    // Gestion des Exceptions
+}</textarea>
+                        <div class="zoneCodeLegende">Difficulté de la copie sans notre méthode</div>
+                    </div>
+
+                    <p>
+                        Et voici le fonctionnement de la copie avec notre méthode
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient StringBuilder
+
+// stringbuffer est un objet de type StringBuffer et file le fichier à copier
+
+stringbuffer.copyFile(file);</textarea>
+                        <div class="zoneCodeLegende">Copier un fichier avec copyFile</div>
+                    </div>
+
+                    <p>
+                        C'est tout ! La copie s'effectue, et l'objet stringbuffer contiendra tout ce que contenait le fichier ! Est-ce que vous avez compris pourquoi notre fonction était utile ? :)
+                    </p>
+
+                    <p>
+                        C'est le triste moment de se quitter, le cours touchant à sa fin. Merci pour l'avoir lu. Si vous voulez tester vos connaissances, vous pouvez toujours jouer au serious game Blackdoor pour montrer vos talents de hackers, et déjouer les plans des gentils comme des méchants !
+                    </p>
+
                 </div>
             </div>
         </div>
