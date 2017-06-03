@@ -8,6 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+
 <?import com.dropsnorz.blackdoor.components.LevelPointsDisplay ?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
@@ -93,7 +94,7 @@
             <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Level 1" />
-                  <LevelPointsDisplay>
+                 <LevelPointsDisplay>
                     <LevelPointsDisplay.margin>
             			<Insets left="40.0" right="20.0" />
          			</LevelPointsDisplay.margin>
@@ -103,6 +104,11 @@
                   </HBox>
                   <Button mnemonicParsing="false" styleClass="hud-button" text="Indice" />
                   <Button fx:id="BT_Course" mnemonicParsing="false" styleClass="hud-button" text="Cours" />
+                  <Button fx:id="BT_RestartTutorial" mnemonicParsing="false" styleClass="flat-small-button" text="Rejouer le tutoriel">
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

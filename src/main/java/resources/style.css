@@ -86,6 +86,22 @@
 
 }
 
+.flat-small-button{
+	
+	 -fx-background-color: transparent;
+	 -fx-padding: 5 10 5 10;
+	 -fx-text-fill: white;
+	 -fx-border-insets: 3, 3, 3, 3;
+     -fx-border-color: rgb(39,39,39);
+     -fx-font-family: "Helvetica";
+	
+}
+
+.flat-small-button:hover{
+	 -fx-border-color: rgb(49,49,49);
+	
+}
+
 .choice-button{
 	-fx-background-color: transparent;
 	-fx-border-insets: 0, 0, 0, 0;

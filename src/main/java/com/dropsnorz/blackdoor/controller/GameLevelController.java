@@ -52,6 +52,8 @@ public class GameLevelController {
 	@FXML
 	Button BT_Course;
 	@FXML
+	Button BT_RestartTutorial;
+	@FXML
 	Button BT_Submit;
 	@FXML
 	Pane PANE_CenterStack;
@@ -102,6 +104,12 @@ public class GameLevelController {
 		BT_Course.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				CourseController courseController = new CourseController("undefined");
+			};
+		});
+		
+		BT_RestartTutorial.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				startTutorial();
 			};
 		});
 
