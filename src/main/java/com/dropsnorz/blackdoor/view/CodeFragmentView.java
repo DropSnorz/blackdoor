@@ -22,6 +22,9 @@ public class CodeFragmentView extends Pane{
 		LB_Text.layoutXProperty().bind(this.widthProperty().subtract(LB_Text.widthProperty()).divide(2));
 		LB_Text.layoutYProperty().bind(this.heightProperty().subtract(LB_Text.heightProperty()).divide(2));
 
+		this.setMaxHeight(25);
+		this.setPrefHeight(25);
+		
 	}
 	
 }
