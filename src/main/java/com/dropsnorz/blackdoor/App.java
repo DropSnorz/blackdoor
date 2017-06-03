@@ -1,8 +1,8 @@
 package com.dropsnorz.blackdoor;
 
-import com.dropsnorz.blackdoor.controller.GameController;
-import com.dropsnorz.blackdoor.controller.GameIntroController;
-import com.dropsnorz.blackdoor.controller.GameMenuController;
+import com.dropsnorz.blackdoor.core.controllers.GameController;
+import com.dropsnorz.blackdoor.core.controllers.GameIntroController;
+import com.dropsnorz.blackdoor.core.controllers.GameMenuController;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
