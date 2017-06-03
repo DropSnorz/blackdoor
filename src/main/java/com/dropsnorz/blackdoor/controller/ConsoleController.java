@@ -21,8 +21,7 @@ public class ConsoleController {
 	public ConsoleController(){
 
 		view = new ConsoleView();
-		timer = new Timer();
-		
+	
 		handler = new EventHandler<Event>(){
 
 			@Override
@@ -35,8 +34,11 @@ public class ConsoleController {
 	}
 
 	public void write(String text){
-		//textOutput.add(text);
 
+		if (timer == null){
+			timer = new Timer();
+		}
+		
 		ArrayList<String> outputs = new ArrayList<String>();
 		outputs.add("Generate Binairies...");
 		outputs.add("Sending data to target device...");
@@ -105,6 +107,8 @@ public class ConsoleController {
 
 				@Override
 				public void run() {
+					timer.cancel();
+					timer = null;
 					handler.handle(null);
 					
 				}			
