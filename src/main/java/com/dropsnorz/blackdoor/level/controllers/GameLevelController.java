@@ -195,7 +195,7 @@ public class GameLevelController {
 				@Override
 				public void handle(Event event) {
 
-					resultController = new ResultController(_this, game.getCurrentGameLevel());
+					resultController = new ResultController(_this, game);
 					gameController.popModal(resultController.getView());
 				}
 

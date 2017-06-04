@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<Button alignment="BASELINE_LEFT" mnemonicParsing="false"
+	prefHeight="25.0" prefWidth="435.0" styleClass="choice-button" text="Ne rien faire">
+	<graphic>
+		<ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+			<image>
+				<Image url="@icons/arrow-right-24.png" />
+			</image>
+		</ImageView>
+	</graphic>
+</Button>
+         

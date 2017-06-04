@@ -2,6 +2,9 @@ package com.dropsnorz.blackdoor.level.model;
 
 import java.util.ArrayList;
 
+import com.dropsnorz.blackdoor.core.model.Game;
+import com.dropsnorz.blackdoor.core.model.KeywordFinder;
+
 public class GameLevel {
 
 	protected String id;
@@ -10,14 +13,29 @@ public class GameLevel {
 	
 	protected ArrayList<CodeFragment> fragmentList;
 	protected ArrayList<CodeFragment> responseFragmentList;
+	
+	protected KeywordFinder<Dialog> dialogKeywordFinder;
+	protected KeywordFinder<GameLevel> nextLevelKeywordFinder;
+	protected KeywordFinder<String> responseKeywordFinder;
+	
+	protected Game game;
+	
 
 	
-	public GameLevel(String id){
+	public GameLevel(String id, Game game){
 		
 		this.id = id;
 		fragmentList = new ArrayList<CodeFragment>();
 		responseFragmentList = new ArrayList<CodeFragment>();
 		
+		dialogKeywordFinder = new KeywordFinder<Dialog>();
+		
+		this.game = game;
+		
+	}
+	
+	public ArrayList<Dialog> getDialogs(){
+		return dialogKeywordFinder.getObjects(game.getKeywordManager().getKeywords("com.dropsnorz.blackdoor.level"));
 	}
 	
 	public String getId() {
@@ -67,10 +85,9 @@ public class GameLevel {
 	public void setResponseFragmentList(ArrayList<CodeFragment> responseFragmentList) {
 		this.responseFragmentList = responseFragmentList;
 	}
-	
-	
-	
-	
-	
+
+	public KeywordFinder<Dialog> getDialogKeywordFinder() {
+		return dialogKeywordFinder;
+	}
 	
 }
