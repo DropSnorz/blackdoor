@@ -8,6 +8,7 @@ import com.dropsnorz.blackdoor.core.model.KeywordFinder;
 public class GameLevel {
 
 	protected String id;
+	protected String title;
 	protected String introText;
 	protected String helperText;
 	
@@ -45,6 +46,15 @@ public class GameLevel {
 	
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getIntroText() {

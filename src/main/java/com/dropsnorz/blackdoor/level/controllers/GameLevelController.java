@@ -15,6 +15,7 @@ import com.dropsnorz.blackdoor.tutorial.controllers.TutorialController;
 import com.dropsnorz.blackdoor.tutorial.model.TutorialListener;
 import com.dropsnorz.blackdoor.tutorial.model.TutorialStep;
 import com.dropsnorz.blackdoor.utils.Animations;
+import com.dropsnorz.blackdoor.utils.TimerUtils;
 import com.jfoenix.controls.JFXRippler;
 
 import javafx.beans.value.ChangeListener;
@@ -48,7 +49,13 @@ public class GameLevelController {
 	private Pane root;
 
 	@FXML
+	Label LB_LevelTitle;
+	@FXML
 	Label LB_Com;
+	@FXML
+	Label LB_Helper;
+	@FXML
+	Pane helperPane;
 	@FXML
 	Button BT_Course;
 	@FXML
@@ -132,8 +139,22 @@ public class GameLevelController {
 	public void updateUI(){
 
 		GameLevel currentLevel = game.getCurrentGameLevel();
-
+		LB_LevelTitle.setText(currentLevel.getTitle());
+		LB_Helper.setText(currentLevel.getHelperText());
+		
 		Animations.labelTypingAnimation(LB_Com, currentLevel.getIntroText());
+		
+		helperPane.setVisible(false);
+		TimerUtils.scheduleUIAction(6, new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				System.out.println("Slice !");
+				Animations.slideIn(helperPane);
+			}
+			
+		});
 		dropCodeFragmentController.removeAllCodeFragments();
 		bottomTabPane.getSelectionModel().select(0);
 		fragmentContainerController.setCodeFragmentList(currentLevel.getFragmentList());

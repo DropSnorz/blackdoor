@@ -5,49 +5,51 @@ import javafx.animation.FadeTransition;
 import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Animations {
 
 	public static void labelTypingAnimation(final Label lbl, String descImp) {
-	    final String content = descImp;
-	    final Transition animation = new Transition() {
-	        {
-	            setCycleDuration(Duration.millis(3000));
-	            setDelay(Duration.seconds(1));
-	        }
+		final String content = descImp;
+		final Transition animation = new Transition() {
+			{
+				setCycleDuration(Duration.millis(3000));
+				setDelay(Duration.seconds(1));
+			}
 
-	        protected void interpolate(double frac) {
-	            final int length = content.length();
-	            final int n = Math.round(length * (float) frac);
-	            lbl.setText(content.substring(0, n));
-	        }
-	    };
-	    animation.play();
+			protected void interpolate(double frac) {
+				final int length = content.length();
+				final int n = Math.round(length * (float) frac);
+				lbl.setText(content.substring(0, n));
+			}
+		};
+		animation.play();
 
 	}
-	
+
 	public static void textTypingAnimation(final Text lbl, String descImp) {
-	    final String content = descImp;
-	    final Transition animation = new Transition() {
-	        {
-	            setCycleDuration(Duration.millis(3000));
-	            setDelay(Duration.seconds(1));
-	        }
+		final String content = descImp;
+		final Transition animation = new Transition() {
+			{
+				setCycleDuration(Duration.millis(3000));
+				setDelay(Duration.seconds(1));
+			}
 
-	        protected void interpolate(double frac) {
-	            final int length = content.length();
-	            final int n = Math.round(length * (float) frac);
-	            lbl.setText(content.substring(0, n));
-	        }
-	    };
-	    animation.play();
+			protected void interpolate(double frac) {
+				final int length = content.length();
+				final int n = Math.round(length * (float) frac);
+				lbl.setText(content.substring(0, n));
+			}
+		};
+		animation.play();
 
 	}
-	
+
 	public static void fadeOut(final Parent object, Duration delay){
 		FadeTransition ft = new FadeTransition(Duration.millis(1000), object);
 		ft.setDelay(delay);
@@ -65,4 +67,22 @@ public class Animations {
 		ft.play();
 
 	}
+
+	public static void slideIn(final Pane object){
+
+		double startWidth = object.getWidth();
+
+		final Animation showSidebar = new Transition() {
+			{ setCycleDuration(Duration.millis(250)); }
+			protected void interpolate(double frac) {
+				final double curWidth = startWidth * frac;
+				object.setVisible(true);
+				object.setTranslateX(-startWidth + curWidth);
+			}
+		};
+		
+		showSidebar.play();
+
+	}
+
 }

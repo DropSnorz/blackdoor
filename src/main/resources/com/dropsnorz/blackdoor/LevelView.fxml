@@ -50,6 +50,19 @@
                   </AnchorPane>
               </content>
             </TitledPane>
+            <Pane fx:id="helperPane" styleClass="helper-pane">
+             <children>
+              <Label fx:id="LB_Helper">
+               <graphic>
+                   <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/arrow-right-24.png" />
+                           </image>
+                        </ImageView>
+               </graphic>
+              </Label>
+             </children>
+            </Pane>
             <VBox fx:id="PANE_CodeArea" prefHeight="200.0" prefWidth="100.0" />
             <TabPane fx:id="bottomTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -93,7 +106,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Level 1" />
+                  <Label fx:id="LB_LevelTitle" text="Level 1" />
                  <LevelPointsDisplay>
                     <LevelPointsDisplay.margin>
             			<Insets left="40.0" right="20.0" />

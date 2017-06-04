@@ -117,6 +117,18 @@
 	
 }
 
+
+.helper-pane{
+	-fx-background-color: gray;
+	
+}
+
+.helper-pane Label{
+	-fx-padding: 5,10,5,10;
+	
+}
+
+
 .code-editor:readonly{
 		 -fx-background-color: rgb(22,22,22);
 		 

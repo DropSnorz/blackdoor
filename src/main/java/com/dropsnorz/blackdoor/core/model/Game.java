@@ -41,6 +41,8 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("V_VIBRATE(100)", "v.vibrate(100)"));
 
 		GameLevel l1 = new GameLevel("level1", this);
+		l1.setTitle("Mission 1");
+		l1.setHelperText("Faire vibrer le téléphone de la cible pendant 100 ms");
 		l1.setIntroText("« Bien, dans un premier temps on va tester si le virus fonctionne correctement. Je pense qu’on peut faire vibrer le téléphone de la cible dans un premier temps» ");
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("CONTEXT"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
@@ -63,7 +65,9 @@ public class Game {
 		
 		
 		GameLevel l2 = new GameLevel("level2", this);
+		l2.setTitle("Mission 2");
 		l2.setIntroText("« Parfait ! L’équipe technique a vraiment fait un super boulot. On aimerait bien obtenir son numéro de téléphone pour voir s’il n’est pas en contact avec d’autres suspects. Tu peux nous obtenir ça ?»");
+		l2.setHelperText("UNDEFINED");
 		l2.setFragmentList(l1.getFragmentList());
 		l2.setResponseFragmentList(l1.getResponseFragmentList());
 		
