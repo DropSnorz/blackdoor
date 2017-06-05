@@ -35,9 +35,9 @@ public class InlineCodeView extends StackPane {
 		editPane.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		BT_Delete = new Button();
-		Image deleteImage = new Image(getClass().getResourceAsStream("/com/dropsnorz/blackdoor/icons/delete-gray-16.png"));	
+		Image deleteImage = new Image(getClass().getResourceAsStream("/com/dropsnorz/blackdoor/icons/delete-gray-12.png"));	
 		ImageView deleteImageView = new ImageView(deleteImage);
-		Image deleteOverImage = new Image(getClass().getResourceAsStream("/com/dropsnorz/blackdoor/icons/delete-red-16.png"));	
+		Image deleteOverImage = new Image(getClass().getResourceAsStream("/com/dropsnorz/blackdoor/icons/delete-red-12.png"));	
 		ImageView deleteOverImageView = new ImageView(deleteOverImage);
 
 		BT_Delete.graphicProperty().bind(
@@ -49,6 +49,7 @@ public class InlineCodeView extends StackPane {
 			);
 		
 		BT_Delete.getStyleClass().add("invisible-button");
+		BT_Delete.setPadding(new Insets(5,3,5,3));;
 		editPane.getChildren().add(BT_Delete);
 		editPane.setAlignment(Pos.CENTER);
 		
