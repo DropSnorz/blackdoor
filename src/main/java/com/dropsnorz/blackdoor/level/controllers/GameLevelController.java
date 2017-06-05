@@ -150,7 +150,6 @@ public class GameLevelController {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("Slice !");
 				Animations.slideIn(helperPane);
 			}
 			

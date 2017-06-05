@@ -35,8 +35,8 @@ public class App extends Application
 		GameController gameController = new GameController();
 	    
 		Scene scene = new Scene( gameController.getView(), 1000, 680 );
-		String css = App.class.getResource("/resources/style.css").toExternalForm();
-		String javaCss = App.class.getResource("/resources/java-keyword.css").toExternalForm();
+		String css = App.class.getResource("/com/dropsnorz/blackdoor/style.css").toExternalForm();
+		String javaCss = App.class.getResource("/com/dropsnorz/blackdoor/java-keyword.css").toExternalForm();
 
 		scene.getStylesheets().clear();
 		scene.getStylesheets().add(css);
