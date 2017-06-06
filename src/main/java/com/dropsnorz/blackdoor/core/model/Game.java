@@ -3,6 +3,7 @@ package com.dropsnorz.blackdoor.core.model;
 import java.util.ArrayList;
 
 import com.dropsnorz.blackdoor.level.model.CodeFragment;
+import com.dropsnorz.blackdoor.level.model.CodeFragmentType;
 import com.dropsnorz.blackdoor.level.model.Dialog;
 import com.dropsnorz.blackdoor.level.model.FragmentListBuilder;
 import com.dropsnorz.blackdoor.level.model.FragmentsManager;
@@ -29,14 +30,14 @@ public class Game {
 
 	private void fillData(){
 		
-		fragmentsManager.addFragment(new CodeFragment("OP_SEMICOLON", ";"));
-		fragmentsManager.addFragment(new CodeFragment("OP_DOT", "."));
-		fragmentsManager.addFragment(new CodeFragment("OP_EQUALS", "="));
-		fragmentsManager.addFragment(new CodeFragment("OP_RETURN", "return"));
+		fragmentsManager.addFragment(new CodeFragment("OP_SEMICOLON", ";", CodeFragmentType.TYPE_OPERATOR));
+		fragmentsManager.addFragment(new CodeFragment("OP_DOT", ".", CodeFragmentType.TYPE_OPERATOR));
+		fragmentsManager.addFragment(new CodeFragment("OP_EQUALS", "=", CodeFragmentType.TYPE_OPERATOR));
+		fragmentsManager.addFragment(new CodeFragment("OP_RETURN", "return", CodeFragmentType.TYPE_OPERATOR));
 
 		fragmentsManager.addFragment(new CodeFragment("CONTEXT", "Context"));
 		fragmentsManager.addFragment(new CodeFragment("GET_CONTEXT()", "getContext()"));
-		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_V", "Vibrator v"));
+		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_V", "Vibrator v", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_VIBRATOR", "getSystemService(VIBRAOTR_SERVICE)"));
 		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_SERVICE", "VIBRATOR_SERVICE"));
 		fragmentsManager.addFragment(new CodeFragment("MESSAGE_SERVICE", "MESSAGE_SERVICE"));
@@ -48,11 +49,11 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_LINE_NUMBER", "manager.getLine1Number()"));
 		
 		//Level 3
-		fragmentsManager.addFragment(new CodeFragment("PACKAGE_MANAGER_MANAGER", "PackageManager manager"));
+		fragmentsManager.addFragment(new CodeFragment("PACKAGE_MANAGER_MANAGER", "PackageManager manager", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_PACKAGE_MANAGER", "getPackageManager()"));
 		fragmentsManager.addFragment(new CodeFragment("LIST_APPLICATION_INFO", "List<ApplicationInfo> packages"));
 		fragmentsManager.addFragment(new CodeFragment("GET_INSTALLED_APP", "getInstalledApplications()"));
-		fragmentsManager.addFragment(new CodeFragment("VAR_MANAGER", "manager"));
+		fragmentsManager.addFragment(new CodeFragment("VAR_MANAGER", "manager", CodeFragmentType.TYPE_VARIABLE));
 
 		
 		GameLevel l1 = new GameLevel("level1", this);

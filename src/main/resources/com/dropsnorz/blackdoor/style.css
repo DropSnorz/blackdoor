@@ -151,6 +151,13 @@
 	-fx-padding:5px;
 }
 
+.code-fragment-variable{
+	-fx-background-color: rgb(142, 68, 173);
+}
+.code-fragment-operator{
+	-fx-background-color: rgb(192, 57, 43);
+}
+
 .code-row:hover{
 	-fx-background-color:rgb(39,39,39);
 }
