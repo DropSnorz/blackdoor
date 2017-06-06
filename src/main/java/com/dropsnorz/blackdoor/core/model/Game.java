@@ -29,17 +29,32 @@ public class Game {
 
 	private void fillData(){
 		
-		fragmentsManager.addFragment(new CodeFragment("SEMICOLON", ";"));
-		fragmentsManager.addFragment(new CodeFragment("DOT", "."));
-		fragmentsManager.addFragment(new CodeFragment("EQUALS", "="));
+		fragmentsManager.addFragment(new CodeFragment("OP_SEMICOLON", ";"));
+		fragmentsManager.addFragment(new CodeFragment("OP_DOT", "."));
+		fragmentsManager.addFragment(new CodeFragment("OP_EQUALS", "="));
+		fragmentsManager.addFragment(new CodeFragment("OP_RETURN", "return"));
+
 		fragmentsManager.addFragment(new CodeFragment("CONTEXT", "Context"));
 		fragmentsManager.addFragment(new CodeFragment("GET_CONTEXT()", "getContext()"));
 		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_V", "Vibrator v"));
-		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE", "getSystemService"));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_VIBRATOR", "getSystemService(VIBRAOTR_SERVICE)"));
 		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_SERVICE", "VIBRATOR_SERVICE"));
 		fragmentsManager.addFragment(new CodeFragment("MESSAGE_SERVICE", "MESSAGE_SERVICE"));
 		fragmentsManager.addFragment(new CodeFragment("V_VIBRATE(100)", "v.vibrate(100)"));
 
+		//Level 2
+		fragmentsManager.addFragment(new CodeFragment("TELEPHONY_MANAGER_MANAGER", "TelephonyManager manager"));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_TELEPHONY", "getSystemService(TELEPHONY_SERVICE)"));
+		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_LINE_NUMBER", "manager.getLine1Number()"));
+		
+		//Level 3
+		fragmentsManager.addFragment(new CodeFragment("PACKAGE_MANAGER_MANAGER", "PackageManager manager"));
+		fragmentsManager.addFragment(new CodeFragment("GET_PACKAGE_MANAGER", "getPackageManager()"));
+		fragmentsManager.addFragment(new CodeFragment("LIST_APPLICATION_INFO", "List<ApplicationInfo> packages"));
+		fragmentsManager.addFragment(new CodeFragment("GET_INSTALLED_APP", "getInstalledApplications()"));
+		fragmentsManager.addFragment(new CodeFragment("VAR_MANAGER", "manager"));
+
+		
 		GameLevel l1 = new GameLevel("level1", this);
 		l1.setTitle("Mission 1");
 		l1.setHelperText("Faire vibrer le téléphone de la cible pendant 100 ms");
@@ -47,16 +62,17 @@ public class Game {
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("CONTEXT"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("VIBRATOR_V"));
-		l1.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE"));
+		l1.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_VIBRATOR"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("VIBRATOR_SERVICE"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("MESSAGE_SERVICE"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("V_VIBRATE(100)"));
-		l1.getFragmentList().add(fragmentsManager.getFragmentById("EQUALS"));
-		l1.getFragmentList().add(fragmentsManager.getFragmentById("SEMICOLON"));
+		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
 		
 		FragmentListBuilder builder = new FragmentListBuilder(fragmentsManager);
-		builder.add("VIBRATOR_V").add("EQUALS").add("GET_CONTEXT()").add("GET_SYSTEM_SERVICE").add("SEMICOLON")
-			.add("V_VIBRATE(100)").add("SEMICOLON");
+		builder.add("VIBRATOR_V").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_VIBRATOR").add("OP_SEMICOLON")
+			.add("V_VIBRATE(100)").add("OP_SEMICOLON");
 
 
 		l1.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
@@ -67,15 +83,52 @@ public class Game {
 		GameLevel l2 = new GameLevel("level2", this);
 		l2.setTitle("Mission 2");
 		l2.setIntroText("« Parfait ! L’équipe technique a vraiment fait un super boulot. On aimerait bien obtenir son numéro de téléphone pour voir s’il n’est pas en contact avec d’autres suspects. Tu peux nous obtenir ça ?»");
-		l2.setHelperText("UNDEFINED");
-		l2.setFragmentList(l1.getFragmentList());
-		l2.setResponseFragmentList(l1.getResponseFragmentList());
+		l2.setHelperText("Retourner le numéro de téléphone du terminal de la cible");
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("TELEPHONY_MANAGER_MANAGER"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_TELEPHONY"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("MANAGER_GET_LINE_NUMBER"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l2.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
+
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("TELEPHONY_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_TELEPHONY").add("OP_SEMICOLON")
+			.add("OP_RETURN").add("MANAGER_GET_LINE_NUMBER").add("OP_SEMICOLON");
+		
+		l2.setResponseFragmentList(builder.build());
 		
 		l2.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
+		GameLevel l3 = new GameLevel("level3", this);
+		l3.setTitle("Mission 3");
+		l3.setIntroText("« Bon voyons un peu ce qu'il y'a sur ce téléphone. Est-ce que tu peux obtenir la liste des applications installées sur son terminal ? On aura un bon point du vue sur les réseaux sociaux qu'il peut utiliser pour communiquer avec d'éventuels complices »");
+		l3.setHelperText("Retourner la liste des applications instéllées sur le téléphone");
+		
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("PACKAGE_MANAGER_MANAGER"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_TELEPHONY"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_PACKAGE_MANAGER"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("LIST_APPLICATION_INFO"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_INSTALLED_APP"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("VAR_MANAGER"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("PACKAGE_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_PACKAGE_MANAGER").add("OP_SEMICOLON")
+			.add("OP_RETURN").add("VAR_MANAGER").add("OP_DOT").add("GET_INSTALLED_APP").add("OP_SEMICOLON");
+		
+		l3.setResponseFragmentList(builder.build());
+		
+		l3.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 		
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
+		gameLevelList.add(l3);
 		
 		currentGameLevel = l1;
 		

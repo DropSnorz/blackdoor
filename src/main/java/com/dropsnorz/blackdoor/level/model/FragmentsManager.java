@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class FragmentsManager {
 	
 	protected ArrayList<CodeFragment> fragmentList;
+	private CodeFragment blankFragment;
 	
 	public FragmentsManager(){
 		
 		fragmentList = new ArrayList<CodeFragment>();
+		blankFragment = new CodeFragment("","");
+		
 	}
 	
 	
@@ -21,7 +24,7 @@ public class FragmentsManager {
 			}
 		}
 		
-		return null;
+		return blankFragment;
 		
 	}
 
