@@ -142,6 +142,14 @@ public class GameLevelController {
 		LB_LevelTitle.setText(currentLevel.getTitle());
 		LB_Helper.setText(currentLevel.getHelperText());
 		
+		if(currentLevel.getPreWrittenCode() != null){
+			topCodeArea.replaceText("public class App { \n     public process() {\n     " + currentLevel.getPreWrittenCode());
+		}
+		else{
+			topCodeArea.replaceText("public class App { \n     public process() {");
+
+		}
+		
 		Animations.labelTypingAnimation(LB_Com, currentLevel.getIntroText());
 		
 		helperPane.setVisible(false);

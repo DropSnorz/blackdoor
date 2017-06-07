@@ -63,7 +63,7 @@
               </Label>
              </children>
             </Pane>
-            <VBox fx:id="PANE_CodeArea" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="PANE_CodeArea" prefHeight="240.0" prefWidth="100.0" />
             <TabPane fx:id="bottomTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Fragments">

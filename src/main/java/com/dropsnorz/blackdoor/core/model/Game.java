@@ -33,7 +33,8 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("OP_SEMICOLON", ";", CodeFragmentType.TYPE_OPERATOR));
 		fragmentsManager.addFragment(new CodeFragment("OP_DOT", ".", CodeFragmentType.TYPE_OPERATOR));
 		fragmentsManager.addFragment(new CodeFragment("OP_EQUALS", "=", CodeFragmentType.TYPE_OPERATOR));
-		fragmentsManager.addFragment(new CodeFragment("OP_RETURN", "return", CodeFragmentType.TYPE_OPERATOR));
+		fragmentsManager.addFragment(new CodeFragment("OP_RETURN", "return ", CodeFragmentType.TYPE_OPERATOR));
+		fragmentsManager.addFragment(new CodeFragment("OP_NEW", "new ", CodeFragmentType.TYPE_OPERATOR));
 
 		fragmentsManager.addFragment(new CodeFragment("CONTEXT", "Context"));
 		fragmentsManager.addFragment(new CodeFragment("GET_CONTEXT()", "getContext()"));
@@ -61,6 +62,17 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("RETURN_CURSOR_SEMICOLON", "return cursor;", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_CONTENT_RESOLVER", "getContentResolver()"));
 		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_CALLS", "query(content://calls/lastCalls)"));
+		
+		
+		//Level5
+		
+		fragmentsManager.addFragment(new CodeFragment("REQUEST_REQUEST", "Request req", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("REQUEST_URI", "Request(uri)"));
+		fragmentsManager.addFragment(new CodeFragment("REQUEST_SET_VISIBLE_SEMICOLON", "request.setVisibleInDownloadUi(false);"));
+		fragmentsManager.addFragment(new CodeFragment("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON", "request.setNotificationVisibility(VISIBILITY_HIDDEN);"));
+		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_MANAGER", "DownloadManager manager"));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE", "getSystemService(DOWNLOAD_SERVICE)"));
+		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON", "downloadManager.enqueu(request);", CodeFragmentType.TYPE_VARIABLE));
 		
 		GameLevel l1 = new GameLevel("level1", this);
 		l1.setTitle("Mission 1");
@@ -155,16 +167,46 @@ public class Game {
 			.add("RETURN_CURSOR_SEMICOLON");
 		
 		l4.setResponseFragmentList(builder.build());
-		
 		l4.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 		
 		
+		GameLevel l5 = new GameLevel("level5", this);
+		l5.setTitle("Mission 4");
+		l5.setIntroText("« Tu t’en sors très bien, cette liste nous sera très utile. Pour la suite des opérations nous aurons besoin d’injecter un virus beaucoup plus puissant. Ce virus se trouve à l’adresse http://goo.gl/OHK4cm/hazardous.apk, tu dois le télécharger sur le terminal de la cible. »");
+		l5.setHelperText("Télécharger un fichier depuis internet sur le terminal de la cible");
 		
+		l5.setPreWrittenCode("String uri = ”http://goo.gl/OHK4cm/hazardous.apk”;");
+		
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_REQUEST"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_URI"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_SET_VISIBLE_SEMICOLON"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("DOWNLOAD_MANAGER_MANAGER"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON"));
+
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_NEW"));
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("SEMICOLON")
+			.add("REQUEST_SET_VISIBLE_SEMICOLON").add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON")
+			.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("SEMICOLON")
+			.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
+		
+		l5.setResponseFragmentList(builder.build());
+		l5.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		
+		
+
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
 		gameLevelList.add(l4);
-		
+		gameLevelList.add(l5);
 		currentGameLevel = l1;
 		
 	}

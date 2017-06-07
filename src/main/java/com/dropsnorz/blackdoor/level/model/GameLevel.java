@@ -11,6 +11,7 @@ public class GameLevel {
 	protected String title;
 	protected String introText;
 	protected String helperText;
+	protected String preWrittenCode;
 	
 	protected ArrayList<CodeFragment> fragmentList;
 	protected ArrayList<CodeFragment> responseFragmentList;
@@ -76,6 +77,13 @@ public class GameLevel {
 		this.helperText = helperText;
 	}
 
+	public String getPreWrittenCode() {
+		return preWrittenCode;
+	}
+
+	public void setPreWrittenCode(String preWrittenCode) {
+		this.preWrittenCode = preWrittenCode;
+	}
 
 	public ArrayList<CodeFragment> getFragmentList() {
 		return fragmentList;

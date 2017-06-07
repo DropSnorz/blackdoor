@@ -17,7 +17,7 @@ public class DropCodeFragmentView extends VBox{
 		flowPaneList = new ArrayList<FlowPane>();
 		
 		int i;
-		for(i=0; i < 4; i++){
+		for(i=0; i < 5; i++){
 			FlowPane currentFlowPane = new FlowPane();
 			currentFlowPane.setVgap(4);
 			currentFlowPane.setHgap(4);
@@ -28,7 +28,7 @@ public class DropCodeFragmentView extends VBox{
 		}
 		
 		this.setId("drop-code-area");
-		this.setMinHeight(130);
+		this.setMinHeight(150);
 		this.setSpacing(5);
 		this.setPadding(new Insets(5, 0, 5, 70));
 		
