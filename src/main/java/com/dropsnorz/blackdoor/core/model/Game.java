@@ -10,26 +10,26 @@ import com.dropsnorz.blackdoor.level.model.FragmentsManager;
 import com.dropsnorz.blackdoor.level.model.GameLevel;
 
 public class Game {
-	
+
 	FragmentsManager fragmentsManager;
 	KeywordManager keywordManager;
-	
+
 	ArrayList<GameLevel> gameLevelList;
 	GameLevel currentGameLevel;
-	
+
 
 	public Game() {
 		super();
 		gameLevelList = new ArrayList<GameLevel>();
 		fragmentsManager = new FragmentsManager();
 		keywordManager = new KeywordManager();
-		
+
 		fillData();
 	}
-	
+
 
 	private void fillData(){
-		
+
 		fragmentsManager.addFragment(new CodeFragment("OP_SEMICOLON", ";", CodeFragmentType.TYPE_OPERATOR));
 		fragmentsManager.addFragment(new CodeFragment("OP_DOT", ".", CodeFragmentType.TYPE_OPERATOR));
 		fragmentsManager.addFragment(new CodeFragment("OP_EQUALS", "=", CodeFragmentType.TYPE_OPERATOR));
@@ -48,7 +48,7 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("TELEPHONY_MANAGER_MANAGER", "TelephonyManager manager"));
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_TELEPHONY", "getSystemService(TELEPHONY_SERVICE)"));
 		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_LINE_NUMBER", "manager.getLine1Number()"));
-		
+
 		//Level 3
 		fragmentsManager.addFragment(new CodeFragment("PACKAGE_MANAGER_MANAGER", "PackageManager manager", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_PACKAGE_MANAGER", "getPackageManager()"));
@@ -57,15 +57,15 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("VAR_MANAGER", "manager", CodeFragmentType.TYPE_VARIABLE));
 
 		//Level 4
-		
+
 		fragmentsManager.addFragment(new CodeFragment("CURSOR_CURSOR", "Cursor cursor", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("RETURN_CURSOR_SEMICOLON", "return cursor;", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_CONTENT_RESOLVER", "getContentResolver()"));
-		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_CALLS", "query(content://calls/lastCalls)"));
-		
-		
+		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_CALLS", "query(\"content://calls/lastCalls\")"));
+
+
 		//Level5
-		
+
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_REQUEST", "Request req", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_URI", "Request(uri)"));
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_SET_VISIBLE_SEMICOLON", "request.setVisibleInDownloadUi(false);"));
@@ -73,6 +73,24 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_MANAGER", "DownloadManager manager"));
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE", "getSystemService(DOWNLOAD_SERVICE)"));
 		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON", "downloadManager.enqueu(request);", CodeFragmentType.TYPE_VARIABLE));
+
+		//Level 6
+		
+		//Level 7
+
+		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_SMS", "query(\"content://sms\")"));
+		
+		//Level8
+		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER_CONTENT", "StringBuilder content", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("NEW_STRING_BUILDER", "new StringBuilder()"));
+		fragmentsManager.addFragment(new CodeFragment("FILE_FILE", "FILE file", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON", "File(getExternalStorageDirectory(), article.txt);", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_LOG_TXT_SEMICOLON", "File(getExternalStorageDirectory(), log.txt", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("CONTENT_COPY_FILE_SEMICOLON", "content.copyFile(file);", CodeFragmentType.TYPE_VARIABLE));
+
+		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER", "StringBuilder()", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER", "StringBuilder()", CodeFragmentType.TYPE_VARIABLE));
+
 		
 		GameLevel l1 = new GameLevel("level1", this);
 		l1.setTitle("Mission 1");
@@ -88,17 +106,17 @@ public class Game {
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l1.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
-		
+
 		FragmentListBuilder builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("VIBRATOR_V").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_VIBRATOR").add("OP_SEMICOLON")
-			.add("V_VIBRATE(100)").add("OP_SEMICOLON");
+		.add("V_VIBRATE(100)").add("OP_SEMICOLON");
 
 
 		l1.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
-		
+
 		l1.setResponseFragmentList(builder.build());
-		
-		
+
+
 		GameLevel l2 = new GameLevel("level2", this);
 		l2.setTitle("Mission 2");
 		l2.setIntroText("« Parfait ! L’équipe technique a vraiment fait un super boulot. On aimerait bien obtenir son numéro de téléphone pour voir s’il n’est pas en contact avec d’autres suspects. Tu peux nous obtenir ça ?»");
@@ -114,17 +132,17 @@ public class Game {
 
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("TELEPHONY_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_TELEPHONY").add("OP_SEMICOLON")
-			.add("OP_RETURN").add("MANAGER_GET_LINE_NUMBER").add("OP_SEMICOLON");
-		
+		.add("OP_RETURN").add("MANAGER_GET_LINE_NUMBER").add("OP_SEMICOLON");
+
 		l2.setResponseFragmentList(builder.build());
-		
+
 		l2.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 		GameLevel l3 = new GameLevel("level3", this);
 		l3.setTitle("Mission 3");
 		l3.setIntroText("« Bon voyons un peu ce qu'il y'a sur ce téléphone. Est-ce que tu peux obtenir la liste des applications installées sur son terminal ? On aura un bon point du vue sur les réseaux sociaux qu'il peut utiliser pour communiquer avec d'éventuels complices »");
 		l3.setHelperText("Retourner la liste des applications installées sur le téléphone");
-		
+
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("PACKAGE_MANAGER_MANAGER"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_TELEPHONY"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_PACKAGE_MANAGER"));
@@ -136,22 +154,22 @@ public class Game {
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
-		
+
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("PACKAGE_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_PACKAGE_MANAGER").add("OP_SEMICOLON")
-			.add("OP_RETURN").add("VAR_MANAGER").add("OP_DOT").add("GET_INSTALLED_APP").add("OP_SEMICOLON");
-		
+		.add("OP_RETURN").add("VAR_MANAGER").add("OP_DOT").add("GET_INSTALLED_APP").add("OP_SEMICOLON");
+
 		l3.setResponseFragmentList(builder.build());
-		
+
 		l3.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
-		
-		
-		
+
+
+
 		GameLevel l4 = new GameLevel("level4", this);
 		l4.setTitle("Mission 4");
 		l4.setIntroText("« Je ne veux pas te mettre la pression mais le reste de l'équipe est très inquiète a propos de cet individu. Nous allons avoir besoin d'informations plus probantes. Essaye d'obtenir la liste de ses derniers appels. »");
 		l4.setHelperText("Retourner la liste des dernier appels");
-		
+
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("CURSOR_CURSOR"));
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("RETURN_CURSOR_SEMICOLON"));
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("QUERY_CONTENT_CALLS"));
@@ -160,23 +178,23 @@ public class Game {
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l4.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
-		
-		
+
+
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("CURSOR_CURSOR").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_CONTENT_RESOLVER").add("OP_DOT").add("QUERY_CONTENT_CALLS").add("OP_SEMICOLON")
-			.add("RETURN_CURSOR_SEMICOLON");
-		
+		.add("RETURN_CURSOR_SEMICOLON");
+
 		l4.setResponseFragmentList(builder.build());
 		l4.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
-		
-		
+
+
 		GameLevel l5 = new GameLevel("level5", this);
-		l5.setTitle("Mission 4");
+		l5.setTitle("Mission 5");
 		l5.setIntroText("« Tu t’en sors très bien, cette liste nous sera très utile. Pour la suite des opérations nous aurons besoin d’injecter un virus beaucoup plus puissant. Ce virus se trouve à l’adresse http://goo.gl/OHK4cm/hazardous.apk, tu dois le télécharger sur le terminal de la cible. »");
 		l5.setHelperText("Télécharger un fichier depuis internet sur le terminal de la cible");
-		
+
 		l5.setPreWrittenCode("String uri = ”http://goo.gl/OHK4cm/hazardous.apk”;");
-		
+
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_REQUEST"));
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_URI"));
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("REQUEST_SET_VISIBLE_SEMICOLON"));
@@ -190,45 +208,115 @@ public class Game {
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
 		l5.getFragmentList().add(fragmentsManager.getFragmentById("OP_NEW"));
-		
+
 		builder = new FragmentListBuilder(fragmentsManager);
-		builder.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("SEMICOLON")
-			.add("REQUEST_SET_VISIBLE_SEMICOLON").add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON")
-			.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("SEMICOLON")
-			.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
-		
+		builder.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("OP_SEMICOLON")
+		.add("REQUEST_SET_VISIBLE_SEMICOLON").add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("OP_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
+
 		l5.setResponseFragmentList(builder.build());
 		l5.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+
+
+		GameLevel l6 = new GameLevel("level6", this);
+
+		l6.setTitle("Mission 6");
+		l6.setIntroText("« Avec ce nouveau virus beaucoup plus puissant nous allons pouvoir accéder à l’ensemble de son terminal. Si tu peux récupérer une prise de vue depuis son appareil photo, nous pourrions récolter des informations sur l’intérieur de sa planque. »");
+		l6.setHelperText("Prendre une photo depuis la caméra frontale");
+
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
+
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("OP_RETURN");
+
+		l6.setResponseFragmentList(builder.build());
+		l6.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+
+
+		GameLevel l7 = new GameLevel("level7", this);
+
+		l7.setTitle("Mission 7");
+		l7.setIntroText(" « Il est visiblement dans une zone en extérieur. C’est inquiétant car il est à découvert, s’il ne se cache pas c’est qu’il est peut être prêt à passer à l’action. Je vais avertir une équipe sur le terrain, nous n’avons pas beaucoup de temps si nous devons intervenir. La meilleure manière d’obtenir des informations est d’accéder à la liste des derniers messages reçu, est-ce que tu peux faire ça ? »");
+		l7.setHelperText("Retourne la liste des derniers SMS");
+
 		
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("CURSOR_CURSOR"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTENT_RESOLVER"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("QUERY_CONTENT_SMS"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("RETURN_CURSOR_SEMICOLON"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("CURSOR_CURSOR").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_CONTENT_RESOLVER").add("OP_DOT").add("QUERY_CONTENT_SMS").add("OP_SEMICOLON")
+		.add("RETURN_CURSOR_SEMICOLON");
+
+
+		l7.setResponseFragmentList(builder.build());
+		l7.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+
+
+
+		GameLevel l8 = new GameLevel("level8", this);
+
+		l8.setTitle("Mission 8");
+		l8.setIntroText("« Ces conversation sont inquiétantes. Nos doutes se confirment. Les équipes techniques ont repérés un fichier non sécurisé « /log.txt » sur sa carte SD qui pourrait contenir des données intéressantes. Peux-tu récupérer le contenu ? »");
 		
+		l8.setHelperText("Retourner le contenu d'un fichier sur la carte SD du téléphone");
+
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("STRING_BUILDER_CONTENT"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_FILE"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_SD_CARD_LOG_TXT_SEMICOLON"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("CONTENT_COPY_FILE_SEMICOLON"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_NEW"));
+
+	
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("STRING_BUILDER_CONTENT").add("NEW_STRING_BUILDER").add("SEMICOLON")
+		.add("FILE_FILE").add("OP_EQUALS").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
+		.add("OP_RETURN").add("CONTENT_COPY_FILE_SEMICOLON");
+
+		l8.setResponseFragmentList(builder.build());
+		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+
 
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
 		gameLevelList.add(l4);
 		gameLevelList.add(l5);
+		gameLevelList.add(l6);
+		gameLevelList.add(l7);
+		gameLevelList.add(l8);
+
 		currentGameLevel = l1;
-		
+
 	}
-	
+
 	public GameLevel getCurrentGameLevel(){
 		return currentGameLevel;
 	}
-	
+
 	public GameLevel nextLevel(){
-		
+
 		for(int i = 0; i < gameLevelList.size(); i++){
-			
+
 			if(gameLevelList.get(i).equals(currentGameLevel) && i < gameLevelList.size() - 1){
 				currentGameLevel = gameLevelList.get(i+ 1);
 				return currentGameLevel;
 			}
 		}
-		
-		
+
+
 		return null;
 	}
-	
+
 	public FragmentsManager getFragmentsManager(){
 		return fragmentsManager;
 	}
@@ -237,6 +325,6 @@ public class Game {
 	public KeywordManager getKeywordManager() {
 		return keywordManager;
 	}
-	
+
 
 }
