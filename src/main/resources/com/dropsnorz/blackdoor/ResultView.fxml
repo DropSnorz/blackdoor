@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
@@ -8,22 +9,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<VBox maxHeight="300.0" maxWidth="400.0" prefHeight="300.0" prefWidth="400.0" spacing="10.0" styleClass="result-view" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="300.0" maxWidth="500.0" prefHeight="300.0" prefWidth="500.0" spacing="10.0" styleClass="result-view" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label text="MISSION TERMINÉE" textFill="#30b92d">
+         <font>
+            <Font name="Lucida Console" size="29.0" />
+         </font>
+      </Label>
       <Label text="Output" />
       <WebView fx:id="resultWebView" prefHeight="200.0" prefWidth="200.0" />
       <VBox fx:id="dialogPane" prefHeight="200.0" prefWidth="100.0">
-         <!--   <children>
-            <Button fx:id="BT_Skip" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="435.0" styleClass="choice-button" text="Ne rien faire">
-	            <graphic>
-			        <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
-			          <image>
-			            <Image url="@icons/arrow-right-24.png" />
-			          </image>
-			        </ImageView>
-				  </graphic>
-            </Button>
-         </children>-->
       </VBox>
    </children>
    <padding>

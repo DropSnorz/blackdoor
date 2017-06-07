@@ -28,7 +28,7 @@ public class DropCodeFragmentView extends VBox{
 		}
 		
 		this.setId("drop-code-area");
-		this.setMinHeight(150);
+		this.setMinHeight(165);
 		this.setSpacing(5);
 		this.setPadding(new Insets(5, 0, 5, 70));
 		
