@@ -314,7 +314,7 @@ public class Game {
 		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer article.txt"));
 		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
-		/*
+		
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -322,10 +322,10 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
-		*/
+		
 		gameLevelList.add(l8);
 
-		currentGameLevel = l8;
+		currentGameLevel = l1;
 
 	}
 
