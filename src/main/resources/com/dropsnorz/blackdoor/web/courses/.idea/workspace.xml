@@ -21,48 +21,18 @@
       <file leaf-file-name="cours3.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cours3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+            <state relative-caret-position="18">
+              <caret line="201" column="20" lean-forward="true" selection-start-line="201" selection-start-column="20" selection-end-line="246" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cours4.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cours4.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="128" column="7" lean-forward="false" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="85" column="86" lean-forward="false" selection-start-line="85" selection-start-column="86" selection-end-line="85" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cours6.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cours6.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cours6.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="41" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cours1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cours1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="41" selection-end-column="13" />
+            <state relative-caret-position="409">
+              <caret line="193" column="161" lean-forward="false" selection-start-line="193" selection-start-column="161" selection-end-line="193" selection-end-column="161" />
               <folding />
             </state>
           </provider>
@@ -88,11 +58,11 @@
         <option value="$PROJECT_DIR$/cours1.html" />
         <option value="$PROJECT_DIR$/cours2.html" />
         <option value="$PROJECT_DIR$/cours8.html" />
-        <option value="$PROJECT_DIR$/cours6.html" />
         <option value="$PROJECT_DIR$/cours5.html" />
         <option value="$PROJECT_DIR$/cours4.html" />
-        <option value="$PROJECT_DIR$/cours3.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/cours3.html" />
+        <option value="$PROJECT_DIR$/cours6.html" />
       </list>
     </option>
   </component>
@@ -267,12 +237,12 @@
       <workItem from="1496141349586" duration="3601000" />
       <workItem from="1496146636615" duration="7587000" />
       <workItem from="1496215668919" duration="11689000" />
-      <workItem from="1496914428303" duration="1295000" />
+      <workItem from="1496914428303" duration="4538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41165000" />
+    <option name="totallyTimeSpent" value="44408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="0" width="1368" height="741" extended-state="0" />
@@ -432,34 +402,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cours3.html">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+        <state relative-caret-position="409">
+          <caret line="85" column="86" lean-forward="false" selection-start-line="85" selection-start-column="86" selection-end-line="85" selection-end-column="86" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cours4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="128" column="7" lean-forward="false" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="23" />
+        <state relative-caret-position="384">
+          <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="75" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cours3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="201" column="20" lean-forward="true" selection-start-line="201" selection-start-column="20" selection-end-line="246" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cours6.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="41" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
-          <caret line="85" column="86" lean-forward="false" selection-start-line="85" selection-start-column="86" selection-end-line="85" selection-end-column="86" />
+          <caret line="193" column="161" lean-forward="false" selection-start-line="193" selection-start-column="161" selection-end-line="193" selection-end-column="161" />
           <folding />
         </state>
       </provider>

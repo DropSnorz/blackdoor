@@ -55,44 +55,145 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 id="titreCours">Titre du chapitre</h1>
-                    <h2>Titre d'une sous-partie</h2>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <div class="alert alert-info">
-                        <strong> Info ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-success">
-                        <strong> Success ! </strong> C'est chaud
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong> Danger ! </strong> C'est chaud
-                    </div>
+                    <h1 id="titreCours">Gestion des caméras</h1>
+                    <h2>Préambule</h2>
+
+                    <p>
+                        Comme vous pouvez vous en douter, la gestion des caméras est assez difficile. L'API Android est assez complexe à manipuler, et l'utilité des fonctions proposées est réduite au strict minimum. Pas de panique, pour vous faciliter la vie, nous vous mettons à disposition une librairie entière et simple d'accès !
+                    </p>
+
                     <div class="alert alert-warning">
-                        <strong> Warning ! </strong> C'est chaud
+                        <strong> Attention - </strong> Il est nécessaire d'inclure le package <code>java.lang.Object</code> pour manipuler notre classe
                     </div>
+
+                    <div class="alert alert-danger">
+                        <strong> Attention - </strong> Il faut absolument avoir les autorisations nécessaires pour manipuler les caméras de l'utilisateur
+                    </div>
+
+                    <p>
+                        Certains d'entre vous auront remarqué l'utilisation du pluriel dans le titre <strong>gestion des caméras</strong>, et il est important de comprendre le pourquoi du comment. Sur les téléphones modernes, il existe deux caméras. La première se situe au dos du mobile, sur la coque (généralement au dessus de la batterie). La seconde se situe à l'avant du téléphone, au dessus de l'écran, et sert essentiellement pour faire des "selfies". On l'appelle parfois <strong>caméra frontale</strong>.
+                    </p>
+
+                    <h2> Fonctionnement de la classe </h2>
+
+                    <p>
+                        Pour utiliser cette classe, il faut l'instancier. Pour cela, rien de plus simple : On utilise une nouvelle fois la classe <code>Context</code>, via la fonction <code>Context.getSystemService(Constante)</code>. Cela ne vous change pas des cours précédent, mais une nouveauté apparait sur le choix de la constante, puisque notre libairie vous facilite la vie : <code>FRONT_CAMERA</code> et <code>BACK_CAMERA</code>. Pour les moins anglophones d'entre vous, on pourrait traduire ces constantes par "caméra avant" et "caméra arrière". Il va ainsi de soi que la première constante concerne la caméra frontale, tandis que la seconde permet d'utiliser la caméra située à l'arrière du téléphone.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong> Info - </strong> On déclare un objet de type <code>Camera</code> pour manipuler les caméras
+                    </div>
+
+                    <p>
+                        Voici comment instancier la caméra !
+                    </p>
+
                     <div class="zoneCodeWrapper">
                             <textarea class="zoneCode">
-import javafx.scene.text.Text;
+import java.lang.Object; //Contient notre librairie
 
-public class CodeFragmentController {
-
-	CodeFragmentView view;
-    CodeFragment codeFragment;
-}
-                            </textarea>
-                        <div class="zoneCodeLegende">BLABLABLA je suis la légende</div>
+Camera cam1 = Context.getSystemService(FRONT_CAMERA); // Manipule la caméra avant
+Camera cam2 = Context.getSystemService(BACK_CAMERA); // Manipule la caméra arrière</textarea>
+                        <div class="zoneCodeLegende">Instancier un objet pour manipuler les caméras</div>
                     </div>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p><p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+
+                    <p>
+                        Une fois instancié, il suffit d'utiliser les fonctions de notre librairie pour manipuler les caméras !
+                    </p>
+
+                    <h2> Fonctions disponibles </h2>
+
+                    <p>
+                        Voici ci-dessous les principales fonctions utilisables sur nos objets de type <code>Camera</code>
+                    </p>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Fonction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>takePicture(String name)</code> <br>
+
+                                Prends une photo et la sauvegarde selon le paramètre <code>name</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>setFlashOn()</code> <br>
+
+                                Active le flash pour les prochaines photos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>setFlashOff()</code> <br>
+
+                                Désactive le flash pour les prochaines photos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>startVideo()</code> <br>
+
+                                Lance la caméra en mode vidéo
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>stopVideo(String name)</code> <br>
+
+                                Stop la vidéo en cours et la sauvegarde selon le paramètre <code>name</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> <code>stopVideo()</code> <br>
+
+                                Stop la vidéo en cours sans la sauvegarder
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        Toutes les fonctions semble évidentes : c'est bien le but de notre librairie. On dit merci qui ? :)
+                    </p>
+
+                    <h2> A vous de jouer !</h2>
+
+                    <p>
+                        Au boulot ! On va mettre en place toutes ces notions à travers un exercice. Nous allons abordé beaucoup de notions à la fois, n'hésitez pas à consulter le cours.
+                    </p>
+
+                    <p>
+                        Le but de l'exercice sera de prendre une photo "photo1" à l'avant avec flash, et "photo2" à l'arrière sans flash. Bonne chance !
+                    </p>
+
+                    <h2> Solution de l'exercice </h2>
+
+                    <p>
+                        Voici un exemple de correction que l'on va commenter ensemble. Je vous laisse le temps de prendre connaissance du code que l'on vous propose !
+                    </p>
+
+                    <div class="zoneCodeWrapper">
+                            <textarea class="zoneCode">
+import java.lang.Object; //Contient notre librairie
+
+Camera cam1 = Context.getSystemService(FRONT_CAMERA);
+Camera cam2 = Context.getSystemService(BACK_CAMERA);
+cam1.setFlashOn().takePicture("photo1");
+cam2.setFlashOff().takePicture("photo2");</textarea>
+                        <div class="zoneCodeLegende">Prise de photos avec et sans flash</div>
+                    </div>
+                    <p>
+                        Et voilà, le tour est joué. Avouez que c'était un jeu d'enfant ! Une fois ces notions maitrisées, vous pouvez passer à la suite du cours.
+                    </p>
+
                 </div>
             </div>
         </div>
