@@ -4,36 +4,69 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class KeywordManager {
-	
-	protected HashMap<String, ArrayList<String>> keywords;
-	
-	public KeywordManager(){
+
+	protected Game game;
+
+	public KeywordManager(Game game){
 		
-		keywords = new HashMap<String, ArrayList<String>>();
-		keywords.put("com.dropsnorz.blackdoor.level", new ArrayList<String>());
+		this.game = game;
 	}
-	
+
 	public ArrayList<String> getKeywords(String domain){
-		return keywords.get(domain);
 		
+		if(domain.equals("com.dropsnorz.blackdoor.game")){
+			return game.getKeywords();
+
+		}
+		else if(domain.equals("com.dropsnorz.blackdoor.level")){
+			return game.getCurrentGameLevel().getKeywords();
+
+		}
+		
+		return new ArrayList<String>();
+
 	}
 	
-	public void addKeywords(HashMap<String, ArrayList<String>> newKeywords){
+	public ArrayList<String> getAllKeywords(){
+		ArrayList<String> list; 
+		list = getKeywords("com.dropsnorz.blackdoor.game");
+		list.addAll(getKeywords("com.dropsnorz.blackdoor.level"));
 		
-		for(String newKey: newKeywords.keySet()){
-			if(!keywords.keySet().contains(newKey)){
-				keywords.put(newKey, newKeywords.get(newKey));
-			}
-			else{
-				for(String newKeyword : newKeywords.get(newKey)){
-					keywords.get(newKey).add(newKeyword);
+		return list;
+		
+	}
+
+	public void addKeywords(HashMap<String, ArrayList<String>> newKeywords){
+
+		for(String key : newKeywords.keySet()){
+			
+			if(key.equals("com.dropsnorz.blackdoor.game")){
+				for(String value : newKeywords.get(key)){
+					game.getKeywords().add(value);
 				}
+
+			}
+			else if(key.equals("com.dropsnorz.blackdoor.level")){
+				for(String value : newKeywords.get(key)){
+					game.getCurrentGameLevel().getKeywords().add(value);
+				}
+
 			}
 		}
 	}
-	
+
 	public void spawnKeywords(KeywordSpawner spawner){
 		addKeywords(spawner.getSpawnedKeywords());
 	}
 
+
+	public static void addKeyword(HashMap<String, ArrayList<String>> map, String key, String keyword){
+
+		if(map.get(key) == null){
+			map.put(key, new ArrayList<String>());
+		}
+
+		map.get(key).add(keyword);
+	}
+	
 }

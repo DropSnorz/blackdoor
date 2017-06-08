@@ -43,7 +43,7 @@ public class Dialog implements KeywordSpawner {
 		// TODO Auto-generated method stub
 		
 		HashMap<String, ArrayList<String>> keywords = new HashMap<String, ArrayList<String>>();
-		keywords.put("com.dropsnorz.blackdoor.level", generatedKeywords);
+		keywords.put("com.dropsnorz.blackdoor.game", generatedKeywords);
 		return keywords;
 	}
 	

@@ -8,6 +8,7 @@ import com.dropsnorz.blackdoor.level.model.Dialog;
 import com.dropsnorz.blackdoor.level.model.FragmentListBuilder;
 import com.dropsnorz.blackdoor.level.model.FragmentsManager;
 import com.dropsnorz.blackdoor.level.model.GameLevel;
+import com.dropsnorz.blackdoor.level.model.LevelAnswer;
 
 public class Game {
 
@@ -16,13 +17,16 @@ public class Game {
 
 	ArrayList<GameLevel> gameLevelList;
 	GameLevel currentGameLevel;
-
+	
+	protected ArrayList<String> keywords;
+ 
 
 	public Game() {
 		super();
 		gameLevelList = new ArrayList<GameLevel>();
 		fragmentsManager = new FragmentsManager();
-		keywordManager = new KeywordManager();
+		keywords = new ArrayList<String>();
+		keywordManager = new KeywordManager(this);
 
 		fillData();
 	}
@@ -114,7 +118,7 @@ public class Game {
 
 		l1.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
-		l1.setResponseFragmentList(builder.build());
+		l1.addAnswer(builder.buildAnswer());
 
 
 		GameLevel l2 = new GameLevel("level2", this);
@@ -134,7 +138,7 @@ public class Game {
 		builder.add("TELEPHONY_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_TELEPHONY").add("OP_SEMICOLON")
 		.add("OP_RETURN").add("MANAGER_GET_LINE_NUMBER").add("OP_SEMICOLON");
 
-		l2.setResponseFragmentList(builder.build());
+		l2.addAnswer(builder.buildAnswer());
 
 		l2.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
@@ -159,7 +163,7 @@ public class Game {
 		builder.add("PACKAGE_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_PACKAGE_MANAGER").add("OP_SEMICOLON")
 		.add("OP_RETURN").add("VAR_MANAGER").add("OP_DOT").add("GET_INSTALLED_APP").add("OP_SEMICOLON");
 
-		l3.setResponseFragmentList(builder.build());
+		l3.addAnswer(builder.buildAnswer());
 
 		l3.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
@@ -184,7 +188,7 @@ public class Game {
 		builder.add("CURSOR_CURSOR").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_CONTENT_RESOLVER").add("OP_DOT").add("QUERY_CONTENT_CALLS").add("OP_SEMICOLON")
 		.add("RETURN_CURSOR_SEMICOLON");
 
-		l4.setResponseFragmentList(builder.build());
+		l4.addAnswer(builder.buildAnswer());
 		l4.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 
@@ -215,7 +219,7 @@ public class Game {
 		.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("OP_SEMICOLON")
 		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
 
-		l5.setResponseFragmentList(builder.build());
+		l5.addAnswer(builder.buildAnswer());
 		l5.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 
@@ -230,7 +234,7 @@ public class Game {
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("OP_RETURN");
 
-		l6.setResponseFragmentList(builder.build());
+		l6.addAnswer(builder.buildAnswer());
 		l6.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 
@@ -254,7 +258,7 @@ public class Game {
 		.add("RETURN_CURSOR_SEMICOLON");
 
 
-		l7.setResponseFragmentList(builder.build());
+		l7.addAnswer(builder.buildAnswer());
 		l7.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 
@@ -268,6 +272,8 @@ public class Game {
 
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("STRING_BUILDER_CONTENT"));
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_FILE"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("NEW_STRING_BUILDER"));
+
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON"));
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("FILE_SD_CARD_LOG_TXT_SEMICOLON"));
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("CONTENT_COPY_FILE_SEMICOLON"));
@@ -275,17 +281,40 @@ public class Game {
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
 		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_NEW"));
+		l8.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
+
 
 	
 		builder = new FragmentListBuilder(fragmentsManager);
-		builder.add("STRING_BUILDER_CONTENT").add("NEW_STRING_BUILDER").add("SEMICOLON")
+		builder.add("STRING_BUILDER_CONTENT").add("NEW_STRING_BUILDER").add("OP_SEMICOLON")
 		.add("FILE_FILE").add("OP_EQUALS").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
 		.add("OP_RETURN").add("CONTENT_COPY_FILE_SEMICOLON");
 
-		l8.setResponseFragmentList(builder.build());
+		LevelAnswer l8a1 = builder.buildAnswer();
+		KeywordManager.addKeyword(l8a1.getKeywords(), "com.dropsnorz.blackdoor.level", "LEVEL_USER_GET_LOG_FILE");
+		KeywordManager.addKeyword(l8a1.getKeywords(), "com.dropsnorz.blackdoor.game", "USER_GET_LOG_FILE");
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("STRING_BUILDER_CONTENT").add("OP_EQUALS").add("NEW_STRING_BUILDER").add("OP_SEMICOLON")
+		.add("FILE_FILE").add("OP_EQUALS").add("OP_NEW").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
+		.add("OP_RETURN").add("CONTENT_COPY_FILE_SEMICOLON");
+
+		LevelAnswer l8a2 = builder.buildAnswer();
+		KeywordManager.addKeyword(l8a2.getKeywords(), "com.dropsnorz.blackdoor.level", "LEVEL_USER_GET_ARTICLE_FILE");
+		KeywordManager.addKeyword(l8a2.getKeywords(), "com.dropsnorz.blackdoor.game", "USER_GET_ARTICLE_FILE");
+		l8.addAnswer(l8a2);
+		
+		
+		ArrayList<String> keywordBind = new ArrayList<String>();
+		keywordBind.add("USER_GET_LOG_FILE");
+		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer log.txt"));
+		keywordBind = new ArrayList<String>();
+		keywordBind.add("USER_GET_ARTICLE_FILE");
+		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer article.txt"));
 		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
-
+		/*
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -293,9 +322,10 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
+		*/
 		gameLevelList.add(l8);
 
-		currentGameLevel = l1;
+		currentGameLevel = l8;
 
 	}
 
@@ -316,6 +346,18 @@ public class Game {
 
 		return null;
 	}
+	
+	
+
+	public ArrayList<String> getKeywords() {
+		return keywords;
+	}
+
+
+	public void setKeywords(ArrayList<String> keywords) {
+		this.keywords = keywords;
+	}
+
 
 	public FragmentsManager getFragmentsManager(){
 		return fragmentsManager;

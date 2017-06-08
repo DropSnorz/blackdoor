@@ -212,7 +212,7 @@ public class GameLevelController {
 			System.out.println(fragment);
 		}
 
-		LevelResolver resolver = new LevelResolver(game.getCurrentGameLevel());
+		LevelResolver resolver = new LevelResolver(game.getCurrentGameLevel(), game.getKeywordManager());
 
 		bottomTabPane.getSelectionModel().select(1);
 		consoleController.clear();

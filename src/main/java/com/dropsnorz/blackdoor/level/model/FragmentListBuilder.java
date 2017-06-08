@@ -26,5 +26,9 @@ public class FragmentListBuilder {
 		return  fragmentList;
 	}
 	
+	public LevelAnswer buildAnswer(){
+		return new LevelAnswer(fragmentList);
+	}
+	
 	
 }

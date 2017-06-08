@@ -14,11 +14,13 @@ public class GameLevel {
 	protected String preWrittenCode;
 	
 	protected ArrayList<CodeFragment> fragmentList;
-	protected ArrayList<CodeFragment> responseFragmentList;
+	protected ArrayList<LevelAnswer> answerList;
 	
 	protected KeywordFinder<Dialog> dialogKeywordFinder;
 	protected KeywordFinder<GameLevel> nextLevelKeywordFinder;
 	protected KeywordFinder<String> responseKeywordFinder;
+	
+	protected ArrayList<String> keywords;
 	
 	protected Game game;
 	
@@ -28,7 +30,8 @@ public class GameLevel {
 		
 		this.id = id;
 		fragmentList = new ArrayList<CodeFragment>();
-		responseFragmentList = new ArrayList<CodeFragment>();
+		answerList = new ArrayList<LevelAnswer>();
+		keywords = new ArrayList<String>();
 		
 		dialogKeywordFinder = new KeywordFinder<Dialog>();
 		
@@ -37,7 +40,7 @@ public class GameLevel {
 	}
 	
 	public ArrayList<Dialog> getDialogs(){
-		return dialogKeywordFinder.getObjects(game.getKeywordManager().getKeywords("com.dropsnorz.blackdoor.level"));
+		return dialogKeywordFinder.getObjects(game.getKeywordManager().getAllKeywords());
 	}
 	
 	public String getId() {
@@ -94,14 +97,25 @@ public class GameLevel {
 		this.fragmentList = fragmentList;
 	}
 
+	public void addAnswer(LevelAnswer answer){
+		this.answerList.add(answer);
+	}
 
-	public ArrayList<CodeFragment> getResponseFragmentList() {
-		return responseFragmentList;
+	public ArrayList<LevelAnswer> getAnswerList() {
+		return answerList;
 	}
 
 
-	public void setResponseFragmentList(ArrayList<CodeFragment> responseFragmentList) {
-		this.responseFragmentList = responseFragmentList;
+	public ArrayList<String> getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(ArrayList<String> keywords) {
+		this.keywords = keywords;
+	}
+
+	public void setAnswerList(ArrayList<LevelAnswer> answerList) {
+		this.answerList = answerList;
 	}
 
 	public KeywordFinder<Dialog> getDialogKeywordFinder() {
