@@ -28,10 +28,10 @@ public class KeywordManager {
 	}
 	
 	public ArrayList<String> getAllKeywords(){
-		ArrayList<String> list; 
-		list = getKeywords("com.dropsnorz.blackdoor.game");
+		ArrayList<String> list = new ArrayList<String>(); 
+		list.addAll(getKeywords("com.dropsnorz.blackdoor.game"));
 		list.addAll(getKeywords("com.dropsnorz.blackdoor.level"));
-		
+
 		return list;
 		
 	}
@@ -42,13 +42,20 @@ public class KeywordManager {
 			
 			if(key.equals("com.dropsnorz.blackdoor.game")){
 				for(String value : newKeywords.get(key)){
-					game.getKeywords().add(value);
+					if(!game.getKeywords().contains(value)){
+						game.getKeywords().add(value);
+
+					}
+					
 				}
 
 			}
 			else if(key.equals("com.dropsnorz.blackdoor.level")){
 				for(String value : newKeywords.get(key)){
-					game.getCurrentGameLevel().getKeywords().add(value);
+					if(!game.getCurrentGameLevel().getKeywords().contains(value)){
+						game.getCurrentGameLevel().getKeywords().add(value);
+
+					}					
 				}
 
 			}

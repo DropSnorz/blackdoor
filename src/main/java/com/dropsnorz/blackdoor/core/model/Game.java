@@ -88,8 +88,8 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER_CONTENT", "StringBuilder content", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("NEW_STRING_BUILDER", "new StringBuilder()"));
 		fragmentsManager.addFragment(new CodeFragment("FILE_FILE", "FILE file", CodeFragmentType.TYPE_VARIABLE));
-		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON", "File(getExternalStorageDirectory(), article.txt);", CodeFragmentType.TYPE_VARIABLE));
-		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_LOG_TXT_SEMICOLON", "File(getExternalStorageDirectory(), log.txt", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"article.txt\");", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_LOG_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"log.txt\");", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("CONTENT_COPY_FILE_SEMICOLON", "content.copyFile(file);", CodeFragmentType.TYPE_VARIABLE));
 
 		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER", "StringBuilder()", CodeFragmentType.TYPE_VARIABLE));
@@ -119,6 +119,8 @@ public class Game {
 		l1.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
 		l1.addAnswer(builder.buildAnswer());
+		l1.getResultKeywordFinder().addKeywordMapping(null, "level1");
+
 
 
 		GameLevel l2 = new GameLevel("level2", this);
@@ -141,6 +143,8 @@ public class Game {
 		l2.addAnswer(builder.buildAnswer());
 
 		l2.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l2.getResultKeywordFinder().addKeywordMapping(null, "level2");
+
 
 		GameLevel l3 = new GameLevel("level3", this);
 		l3.setTitle("Mission 3");
@@ -166,7 +170,7 @@ public class Game {
 		l3.addAnswer(builder.buildAnswer());
 
 		l3.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
-
+		l3.getResultKeywordFinder().addKeywordMapping(null, "level3");
 
 
 		GameLevel l4 = new GameLevel("level4", this);
@@ -190,6 +194,7 @@ public class Game {
 
 		l4.addAnswer(builder.buildAnswer());
 		l4.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l4.getResultKeywordFinder().addKeywordMapping(null, "level4");
 
 
 		GameLevel l5 = new GameLevel("level5", this);
@@ -221,6 +226,7 @@ public class Game {
 
 		l5.addAnswer(builder.buildAnswer());
 		l5.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l5.getResultKeywordFinder().addKeywordMapping(null, "level5");
 
 
 		GameLevel l6 = new GameLevel("level6", this);
@@ -236,6 +242,7 @@ public class Game {
 
 		l6.addAnswer(builder.buildAnswer());
 		l6.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l6.getResultKeywordFinder().addKeywordMapping(null, "level6");
 
 
 		GameLevel l7 = new GameLevel("level7", this);
@@ -260,6 +267,7 @@ public class Game {
 
 		l7.addAnswer(builder.buildAnswer());
 		l7.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l7.getResultKeywordFinder().addKeywordMapping(null, "level7");
 
 
 
@@ -286,18 +294,19 @@ public class Game {
 
 	
 		builder = new FragmentListBuilder(fragmentsManager);
-		builder.add("STRING_BUILDER_CONTENT").add("NEW_STRING_BUILDER").add("OP_SEMICOLON")
-		.add("FILE_FILE").add("OP_EQUALS").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
+		builder.add("STRING_BUILDER_CONTENT").add("OP_EQUALS").add("NEW_STRING_BUILDER").add("OP_SEMICOLON")
+		.add("FILE_FILE").add("OP_EQUALS").add("OP_NEW").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
 		.add("OP_RETURN").add("CONTENT_COPY_FILE_SEMICOLON");
 
 		LevelAnswer l8a1 = builder.buildAnswer();
 		KeywordManager.addKeyword(l8a1.getKeywords(), "com.dropsnorz.blackdoor.level", "LEVEL_USER_GET_LOG_FILE");
 		KeywordManager.addKeyword(l8a1.getKeywords(), "com.dropsnorz.blackdoor.game", "USER_GET_LOG_FILE");
-		
+		l8.addAnswer(l8a1);
+
 		
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("STRING_BUILDER_CONTENT").add("OP_EQUALS").add("NEW_STRING_BUILDER").add("OP_SEMICOLON")
-		.add("FILE_FILE").add("OP_EQUALS").add("OP_NEW").add("FILE_SD_CARD_LOG_TXT_SEMICOLON")
+		.add("FILE_FILE").add("OP_EQUALS").add("OP_NEW").add("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON")
 		.add("OP_RETURN").add("CONTENT_COPY_FILE_SEMICOLON");
 
 		LevelAnswer l8a2 = builder.buildAnswer();
@@ -314,7 +323,14 @@ public class Game {
 		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer article.txt"));
 		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 
-		
+		keywordBind = new ArrayList<String>();
+		keywordBind.add("LEVEL_USER_GET_ARTICLE_FILE");
+		l8.getResultKeywordFinder().addKeywordMapping(keywordBind, "level8-article");
+		keywordBind = new ArrayList<String>();
+		keywordBind.add("LEVEL_USER_GET_LOG_FILE");
+		l8.getResultKeywordFinder().addKeywordMapping(keywordBind, "level8-log");
+
+		/*
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -322,10 +338,11 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
+		*/
 		
 		gameLevelList.add(l8);
 
-		currentGameLevel = l1;
+		currentGameLevel = l8;
 
 	}
 

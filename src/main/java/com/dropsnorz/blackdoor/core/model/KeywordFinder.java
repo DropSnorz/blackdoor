@@ -25,7 +25,10 @@ public class KeywordFinder<T> {
 	}
 
 	public T getFirstObject(ArrayList<String> keywords){
-
+		
+		for(String item: keywords){
+			System.out.println(item);
+		}
 		for(ArrayList<String> map : keywordMappings.keySet()){
 			ArrayList<String> intersection = new ArrayList<String>(keywords);
 			intersection.retainAll(map);
@@ -35,7 +38,7 @@ public class KeywordFinder<T> {
 			}
 		}
 
-		return null;
+		return defaultObject;
 
 	}
 

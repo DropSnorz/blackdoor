@@ -43,7 +43,7 @@ public class ResultController {
 
 		WebEngine webEngine = resultWebView.getEngine();
 		//TODO load course by courseId
-		webEngine.load(getClass().getResource(ResourceResolver.getLevelResultUri(gameLevel.getId())).toExternalForm());
+		webEngine.load(getClass().getResource(ResourceResolver.getLevelResultUri(gameLevel.getResult())).toExternalForm());
 
 
 		Button BT_Skip = (Button) generateDialogButton();

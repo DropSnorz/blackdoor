@@ -18,7 +18,7 @@ public class GameLevel {
 	
 	protected KeywordFinder<Dialog> dialogKeywordFinder;
 	protected KeywordFinder<GameLevel> nextLevelKeywordFinder;
-	protected KeywordFinder<String> responseKeywordFinder;
+	protected KeywordFinder<String> resultKeywordFinder;
 	
 	protected ArrayList<String> keywords;
 	
@@ -34,6 +34,7 @@ public class GameLevel {
 		keywords = new ArrayList<String>();
 		
 		dialogKeywordFinder = new KeywordFinder<Dialog>();
+		resultKeywordFinder = new KeywordFinder<String>();
 		
 		this.game = game;
 		
@@ -41,6 +42,10 @@ public class GameLevel {
 	
 	public ArrayList<Dialog> getDialogs(){
 		return dialogKeywordFinder.getObjects(game.getKeywordManager().getAllKeywords());
+	}
+	
+	public String getResult(){
+		return resultKeywordFinder.getFirstObject(game.getKeywordManager().getAllKeywords());
 	}
 	
 	public String getId() {
@@ -121,5 +126,14 @@ public class GameLevel {
 	public KeywordFinder<Dialog> getDialogKeywordFinder() {
 		return dialogKeywordFinder;
 	}
+
+
+	public KeywordFinder<String> getResultKeywordFinder() {
+		return resultKeywordFinder;
+	}
+
+	
+	
+	
 	
 }
