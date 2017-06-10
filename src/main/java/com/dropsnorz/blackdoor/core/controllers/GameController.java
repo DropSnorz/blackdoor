@@ -58,6 +58,16 @@ public class GameController{
 	
 	public void playGame(){
 		
+		GameStoryController storyController = new GameStoryController(this);
+		view.stackView(storyController.getView());
+		
+		view.unstackView(introController.getView());
+		//view.unstackView(menuController.getView());
+		
+
+	}
+	
+	public void startLevel(){
 		Game game = new Game();
 		GameLevelController gameLevelController = new GameLevelController(game,this);
 		view.stackView(gameLevelController.getView());

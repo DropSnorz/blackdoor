@@ -2,6 +2,8 @@ package com.dropsnorz.blackdoor.core.controllers;
 
 import java.io.IOException;
 
+import com.dropsnorz.blackdoor.utils.Animations;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,6 +29,7 @@ public class GameMenuController {
 				gameController.playGame();
 			};
 		});
+		
 		
 	}	
 	

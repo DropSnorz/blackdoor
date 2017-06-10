@@ -330,7 +330,7 @@ public class Game {
 		keywordBind.add("LEVEL_USER_GET_LOG_FILE");
 		l8.getResultKeywordFinder().addKeywordMapping(keywordBind, "level8-log");
 
-		/*
+		
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -338,11 +338,11 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
-		*/
+		
 		
 		gameLevelList.add(l8);
 
-		currentGameLevel = l8;
+		currentGameLevel = l1;
 
 	}
 

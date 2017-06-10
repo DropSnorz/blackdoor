@@ -31,6 +31,24 @@ public class Animations {
 		animation.play();
 
 	}
+	
+	public static void labelTypingAnimation(final Label lbl, String descImp, Duration duration) {
+		final String content = descImp;
+		final Transition animation = new Transition() {
+			{
+				setCycleDuration(duration);
+				setDelay(Duration.seconds(1));
+			}
+
+			protected void interpolate(double frac) {
+				final int length = content.length();
+				final int n = Math.round(length * (float) frac);
+				lbl.setText(content.substring(0, n));
+			}
+		};
+		animation.play();
+
+	}
 
 	public static void textTypingAnimation(final Text lbl, String descImp) {
 		final String content = descImp;

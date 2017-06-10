@@ -21,7 +21,6 @@ public class ModalFrame extends BorderPane {
 		
 		this.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, 0.8), CornerRadii.EMPTY, Insets.EMPTY)));
 		
-		mainNode.getChildren().add(new Label("test"));
 		mainNode.setAlignment(Pos.CENTER);
 		this.setCenter(mainNode);
 	}
