@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -17,6 +18,7 @@ public class GameStoryView extends BorderPane{
 	public HBox mainPane;
 	public Label text;
 	public Button BT_Next;
+	public ProgressIndicator progressIndicator;
 	
 	
 	public GameStoryView(){
@@ -41,6 +43,13 @@ public class GameStoryView extends BorderPane{
 		HBox bottomPane = new HBox();
 		bottomPane.setAlignment(Pos.CENTER_RIGHT);
 		bottomPane.setPadding(new Insets(20));
+		bottomPane.setSpacing(5);
+		
+		progressIndicator = new ProgressIndicator();
+		progressIndicator.setVisible(false);
+		progressIndicator.setMaxSize(20,20);
+		bottomPane.getChildren().add(progressIndicator);
+		
 		BT_Next = new Button("Suivant");
 		BT_Next.getStyleClass().add("ui-button");
 		bottomPane.getChildren().add(BT_Next);

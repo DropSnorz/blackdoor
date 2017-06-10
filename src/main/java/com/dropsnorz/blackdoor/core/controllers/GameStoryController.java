@@ -2,6 +2,7 @@ package com.dropsnorz.blackdoor.core.controllers;
 
 import com.dropsnorz.blackdoor.core.view.GameStoryView;
 import com.dropsnorz.blackdoor.utils.Animations;
+import com.dropsnorz.blackdoor.utils.TimerUtils;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,7 +20,17 @@ public class GameStoryController {
 		
 		view.BT_Next.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				gameController.startLevel();
+				view.progressIndicator.setVisible(true);
+				
+				TimerUtils.scheduleUIAction(2, new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent event) {
+						gameController.startLevel();
+						
+					}
+					
+				});
 			};
 		});
 		

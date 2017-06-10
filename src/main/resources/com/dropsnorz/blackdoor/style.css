@@ -339,3 +339,7 @@
 .tab-content-header{
 	-fx-background-color: gray;
 }
+
+ProgressIndicator{
+	-fx-progress-color: white;
+}
