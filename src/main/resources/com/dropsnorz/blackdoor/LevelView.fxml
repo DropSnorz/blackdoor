@@ -89,22 +89,15 @@
          </children></VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="BT_Submit" mnemonicParsing="false" styleClass="ui-button" text="Submit" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="20.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
+
    </bottom>
    <right>
       <Pane>
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
+         <VBox alignment="TOP_CENTER">
+          <children>
+         
+          <VBox alignment="TOP_CENTER" prefHeight="340.0" prefWidth="220.0" spacing="30.0" styleClass="level-hud" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="LB_LevelTitle" text="Level 1" />
                  <LevelPointsDisplay>
@@ -112,14 +105,14 @@
             			<Insets left="40.0" right="20.0" />
          			</LevelPointsDisplay.margin>
                   </LevelPointsDisplay>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox minHeight="28" prefHeight="28" prefWidth="200.0">
                   
                   </HBox>
                   <Button mnemonicParsing="false" styleClass="hud-button" text="Indice" />
                   <Button fx:id="BT_Course" mnemonicParsing="false" styleClass="hud-button" text="Cours" />
                   <Button fx:id="BT_RestartTutorial" mnemonicParsing="false" styleClass="flat-small-button" text="Rejouer le tutoriel">
                      <VBox.margin>
-                        <Insets top="60.0" />
+                        <Insets top="43.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -127,6 +120,21 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </VBox>
+          
+       <HBox alignment="CENTER">
+         <children>
+            <Button fx:id="BT_Submit" mnemonicParsing="false" styleClass="ui-button" text="Exécuter le code" />
+         </children>
+         <padding>
+            <Insets top="15" bottom="10.0" left="10.0" right="20.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      
+          </children>
+         </VBox>
          </children>
          <padding>
             <Insets left="10.0" right="5.0" />

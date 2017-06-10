@@ -432,7 +432,7 @@ public class Game {
 		l9message.getResultKeywordFinder().addKeywordMapping(null, "level9-message");
 
 		
-		/*
+		
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -440,14 +440,14 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
-		*/
+		
 		
 		gameLevelList.add(l8);
 		gameLevelList.add(l9gps);
 		gameLevelList.add(l9message);
 
 
-		currentGameLevel = l8;
+		currentGameLevel = l1;
 
 	}
 
