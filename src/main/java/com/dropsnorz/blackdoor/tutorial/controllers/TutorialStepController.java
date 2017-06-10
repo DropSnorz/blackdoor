@@ -23,8 +23,7 @@ public class TutorialStepController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				System.out.println("Click, calling next step");
+
 				tutorialControler.nextStep();
 			}
 			

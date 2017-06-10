@@ -21,9 +21,7 @@ public class TutorialStepView extends Pane {
 	public TutorialStepView(Node node, double width, double height){
 		super();
 
-		System.out.println(node);
 		Bounds bounds = node.localToScene(node.getBoundsInLocal());
-		System.out.println(bounds);
 		
 		//Pane shade = new Pane();
 		this.setMinHeight(height);
@@ -35,12 +33,10 @@ public class TutorialStepView extends Pane {
 		centerX = x;
 		centerY = y;
 		
-		System.out.println(width + " " + height);
 		
 		double x_relative = x / width;
 		double y_relative = y / height;
 		
-		System.out.println("W/H" + x_relative + "/" + y_relative);
 
 		RadialGradient shadePaint = new RadialGradient(
 				0,0, x_relative, y_relative, 0.3, true, CycleMethod.NO_CYCLE,
@@ -56,15 +52,6 @@ public class TutorialStepView extends Pane {
 								)
 						)
 				);
-
-
-		// blur helps reduce visible banding of the radial gradient.
-		//this.setEffect(new BoxBlur(5, 5, 3));
-
-		//final Circle glass = new Circle(100,100,100);        
-
-		//root.setClip(shade);
-
 
 
 	}

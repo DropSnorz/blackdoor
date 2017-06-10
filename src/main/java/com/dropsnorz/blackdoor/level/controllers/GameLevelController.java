@@ -123,7 +123,6 @@ public class GameLevelController {
 
 		BT_Submit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				System.out.println("On click");
 				processInputCode();
 
 				//gameController.popModal(resultController.getView());
@@ -207,10 +206,6 @@ public class GameLevelController {
 
 	public void processInputCode(){
 		ArrayList<CodeFragment> response = dropCodeFragmentController.getDroppedCodeFragmentList();
-
-		for(CodeFragment fragment : response){
-			System.out.println(fragment);
-		}
 
 		LevelResolver resolver = new LevelResolver(game.getCurrentGameLevel(), game.getKeywordManager());
 

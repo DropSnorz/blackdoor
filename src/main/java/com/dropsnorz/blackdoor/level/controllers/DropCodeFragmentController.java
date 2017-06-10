@@ -118,7 +118,6 @@ public class DropCodeFragmentController {
 		@Override
 		public void handle(DragEvent event) {
 
-			System.out.println("Drop event on row!");
 			/* data dropped */
 			/* if there is a string data on dragboard, read it and use it */
 			Dragboard db = event.getDragboard();
@@ -157,7 +156,6 @@ public class DropCodeFragmentController {
 
 			//Node target = ((Node) event.getTarget()).getParent().getParent();
 			
-			System.out.println("Drop event on item!");
 			/* data dropped */
 			/* if there is a string data on dragboard, read it and use it */
 			Dragboard db = event.getDragboard();

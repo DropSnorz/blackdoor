@@ -25,7 +25,6 @@ public class GameMenuController {
 		
 		BT_Play.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				System.out.println("On click");
 				gameController.playGame();
 			};
 		});
