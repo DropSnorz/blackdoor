@@ -251,6 +251,12 @@ public class GameLevelController {
 		gameController.hideModal();
 
 	}
+	
+	public void endGame(){
+		
+		gameController.endGame();
+		
+	}
 	public Parent getView(){
 		return root;
 	}

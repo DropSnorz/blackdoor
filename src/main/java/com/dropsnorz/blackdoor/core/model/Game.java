@@ -88,14 +88,28 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER_CONTENT", "StringBuilder content", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("NEW_STRING_BUILDER", "new StringBuilder()"));
 		fragmentsManager.addFragment(new CodeFragment("FILE_FILE", "FILE file", CodeFragmentType.TYPE_VARIABLE));
-		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"article.txt\");", CodeFragmentType.TYPE_VARIABLE));
-		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_LOG_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"log.txt\");", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_ARTICLE_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"article.txt\");"));
+		fragmentsManager.addFragment(new CodeFragment("FILE_SD_CARD_LOG_TXT_SEMICOLON", "File(getExternalStorageDirectory(), \"log.txt\");"));
 		fragmentsManager.addFragment(new CodeFragment("CONTENT_COPY_FILE_SEMICOLON", "content.copyFile(file);", CodeFragmentType.TYPE_VARIABLE));
-
-		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER", "StringBuilder()", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("STRING_BUILDER", "StringBuilder()", CodeFragmentType.TYPE_VARIABLE));
 
+		//Level 9 Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		
+		fragmentsManager.addFragment(new CodeFragment("LOCATION_MANAGER_MANAGER", "LocationManager manager", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_LOCATION_SERVICE", "getSystemService(LOCATION_SERVICE)"));
+		fragmentsManager.addFragment(new CodeFragment("LOCATION_LOCATION", "Location location", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("GET_LAST_KNOWN_LOCATION", "getLastKnownLocation(LocationManager.GPS_PROVIDER)"));
+		fragmentsManager.addFragment(new CodeFragment("RETURN_LOCATION_SEMICOLON", "return location;", CodeFragmentType.TYPE_VARIABLE));
+		
+		
+		fragmentsManager.addFragment(new CodeFragment("ALERT_DIALOG_BUILDER_BUILDER", "AlertDialog.Builder builder", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("NEW_ALERT_BUILDER_SEMICOLON", "new AlertDialog.Builder(getContext());"));
+		fragmentsManager.addFragment(new CodeFragment("VAR_BUILDER", "builder", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("SET_MESSAGE_ESCAPE", "setMessage(\"Norah, fuyez ! Votre téléphone est surveillé. Ils savent. \")"));
+		fragmentsManager.addFragment(new CodeFragment("SET_MESSAGE_STRANGE", "setMessage(\"J'ai merdé. Désolé. \")"));
+		fragmentsManager.addFragment(new CodeFragment("BUILDER_CREATE_SEMICOLON", "builder.create();", CodeFragmentType.TYPE_VARIABLE));
+
+
 		GameLevel l1 = new GameLevel("level1", this);
 		l1.setTitle("Mission 1");
 		l1.setHelperText("Faire vibrer le téléphone de la cible pendant 100 ms");
@@ -317,11 +331,20 @@ public class Game {
 		
 		ArrayList<String> keywordBind = new ArrayList<String>();
 		keywordBind.add("USER_GET_LOG_FILE");
-		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer log.txt"));
+		ArrayList<String> generatedKeywords = new ArrayList<String>();
+		generatedKeywords.add("USER_GAVE_LOG_FILE");
+		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer log.txt", generatedKeywords));
+		
+		
 		keywordBind = new ArrayList<String>();
 		keywordBind.add("USER_GET_ARTICLE_FILE");
-		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer article.txt"));
-		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		generatedKeywords = new ArrayList<String>();
+		generatedKeywords.add("USER_GAVE_ARTICLE_FILE");
+		l8.getDialogKeywordFinder().addKeywordMapping(keywordBind, new Dialog("Envoyer article.txt", generatedKeywords));
+		
+		generatedKeywords = new ArrayList<String>();
+		generatedKeywords.add("USER_LIE_LEVEL8");
+		l8.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("[Mentir] Je n'ai rien trouvé de probant", generatedKeywords));
 
 		keywordBind = new ArrayList<String>();
 		keywordBind.add("LEVEL_USER_GET_ARTICLE_FILE");
@@ -331,6 +354,85 @@ public class Game {
 		l8.getResultKeywordFinder().addKeywordMapping(keywordBind, "level8-log");
 
 		
+		GameLevel l9gps = new GameLevel("level9-gps", this);
+		l9gps.setTitle("Mission 9");
+		l9gps.setIntroText("«Nous pensons maintenant connaitre sa destination. Il nous faut ses coordonnées GPS pour pouvoir l’intercepter. C’est du très bon travail ! »");
+		l9gps.setHelperText("Retourner les coordonées GPS du téléphone");
+		
+		
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("LOCATION_MANAGER_MANAGER"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_LOCATION_SERVICE"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("LOCATION_LOCATION"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("VAR_MANAGER"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("GET_LAST_KNOWN_LOCATION"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("RETURN_LOCATION_SEMICOLON"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l9gps.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("LOCATION_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_LOCATION_SERVICE").add("OP_SEMICOLON")
+		.add("LOCATION_LOCATION").add("OP_EQUALS").add("VAR_MANAGER").add("OP_DOT").add("GET_LAST_KNOWN_LOCATION").add("OP_SEMICOLON")
+		.add("RETURN_LOCATION_SEMICOLON");
+
+		LevelAnswer l9gpsAnswer = builder.buildAnswer();
+		l9gps.addAnswer(l9gpsAnswer);
+		
+		
+		generatedKeywords = new ArrayList<String>();
+		generatedKeywords.add("USER_GAVE_REAL_POSITION");
+		l9gps.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Envoyer les coordonées GPS", generatedKeywords));
+		generatedKeywords = new ArrayList<String>();
+		generatedKeywords.add("USER_GAVE_FAKE_POSITION");
+		l9gps.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("[Mentir] Envoyer de fausses coordonées GPS", generatedKeywords));
+		
+		l9gps.getResultKeywordFinder().addKeywordMapping(null, "level9-gps");
+
+		
+		
+		GameLevel l9message = new GameLevel("level9-message", this);
+		
+		l9message.setTitle("Mission 9");
+		l9message.setIntroText("« TRANSMISSION_ABORT »");
+		l9message.setHelperText("GOALS UNDEFINED");
+		
+		
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("ALERT_DIALOG_BUILDER_BUILDER"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("NEW_ALERT_BUILDER_SEMICOLON"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("VAR_BUILDER"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("SET_MESSAGE_ESCAPE"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("SET_MESSAGE_STRANGE"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("BUILDER_CREATE_SEMICOLON"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+		l9message.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("ALERT_DIALOG_BUILDER_BUILDER").add("OP_EQUALS").add("NEW_ALERT_BUILDER_SEMICOLON")
+		.add("VAR_BUILDER").add("OP_DOT").add("SET_MESSAGE_ESCAPE").add("OP_SEMICOLON")
+		.add("BUILDER_CREATE_SEMICOLON");
+
+		LevelAnswer l9messagea1 = builder.buildAnswer();
+		KeywordManager.addKeyword(l9messagea1.getKeywords(), "com.dropsnorz.blackdoor.level", "LEVEL_USER_SEND_MESSAGE");
+		KeywordManager.addKeyword(l9messagea1.getKeywords(), "com.dropsnorz.blackdoor.game", "USER_SEND_MESSAGE");
+		l9message.addAnswer(l9messagea1);
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("ALERT_DIALOG_BUILDER_BUILDER").add("OP_EQUALS").add("NEW_ALERT_BUILDER_SEMICOLON")
+		.add("VAR_BUILDER").add("OP_DOT").add("SET_MESSAGE_STRANGE").add("OP_SEMICOLON")
+		.add("BUILDER_CREATE_SEMICOLON");
+
+		LevelAnswer l9messagea2 = builder.buildAnswer();
+		l9message.addAnswer(l9messagea2);
+		
+		l9message.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
+		l9message.getResultKeywordFinder().addKeywordMapping(null, "level9-message");
+
+		
+		/*
 		gameLevelList.add(l1);
 		gameLevelList.add(l2);
 		gameLevelList.add(l3);
@@ -338,19 +440,44 @@ public class Game {
 		gameLevelList.add(l5);
 		gameLevelList.add(l6);
 		gameLevelList.add(l7);
-		
+		*/
 		
 		gameLevelList.add(l8);
+		gameLevelList.add(l9gps);
+		gameLevelList.add(l9message);
 
-		currentGameLevel = l1;
+
+		currentGameLevel = l8;
 
 	}
 
 	public GameLevel getCurrentGameLevel(){
 		return currentGameLevel;
 	}
+	
+	public GameLevel getLevelById(String id){
+		
+		for(GameLevel level : gameLevelList){
+			if (level.getId().equals(id)){
+				return level;
+			}
+		}
+		return null;
+	}
 
 	public GameLevel nextLevel(){
+		
+		if(currentGameLevel.getId().equals("level8")){
+			
+			if(keywordManager.getAllKeywords().contains("USER_GAVE_ARTICLE_FILE")){
+				currentGameLevel = getLevelById("level9-message");
+				return currentGameLevel;
+			}
+			else{
+				currentGameLevel = getLevelById("level9-gps");
+				return currentGameLevel;
+			}
+		}
 
 		for(int i = 0; i < gameLevelList.size(); i++){
 

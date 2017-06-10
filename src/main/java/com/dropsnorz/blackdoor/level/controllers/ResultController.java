@@ -48,7 +48,7 @@ public class ResultController {
 
 		Button BT_Skip = (Button) generateDialogButton();
 		BT_Skip.setText("Ne rien faire !");
-		
+
 		dialogPane.getChildren().add(BT_Skip);
 
 
@@ -65,55 +65,63 @@ public class ResultController {
 			Button button = (Button) generateDialogButton();
 
 			button.setText(dialog.getText());
-			
+
 			dialogPane.getChildren().add(button);
 
 
 			button.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					
+
 					game.getKeywordManager().spawnKeywords(dialog);
 
-					gameLevelController.hideModal();
-					gameLevelController.nextLevel();
+					if(!gameLevel.getId().equals("level9-gps") && !gameLevel.getId().equals("level9-message")){
+
+						gameLevelController.hideModal();
+						gameLevelController.nextLevel();
+					}
 					
-					
+					else{
+						
+						gameLevelController.hideModal();
+						gameLevelController.endGame();
+					}
+
 
 				};
 
 			});
 
-			}
-
-		}
-
-		public Node getView(){
-			return root;
-		}
-
-		private void generateUI(){
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/ResultView.fxml"));
-				loader.setController(this);
-				root = loader.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-
-		private Node generateDialogButton(){
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/DialogView.fxml"));
-				loader.setController(this);
-				return loader.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return null;
 		}
 
 	}
+
+	public Node getView(){
+		return root;
+	}
+
+	private void generateUI(){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/ResultView.fxml"));
+			loader.setController(this);
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	private Node generateDialogButton(){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dropsnorz/blackdoor/DialogView.fxml"));
+			loader.setController(this);
+			return loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+}

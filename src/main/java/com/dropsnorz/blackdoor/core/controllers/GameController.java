@@ -33,25 +33,30 @@ import javafx.util.Duration;
 public class GameController{
 
 	protected GameView view;
+	protected Game game;
+
 	protected GameIntroController introController;
 	protected GameMenuController menuController;
+	protected GameLevelController gameLevelController;
+	
 	
 	protected ModalFrame modalFrame;
-
+	
 	public GameController(){
 
 		view = new GameView();
-		
+		game = new Game();
+
 		introController = new GameIntroController();
 		menuController = new GameMenuController(this);
+		
 		
 		view.stackView(menuController.getView());
 		view.stackView(introController.getView());
 
 		introController.animateUI();
 		modalFrame = new ModalFrame();
-		
-		
+				
 		Animations.fadeOut(introController.getView(), Duration.seconds(5));
 		
 	}
@@ -62,14 +67,14 @@ public class GameController{
 		view.stackView(storyController.getView());
 		
 		view.unstackView(introController.getView());
-		//view.unstackView(menuController.getView());
+		view.unstackView(menuController.getView());
 		
 
 	}
 	
 	public void startLevel(){
-		Game game = new Game();
-		GameLevelController gameLevelController = new GameLevelController(game,this);
+		
+		gameLevelController = new GameLevelController(game,this);
 		view.stackView(gameLevelController.getView());
 		
 		
@@ -84,6 +89,21 @@ public class GameController{
 		});
 	}
 	
+	public void endGame(){
+		
+		GameEndController endController = new GameEndController(this);
+		view.stackView(endController.getView());
+		view.unstackView(gameLevelController.getView());
+		
+		
+
+	}
+	
+	public void backToMenu(){
+		
+		view.stackView(menuController.getView());
+	}
+	
 	public void popModal(Node node){
 		
 		modalFrame.setContent(node);
@@ -94,6 +114,10 @@ public class GameController{
 		
 		view.unstackView(modalFrame);
 	
+	}
+	
+	public Game getGame(){
+		return game;
 	}
 
 	public GameView getView(){
