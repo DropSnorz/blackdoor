@@ -236,8 +236,14 @@ public class GameLevelController {
 				}
 
 			});
+			
+			if (resolver.getErrorList().size() > 0){
+				consoleController.write("ERROR: " + resolver.getErrorList().get(0));
+			}
+			else{
+				consoleController.write("ERROR");
 
-			consoleController.write("ERROR");
+			}
 		}
 	}
 
