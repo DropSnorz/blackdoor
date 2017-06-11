@@ -80,6 +80,12 @@ public class Game {
 
 		//Level 6
 		
+		fragmentsManager.addFragment(new CodeFragment("CAMERA_CAMERA", "Camera camera", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_CAMERA", "getSystemService(BACK_CAMERA)"));
+		fragmentsManager.addFragment(new CodeFragment("VAR_CAMERA", "camera", CodeFragmentType.TYPE_VARIABLE ));
+		fragmentsManager.addFragment(new CodeFragment("TAKE_PICTURE", "takePicture(\"snapshot.png\")"));
+
+		
 		//Level 7
 
 		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_SMS", "query(\"content://sms\")"));
@@ -249,14 +255,33 @@ public class Game {
 		l6.setIntroText("« Avec ce nouveau virus beaucoup plus puissant nous allons pouvoir accéder à l’ensemble de son terminal. Si tu peux récupérer une prise de vue depuis son appareil photo, nous pourrions récolter des informations sur l’intérieur de sa planque. »");
 		l6.setHelperText("Prendre une photo depuis la caméra frontale");
 
-		l6.getFragmentList().add(fragmentsManager.getFragmentById("OP_RETURN"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("CAMERA_CAMERA"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_CAMERA"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("VAR_CAMERA"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("TAKE_PICTURE"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
+		l6.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));
+
+
+		
 
 		builder = new FragmentListBuilder(fragmentsManager);
-		builder.add("OP_RETURN");
+		builder.add("CAMERA_CAMERA").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_CAMERA").add("OP_SEMICOLON")
+		.add("VAR_CAMERA").add("OP_DOT").add("TAKE_PICTURE").add("OP_SEMICOLON");
 
 		l6.addAnswer(builder.buildAnswer());
 		l6.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 		l6.getResultKeywordFinder().addKeywordMapping(null, "level6");
+		
+		
+		fragmentsManager.addFragment(new CodeFragment("CAMERA_CAMERA", "Camera camera", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_CAMERA", "getSystemService(BACK_CAMERA)"));
+		fragmentsManager.addFragment(new CodeFragment("VAR_CAMERA", "camera", CodeFragmentType.TYPE_VARIABLE ));
+		fragmentsManager.addFragment(new CodeFragment("TAKE_PICTURE", "takePicture(\"snapshot.png\")"));
+		
+		
 
 
 		GameLevel l7 = new GameLevel("level7", this);
