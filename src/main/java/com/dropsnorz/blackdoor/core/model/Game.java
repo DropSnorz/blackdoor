@@ -46,18 +46,18 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_VIBRATOR", "getSystemService(VIBRAOTR_SERVICE)"));
 		fragmentsManager.addFragment(new CodeFragment("VIBRATOR_SERVICE", "VIBRATOR_SERVICE"));
 		fragmentsManager.addFragment(new CodeFragment("MESSAGE_SERVICE", "MESSAGE_SERVICE"));
-		fragmentsManager.addFragment(new CodeFragment("V_VIBRATE(100)", "v.vibrate(100)"));
+		fragmentsManager.addFragment(new CodeFragment("V_VIBRATE(100)", "v.vibrate(100)", CodeFragmentType.TYPE_VARIABLE));
 
 		//Level 2
-		fragmentsManager.addFragment(new CodeFragment("TELEPHONY_MANAGER_MANAGER", "TelephonyManager manager"));
+		fragmentsManager.addFragment(new CodeFragment("TELEPHONY_MANAGER_MANAGER", "TelephonyManager manager", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_TELEPHONY", "getSystemService(TELEPHONY_SERVICE)"));
-		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_LINE_NUMBER", "manager.getLine1Number()"));
+		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_LINE_NUMBER", "manager.getLine1Number()", CodeFragmentType.TYPE_VARIABLE));
 
 		//Level 3
 		fragmentsManager.addFragment(new CodeFragment("PACKAGE_MANAGER_MANAGER", "PackageManager manager", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("GET_PACKAGE_MANAGER", "getPackageManager()"));
 		fragmentsManager.addFragment(new CodeFragment("LIST_APPLICATION_INFO", "List<ApplicationInfo> packages"));
-		fragmentsManager.addFragment(new CodeFragment("GET_INSTALLED_APP", "getInstalledApplications()"));
+		fragmentsManager.addFragment(new CodeFragment("MANAGER_GET_INSTALLED_APP", "manager.getInstalledApplications()", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("VAR_MANAGER", "manager", CodeFragmentType.TYPE_VARIABLE));
 
 		//Level 4
@@ -175,7 +175,7 @@ public class Game {
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_SYSTEM_SERVICE_TELEPHONY"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_PACKAGE_MANAGER"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("LIST_APPLICATION_INFO"));
-		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_INSTALLED_APP"));
+		l3.getFragmentList().add(fragmentsManager.getFragmentById("MANAGER_GET_INSTALLED_APP"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("VAR_MANAGER"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
 		l3.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
@@ -185,7 +185,7 @@ public class Game {
 
 		builder = new FragmentListBuilder(fragmentsManager);
 		builder.add("PACKAGE_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_PACKAGE_MANAGER").add("OP_SEMICOLON")
-		.add("OP_RETURN").add("VAR_MANAGER").add("OP_DOT").add("GET_INSTALLED_APP").add("OP_SEMICOLON");
+		.add("OP_RETURN").add("MANAGER_GET_INSTALLED_APP").add("OP_SEMICOLON");
 
 		l3.addAnswer(builder.buildAnswer());
 
@@ -245,6 +245,34 @@ public class Game {
 		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
 
 		l5.addAnswer(builder.buildAnswer());
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("OP_SEMICOLON")
+		.add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON").add("REQUEST_SET_VISIBLE_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("OP_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
+
+		l5.addAnswer(builder.buildAnswer());
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("OP_SEMICOLON")
+		.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("OP_SEMICOLON")
+		.add("REQUEST_SET_VISIBLE_SEMICOLON").add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
+
+		l5.addAnswer(builder.buildAnswer());
+		
+		
+		builder = new FragmentListBuilder(fragmentsManager);
+		builder.add("DOWNLOAD_MANAGER_MANAGER").add("OP_EQUALS").add("GET_CONTEXT()").add("OP_DOT").add("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE").add("OP_SEMICOLON")
+		.add("REQUEST_REQUEST").add("OP_EQUALS").add("OP_NEW").add("REQUEST_URI").add("OP_SEMICOLON")
+		.add("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON").add("REQUEST_SET_VISIBLE_SEMICOLON")
+		.add("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON");
+
+		l5.addAnswer(builder.buildAnswer());
+		
 		l5.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 		l5.getResultKeywordFinder().addKeywordMapping(null, "level5");
 
@@ -295,6 +323,7 @@ public class Game {
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTENT_RESOLVER"));
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("QUERY_CONTENT_SMS"));
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("RETURN_CURSOR_SEMICOLON"));
+		l7.getFragmentList().add(fragmentsManager.getFragmentById("GET_CONTEXT()"));
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_DOT"));
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_EQUALS"));
 		l7.getFragmentList().add(fragmentsManager.getFragmentById("OP_SEMICOLON"));

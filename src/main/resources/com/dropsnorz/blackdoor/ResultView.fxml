@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<VBox maxHeight="300.0" maxWidth="500.0" prefHeight="300.0" prefWidth="500.0" spacing="10.0" styleClass="result-view" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="360.0" maxWidth="500.0" prefHeight="300.0" prefWidth="500.0" spacing="10.0" styleClass="result-view" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="MISSION TERMINÉE" textFill="#30b92d">
          <font>
@@ -17,7 +17,7 @@
          </font>
       </Label>
       <Label text="Output" />
-      <WebView fx:id="resultWebView" prefHeight="200.0" prefWidth="200.0" />
+      <WebView fx:id="resultWebView" prefHeight="260.0" prefWidth="200.0" />
       <VBox fx:id="dialogPane" prefHeight="200.0" prefWidth="100.0">
       </VBox>
    </children>

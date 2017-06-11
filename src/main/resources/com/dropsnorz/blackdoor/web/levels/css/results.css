@@ -4,3 +4,8 @@ body{
 	font-family: "Courier New"
 }
 
+pre {
+    white-space: pre-wrap;  
+    
+ }
+
