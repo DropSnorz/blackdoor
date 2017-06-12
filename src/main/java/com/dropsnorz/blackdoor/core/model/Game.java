@@ -501,7 +501,7 @@ public class Game {
 		gameLevelList.add(l9message);
 
 
-		currentGameLevel = l6;
+		currentGameLevel = l1;
 
 	}
 
