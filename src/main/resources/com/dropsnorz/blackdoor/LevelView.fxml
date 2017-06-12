@@ -63,7 +63,7 @@
               </Label>
              </children>
             </Pane>
-            <VBox fx:id="PANE_CodeArea" prefHeight="240.0" prefWidth="100.0" />
+            <VBox fx:id="PANE_CodeArea" prefHeight="260" prefWidth="100.0" />
             <TabPane fx:id="bottomTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Fragments">
@@ -105,14 +105,14 @@
             			<Insets left="40.0" right="20.0" />
          			</LevelPointsDisplay.margin>
                   </LevelPointsDisplay>
-                  <HBox minHeight="28" prefHeight="28" prefWidth="200.0">
+                  <HBox minHeight="38" prefHeight="38" prefWidth="200.0">
                   
                   </HBox>
                   <Button mnemonicParsing="false" styleClass="hud-button" text="Indice" />
                   <Button fx:id="BT_Course" mnemonicParsing="false" styleClass="hud-button" text="Cours" />
                   <Button fx:id="BT_RestartTutorial" mnemonicParsing="false" styleClass="flat-small-button" text="Rejouer le tutoriel">
                      <VBox.margin>
-                        <Insets top="43.0" />
+                        <Insets top="53.0" />
                      </VBox.margin>
                   </Button>
                </children>
