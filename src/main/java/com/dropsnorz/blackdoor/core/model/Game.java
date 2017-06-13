@@ -68,7 +68,7 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("QUERY_CONTENT_CALLS", "query(\"content://calls/lastCalls\")"));
 
 
-		//Level5
+		//Level 5
 
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_REQUEST", "Request req", CodeFragmentType.TYPE_VARIABLE));
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_URI", "Request(uri)"));
@@ -76,7 +76,7 @@ public class Game {
 		fragmentsManager.addFragment(new CodeFragment("REQUEST_NOTIFICATION_VISIBILITY_SEMICOLON", "request.setNotificationVisibility(VISIBILITY_HIDDEN);"));
 		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_MANAGER", "DownloadManager manager"));
 		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_DOWNLOAD_SERVICE", "getSystemService(DOWNLOAD_SERVICE)"));
-		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON", "downloadManager.enqueu(request);", CodeFragmentType.TYPE_VARIABLE));
+		fragmentsManager.addFragment(new CodeFragment("DOWNLOAD_MANAGER_ENQUEU_REQUEST_SEMICOLON", "manager.enqueu(request);", CodeFragmentType.TYPE_VARIABLE));
 
 		//Level 6
 		
