@@ -303,14 +303,6 @@ public class Game {
 		l6.getDialogKeywordFinder().addKeywordMapping(null, new Dialog("Continuer"));
 		l6.getResultKeywordFinder().addKeywordMapping(null, "level6");
 		
-		
-		fragmentsManager.addFragment(new CodeFragment("CAMERA_CAMERA", "Camera camera", CodeFragmentType.TYPE_VARIABLE));
-		fragmentsManager.addFragment(new CodeFragment("GET_SYSTEM_SERVICE_CAMERA", "getSystemService(BACK_CAMERA)"));
-		fragmentsManager.addFragment(new CodeFragment("VAR_CAMERA", "camera", CodeFragmentType.TYPE_VARIABLE ));
-		fragmentsManager.addFragment(new CodeFragment("TAKE_PICTURE", "takePicture(\"snapshot.png\")"));
-		
-		
-
 
 		GameLevel l7 = new GameLevel("level7", this);
 
