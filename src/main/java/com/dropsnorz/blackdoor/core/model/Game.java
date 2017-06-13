@@ -488,11 +488,11 @@ public class Game {
 		
 		
 		gameLevelList.add(l1);
-		gameLevelList.add(l2);
-		gameLevelList.add(l3);
+		//gameLevelList.add(l2);
+		//gameLevelList.add(l3);
 		gameLevelList.add(l4);
 		gameLevelList.add(l5);
-		gameLevelList.add(l6);
+		//gameLevelList.add(l6);
 		gameLevelList.add(l7);
 		
 		
